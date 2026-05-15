@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @theme {
-  --color-kl-dark: #0F172A;
-  --color-kl-navy: #00059B;
-  --color-kl-blue: #2563EB;
-  --color-kl-electric: #3B82F6;
-  --color-kl-cyan: #06B6D4;
-  --color-kl-white: #FFFFFF;
+  --color-kl-primary: #0057FF;
+  --color-kl-deep: #001B8F;
+  --color-kl-dark: #00105C;
+  --color-kl-card: #07164A;
+  --color-kl-cyan: #14D6C7;
   --color-kl-offwhite: #F8FAFC;
-  --color-kl-light: #EFF6FF;
-  --color-kl-gray: #64748B;
 }
 
 @layer base {
@@ -18,8 +20,8 @@
   }
 
   body {
-    background-color: #020B1A;
-    color: #0F172A;
+    background-color: #001B8F;
+    color: #FFFFFF;
     font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -31,15 +33,15 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #F8FAFC;
+    background: #001B8F;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #2563EB;
+    background: #14D6C7;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #1D4ED8;
+    background: #0057FF;
   }
 }

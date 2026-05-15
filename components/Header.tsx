@@ -10,8 +10,8 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handler);
+    const handler = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
@@ -20,59 +20,66 @@ export default function Header() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
       style={
         scrolled
           ? {
-              background: "rgba(2, 11, 26, 0.92)",
+              background: "rgba(0, 27, 143, 0.88)",
               backdropFilter: "blur(20px)",
-              borderBottom: "1px solid rgba(37, 99, 235, 0.12)",
+              WebkitBackdropFilter: "blur(20px)",
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
             }
-          : {}
+          : { background: "transparent" }
       }
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 lg:py-5 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#home" className="flex items-center gap-2.5 group flex-shrink-0">
           <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center"
-            style={{
-              background: "linear-gradient(135deg, #00059B, #2563EB)",
-              boxShadow: "0 4px 16px rgba(37, 99, 235, 0.35)",
-            }}
+            className="w-9 h-9 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
+            style={{ background: "linear-gradient(135deg, #0057FF, #14D6C7)" }}
           >
-            <span className="text-white font-black text-base">K</span>
+            <span className="text-white font-black text-base leading-none">K</span>
           </div>
-          <span className="text-white font-bold text-xl tracking-tight">KLAGENCY</span>
+          <span
+            className="text-white font-bold text-lg tracking-tight"
+            style={{ fontFamily: "var(--font-nunito, var(--font-inter), system-ui)" }}
+          >
+            KL Agency
+          </span>
         </a>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[#94A3B8] hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+              className="text-white/75 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
             >
               {link.label}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#2563EB] group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#14D6C7] group-hover:w-full transition-all duration-300" />
             </a>
           ))}
         </nav>
 
+        {/* CTA */}
         <div className="hidden md:flex">
           <a
             href={WHATSAPP_PRIMARY}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-px"
+            className="text-[#001B8F] font-bold text-sm px-5 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-px"
             style={{
-              background: "linear-gradient(135deg, #2563EB, #1D4ED8)",
-              boxShadow: "0 4px 16px rgba(37, 99, 235, 0.3)",
+              background: "#14D6C7",
+              boxShadow: "0 4px 20px rgba(20,214,199,0.35)",
             }}
           >
-            Falar no WhatsApp
+            Falar Connosco
           </a>
         </div>
 
+        {/* Mobile toggle */}
         <button
           className="md:hidden text-white/80 hover:text-white p-1 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -82,6 +89,7 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -92,8 +100,10 @@ export default function Header() {
             transition={{ duration: 0.2 }}
             className="md:hidden px-6 py-5 flex flex-col gap-4"
             style={{
-              background: "rgba(2, 11, 26, 0.98)",
-              borderBottom: "1px solid rgba(37, 99, 235, 0.12)",
+              background: "rgba(0, 27, 143, 0.97)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
             }}
           >
             {NAV_LINKS.map((link) => (
@@ -101,7 +111,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-[#94A3B8] hover:text-white text-sm font-medium py-1 transition-colors"
+                className="text-white/75 hover:text-white text-sm font-medium py-1 transition-colors"
               >
                 {link.label}
               </a>
@@ -110,10 +120,10 @@ export default function Header() {
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white text-sm font-semibold px-5 py-3 rounded-xl text-center mt-1"
-              style={{ background: "linear-gradient(135deg, #2563EB, #1D4ED8)" }}
+              className="text-[#001B8F] font-bold text-sm px-5 py-3 rounded-full text-center mt-1"
+              style={{ background: "#14D6C7" }}
             >
-              Falar no WhatsApp
+              Falar Connosco
             </a>
           </motion.div>
         )}

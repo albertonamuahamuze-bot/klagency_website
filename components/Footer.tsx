@@ -19,11 +19,13 @@ export default function Footer() {
   return (
     <footer
       className="relative pt-20 pb-10 overflow-hidden"
-      style={{ background: "#020B1A" }}
+      style={{ background: "#000E40" }}
     >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      {/* Subtle glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#2563EB]/5 blur-3xl pointer-events-none" />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)" }}
+      />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#0057FF]/5 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
@@ -33,21 +35,26 @@ export default function Footer() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
         >
-          {/* Brand Column */}
+          {/* Brand */}
           <div className="lg:col-span-1">
-            <a href="#home" className="flex items-center gap-3 mb-5 group">
+            <a href="#home" className="flex items-center gap-2.5 mb-5 group">
               <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20"
-                style={{ background: "linear-gradient(135deg, #00059B, #2563EB)" }}
+                className="w-9 h-9 rounded-2xl flex items-center justify-center shadow-lg"
+                style={{ background: "linear-gradient(135deg, #0057FF, #14D6C7)" }}
               >
                 <span className="text-white font-black text-base">K</span>
               </div>
-              <span className="text-white font-bold text-xl tracking-tight">KLAGENCY</span>
+              <span
+                className="text-white font-bold text-xl tracking-tight"
+                style={{ fontFamily: "var(--font-nunito, var(--font-inter), system-ui)" }}
+              >
+                KL Agency
+              </span>
             </a>
-            <p className="text-[#06B6D4] text-sm font-medium leading-relaxed mb-3">
+            <p className="text-[#14D6C7] text-sm font-medium leading-relaxed mb-3">
               Conexões que geram sucesso.
             </p>
-            <p className="text-[#64748B] text-sm leading-relaxed max-w-xs">
+            <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               Posicionamos marcas e líderes para dominar os seus mercados com estratégia,
               branding e tecnologia.
             </p>
@@ -63,7 +70,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-[#64748B] hover:text-white text-sm transition-colors duration-200"
+                    className="text-white/40 hover:text-white text-sm transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -82,7 +89,7 @@ export default function Footer() {
                 <li key={s}>
                   <a
                     href="#servicos"
-                    className="text-[#64748B] hover:text-white text-sm transition-colors duration-200"
+                    className="text-white/40 hover:text-white text-sm transition-colors duration-200"
                   >
                     {s}
                   </a>
@@ -99,14 +106,14 @@ export default function Footer() {
             <ul className="space-y-3 mb-6">
               {CONTACTS.phones.map((p) => (
                 <li key={p}>
-                  <span className="text-[#64748B] text-sm">{p}</span>
+                  <span className="text-white/40 text-sm">{p}</span>
                 </li>
               ))}
               {CONTACTS.emails.slice(0, 2).map((e) => (
                 <li key={e}>
                   <a
                     href={`mailto:${e}`}
-                    className="text-[#64748B] hover:text-white text-sm transition-colors duration-200 break-all"
+                    className="text-white/40 hover:text-white text-sm transition-colors duration-200 break-all"
                   >
                     {e}
                   </a>
@@ -118,7 +125,11 @@ export default function Footer() {
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/20"
+              className="inline-flex items-center gap-2 text-[#001B8F] text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-px"
+              style={{
+                background: "#14D6C7",
+                boxShadow: "0 4px 16px rgba(20,214,199,0.3)",
+              }}
             >
               <MessageCircle size={14} />
               Falar no WhatsApp
@@ -131,15 +142,15 @@ export default function Footer() {
           className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8"
           style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
         >
-          <p className="text-[#334155] text-sm">
-            © {year} KLAGENCY. Todos os direitos reservados.
+          <p className="text-white/25 text-sm">
+            © {year} KL Agency. Todos os direitos reservados.
           </p>
-          <p className="text-[#334155] text-sm">
+          <p className="text-white/25 text-sm">
             <a
               href={`https://${CONTACTS.website}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#64748B] transition-colors"
+              className="hover:text-white/45 transition-colors"
             >
               {CONTACTS.website}
             </a>
