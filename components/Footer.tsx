@@ -19,7 +19,7 @@ export default function Footer() {
   return (
     <footer
       className="relative pt-20 pb-10 overflow-hidden"
-      style={{ background: "#0B1120" }}
+      style={{ background: "#020B1A" }}
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       {/* Subtle glow */}

@@ -70,12 +70,23 @@ const fadeUp = {
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#F4F8FF" }}>
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
+    <section
+      id="servicos"
+      className="relative py-28 lg:py-36 overflow-hidden"
+      style={{ background: "#030D1C" }}
+    >
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(37,99,235,0.2), transparent)" }}
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(37,99,235,0.15), transparent)" }}
+      />
+      {/* Background depth */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#00059B]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,12 +94,15 @@ export default function Services() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <p className="text-[#2563EB] text-sm font-bold uppercase tracking-[0.25em] mb-4">
+          <p className="text-[#06B6D4] text-xs font-bold uppercase tracking-[0.3em] mb-5">
             O que fazemos
           </p>
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#0F172A] leading-tight max-w-2xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight max-w-2xl mx-auto">
             Serviços que posicionam.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#06B6D4]">
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(90deg, #60A5FA, #22D3EE)" }}
+            >
               Resultados que ficam.
             </span>
           </h2>
@@ -97,7 +111,6 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s, i) => (
             <motion.div
@@ -106,30 +119,39 @@ export default function Services() {
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
-              className="group relative rounded-2xl p-6 bg-white cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              transition={{ duration: 0.6, delay: i * 0.07, ease: "easeOut" }}
+              className="group relative rounded-2xl p-6 cursor-default transition-all duration-300 hover:-translate-y-1"
               style={{
-                border: "1px solid #E2E8F0",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                background: "#07152B",
+                border: "1px solid rgba(37, 99, 235, 0.12)",
+                boxShadow: "0 4px 20px rgba(0, 5, 155, 0.1)",
               }}
             >
-              {/* Cyan top accent on hover */}
+              {/* Hover overlay */}
               <div
-                className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: "linear-gradient(90deg, #2563EB, #06B6D4)" }}
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: "rgba(37, 99, 235, 0.05)" }}
+              />
+              {/* Cyan top line on hover */}
+              <div
+                className="absolute top-0 left-5 right-5 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: "linear-gradient(90deg, transparent, #06B6D4, transparent)" }}
               />
 
               <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:shadow-md group-hover:shadow-blue-100"
-                style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}
+                className="relative w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300"
+                style={{
+                  background: "rgba(37, 99, 235, 0.12)",
+                  border: "1px solid rgba(37, 99, 235, 0.2)",
+                }}
               >
                 <s.icon size={20} className="text-[#2563EB]" />
               </div>
 
-              <h3 className="text-[#0F172A] font-bold text-base leading-snug mb-2.5">
+              <h3 className="relative text-white font-bold text-base leading-snug mb-2.5">
                 {s.title}
               </h3>
-              <p className="text-[#64748B] text-sm leading-relaxed">{s.description}</p>
+              <p className="relative text-[#64748B] text-sm leading-relaxed">{s.description}</p>
             </motion.div>
           ))}
         </div>

@@ -31,14 +31,17 @@ const fadeUp = {
 
 export default function Manifesto() {
   return (
-    <section className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#F8FAFC" }}>
-      {/* Soft top divider */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#BFDBFE]/50 to-transparent" />
-      {/* Decorative glow — subtle */}
-      <div className="absolute top-20 right-0 w-[600px] h-[400px] rounded-full bg-[#EFF6FF] blur-3xl pointer-events-none opacity-80" />
+    <section className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#020B1A" }}>
+      {/* Separator */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(37,99,235,0.3), transparent)" }}
+      />
+      {/* Ambient glow */}
+      <div className="absolute top-20 right-0 w-[600px] h-[500px] rounded-full bg-[#00059B]/8 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#2563EB]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,12 +49,15 @@ export default function Manifesto() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-20"
         >
-          <p className="text-[#2563EB] text-xs font-bold uppercase tracking-[0.3em] mb-5">
+          <p className="text-[#06B6D4] text-xs font-bold uppercase tracking-[0.3em] mb-5">
             Quem Somos
           </p>
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#0F172A] leading-tight max-w-2xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight max-w-2xl mx-auto">
             Mais do que uma agência.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#0EA5E9]">
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(90deg, #60A5FA, #22D3EE)" }}
+            >
               Um parceiro estratégico.
             </span>
           </h2>
@@ -71,35 +77,44 @@ export default function Manifesto() {
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ duration: 0.7, delay: i * 0.12, ease: "easeOut" }}
-              className="relative rounded-2xl p-7 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group relative rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1"
               style={{
-                border: "1px solid #E2E8F0",
-                boxShadow: "0 2px 8px rgba(37,99,235,0.05)",
+                background: "#07152B",
+                border: "1px solid rgba(37, 99, 235, 0.15)",
+                boxShadow: "0 4px 24px rgba(0, 5, 155, 0.12)",
               }}
             >
+              {/* Hover glow overlay */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+                style={{ background: "rgba(37, 99, 235, 0.04)" }}
+              />
               {/* Left accent bar */}
               <div
                 className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full"
-                style={{ background: "linear-gradient(180deg, #2563EB, #0EA5E9)" }}
+                style={{ background: "linear-gradient(180deg, #2563EB, #06B6D4)" }}
               />
 
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}
+                className="relative w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{
+                  background: "rgba(37, 99, 235, 0.12)",
+                  border: "1px solid rgba(37, 99, 235, 0.2)",
+                }}
               >
                 <p.icon size={22} className="text-[#2563EB]" />
               </div>
 
-              <span className="text-[#2563EB] text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-2 block">
+              <span className="relative text-[#06B6D4] text-[0.68rem] font-bold uppercase tracking-[0.2em] mb-2 block">
                 {p.label}
               </span>
-              <h3 className="text-[#0F172A] font-bold text-xl leading-snug mb-3">{p.title}</h3>
-              <p className="text-[#64748B] text-sm leading-relaxed">{p.body}</p>
+              <h3 className="relative text-white font-bold text-xl leading-snug mb-3">{p.title}</h3>
+              <p className="relative text-[#64748B] text-sm leading-relaxed">{p.body}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Stats — 2 real, confirmed metrics */}
+        {/* Stats — 2 confirmed metrics */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,23 +122,26 @@ export default function Manifesto() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="rounded-2xl overflow-hidden"
           style={{
-            background: "linear-gradient(135deg, #0F172A 0%, #00059B 55%, #1D4ED8 100%)",
+            background: "linear-gradient(135deg, #07152B 0%, #00059B 55%, #1D4ED8 100%)",
+            border: "1px solid rgba(37, 99, 235, 0.2)",
+            boxShadow: "0 8px 40px rgba(0, 5, 155, 0.25)",
           }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
-            {/* Stat 1 */}
             <div className="relative flex flex-col items-center justify-center py-16 px-12 text-center">
-              <div className="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-px bg-white/10" />
-              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none tracking-tight">
+              <div
+                className="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-px"
+                style={{ background: "rgba(255,255,255,0.08)" }}
+              />
+              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none">
                 100+
               </span>
               <span className="text-[#93C5FD] text-base font-semibold tracking-wide">
                 Projectos Entregues
               </span>
             </div>
-            {/* Stat 2 */}
             <div className="flex flex-col items-center justify-center py-16 px-12 text-center">
-              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none tracking-tight">
+              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none">
                 20+
               </span>
               <span className="text-[#93C5FD] text-base font-semibold tracking-wide">

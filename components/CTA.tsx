@@ -11,7 +11,7 @@ export default function CTA() {
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(135deg, #00059B 0%, #1D4ED8 45%, #0284C7 75%, #06B6D4 100%)",
+          background: "linear-gradient(135deg, #020B1A 0%, #00059B 35%, #2563EB 70%, #06B6D4 100%)",
         }}
       />
 
