@@ -7,14 +7,14 @@ const pillars = [
   {
     icon: Eye,
     label: "Visão",
-    title: "Referência global em estratégia e posicionamento.",
-    body: "Ser a agência de referência global em estratégia, marketing e posicionamento de marcas — reconhecida pela profundidade, clareza e impacto dos resultados que entregamos.",
+    title: "Referência em estratégia e posicionamento.",
+    body: "Ser a agência de referência em estratégia, marketing e posicionamento de marcas — reconhecida pela profundidade, clareza e impacto dos resultados que entregamos.",
   },
   {
     icon: Compass,
     label: "Missão",
-    title: "Transformar marcas em líderes globais.",
-    body: "Ajudar marcas e líderes a tornarem-se referências globais, com presença forte, autoridade consolidada e domínio concreto nos seus mercados de actuação.",
+    title: "Transformar marcas em líderes de mercado.",
+    body: "Ajudar marcas e líderes a tornarem-se referências no seu mercado, com presença forte, autoridade consolidada e domínio concreto no seu sector de actuação.",
   },
   {
     icon: Sparkles,
@@ -24,13 +24,6 @@ const pillars = [
   },
 ];
 
-const stats = [
-  { value: "100+", label: "Projectos entregues" },
-  { value: "20+", label: "Marcas posicionadas" },
-  { value: "8+", label: "Anos de experiência" },
-  { value: "3", label: "Países de actuação" },
-];
-
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
@@ -38,11 +31,11 @@ const fadeUp = {
 
 export default function Manifesto() {
   return (
-    <section className="relative py-28 lg:py-36 bg-white overflow-hidden">
-      {/* Subtle top divider */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB]/20 to-transparent" />
-      {/* Decorative glow */}
-      <div className="absolute top-16 right-0 w-[500px] h-[500px] rounded-full bg-[#EFF6FF] blur-3xl pointer-events-none" />
+    <section className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#F8FAFC" }}>
+      {/* Soft top divider */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#BFDBFE]/50 to-transparent" />
+      {/* Decorative glow — subtle */}
+      <div className="absolute top-20 right-0 w-[600px] h-[400px] rounded-full bg-[#EFF6FF] blur-3xl pointer-events-none opacity-80" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section header */}
@@ -53,17 +46,17 @@ export default function Manifesto() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-20"
         >
-          <p className="text-[#2563EB] text-sm font-bold uppercase tracking-[0.25em] mb-4">
+          <p className="text-[#2563EB] text-xs font-bold uppercase tracking-[0.3em] mb-5">
             Quem Somos
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-[#0F172A] leading-tight max-w-2xl mx-auto">
             Mais do que uma agência.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#06B6D4]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#0EA5E9]">
               Um parceiro estratégico.
             </span>
           </h2>
           <p className="text-[#64748B] text-lg mt-5 max-w-xl mx-auto leading-relaxed">
-            A KLAGENCY nasceu para transformar marcas comuns em referências de mercado, com
+            A KL Agency nasceu para transformar marcas comuns em referências de mercado, com
             estratégia profunda, identidade sólida e execução consistente.
           </p>
         </motion.div>
@@ -78,16 +71,16 @@ export default function Manifesto() {
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ duration: 0.7, delay: i * 0.12, ease: "easeOut" }}
-              className="relative rounded-2xl p-7 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="relative rounded-2xl p-7 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               style={{
                 border: "1px solid #E2E8F0",
-                boxShadow: "0 1px 4px rgba(37,99,235,0.06)",
+                boxShadow: "0 2px 8px rgba(37,99,235,0.05)",
               }}
             >
-              {/* Blue left accent */}
+              {/* Left accent bar */}
               <div
                 className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full"
-                style={{ background: "linear-gradient(180deg, #2563EB, #06B6D4)" }}
+                style={{ background: "linear-gradient(180deg, #2563EB, #0EA5E9)" }}
               />
 
               <div
@@ -97,7 +90,7 @@ export default function Manifesto() {
                 <p.icon size={22} className="text-[#2563EB]" />
               </div>
 
-              <span className="text-[#2563EB] text-xs font-bold uppercase tracking-[0.18em] mb-2 block">
+              <span className="text-[#2563EB] text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-2 block">
                 {p.label}
               </span>
               <h3 className="text-[#0F172A] font-bold text-xl leading-snug mb-3">{p.title}</h3>
@@ -106,7 +99,7 @@ export default function Manifesto() {
           ))}
         </div>
 
-        {/* Stats ribbon — dark premium band */}
+        {/* Stats — 2 real, confirmed metrics */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,22 +107,29 @@ export default function Manifesto() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="rounded-2xl overflow-hidden"
           style={{
-            background: "linear-gradient(135deg, #0F172A 0%, #00059B 60%, #1D4ED8 100%)",
+            background: "linear-gradient(135deg, #0F172A 0%, #00059B 55%, #1D4ED8 100%)",
           }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="relative flex flex-col items-center justify-center py-12 px-6 text-center"
-              >
-                {i < stats.length - 1 && (
-                  <div className="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-px bg-white/10" />
-                )}
-                <span className="text-5xl font-black text-white mb-2 leading-none">{s.value}</span>
-                <span className="text-[#93C5FD] text-sm font-medium">{s.label}</span>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* Stat 1 */}
+            <div className="relative flex flex-col items-center justify-center py-16 px-12 text-center">
+              <div className="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-px bg-white/10" />
+              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none tracking-tight">
+                100+
+              </span>
+              <span className="text-[#93C5FD] text-base font-semibold tracking-wide">
+                Projectos Entregues
+              </span>
+            </div>
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center justify-center py-16 px-12 text-center">
+              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none tracking-tight">
+                20+
+              </span>
+              <span className="text-[#93C5FD] text-base font-semibold tracking-wide">
+                Marcas Posicionadas
+              </span>
+            </div>
           </div>
         </motion.div>
       </div>

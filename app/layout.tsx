@@ -9,32 +9,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "KLAGENCY — Estratégia, Marketing & Branding",
+  title: "KL Agency — Estratégia, Marketing & Branding | Moçambique",
   description:
-    "Posicionamos marcas e líderes para dominar os seus mercados. Estratégia, branding, marketing e tecnologia para empresas que querem crescer com autoridade.",
+    "A KL Agency posiciona marcas e líderes para dominar os seus mercados. Estratégia, branding, marketing e tecnologia para empresas que querem crescer com autoridade.",
   keywords: [
+    "KL Agency",
     "estratégia",
     "marketing digital",
     "branding",
     "posicionamento de marca",
-    "agência",
-    "KLAGENCY",
-    "consultoria",
+    "agência Moçambique",
+    "consultoria estratégica",
     "identidade corporativa",
     "Moçambique",
   ],
-  authors: [{ name: "KLAGENCY" }],
+  authors: [{ name: "KL Agency" }],
   openGraph: {
-    title: "KLAGENCY — Conexões que geram sucesso",
-    description: "Posicionamos marcas e líderes para dominar os seus mercados.",
+    title: "KL Agency — Conexões que geram sucesso",
+    description: "A KL Agency posiciona marcas e líderes para dominar os seus mercados.",
     type: "website",
     url: "https://www.klagency.com",
-    siteName: "KLAGENCY",
+    siteName: "KL Agency",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KLAGENCY — Conexões que geram sucesso",
-    description: "Posicionamos marcas e líderes para dominar os seus mercados.",
+    title: "KL Agency — Conexões que geram sucesso",
+    description: "A KL Agency posiciona marcas e líderes para dominar os seus mercados.",
   },
   robots: { index: true, follow: true },
 };

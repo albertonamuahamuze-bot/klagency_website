@@ -40,7 +40,8 @@ export default function Contact() {
   return (
     <section
       id="contactos"
-      className="relative py-28 lg:py-36 bg-white overflow-hidden"
+      className="relative py-28 lg:py-36 overflow-hidden"
+      style={{ background: "#F8FAFC" }}
     >
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#EFF6FF] blur-3xl pointer-events-none opacity-60" />

@@ -70,7 +70,7 @@ const fadeUp = {
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative py-28 lg:py-36 bg-[#F8FAFC] overflow-hidden">
+    <section id="servicos" className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#F4F8FF" }}>
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
 

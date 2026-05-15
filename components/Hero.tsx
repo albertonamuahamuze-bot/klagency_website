@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, TrendingUp, Shield, Zap, Target } from "lucide-react";
+import { MessageCircle, ArrowRight, TrendingUp, Shield, Target } from "lucide-react";
 import { WHATSAPP_PRIMARY } from "@/lib/constants";
 
 const metrics = [
@@ -234,28 +234,12 @@ export default function Hero() {
               <p className="text-white/50 text-[0.62rem]">Marcas posicionadas</p>
             </motion.div>
 
-            {/* Floating: left-center — 8+ Anos */}
-            <motion.div
-              animate={{ x: [0, -5, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-              className="absolute top-1/2 -left-16 -translate-y-1/2 w-32 rounded-2xl p-4"
-              style={{
-                background: "rgba(11, 17, 32, 0.95)",
-                backdropFilter: "blur(20px)",
-                border: "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
-              }}
-            >
-              <Zap size={16} className="text-amber-400 mb-2.5" />
-              <p className="text-white font-black text-2xl leading-none mb-1">8+</p>
-              <p className="text-white/50 text-[0.62rem]">Anos de experiência</p>
-            </motion.div>
           </div>
         </motion.div>
       </div>
 
-      {/* Bottom fade to white */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      {/* Bottom fade to match body */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent pointer-events-none" />
     </section>
   );
 }

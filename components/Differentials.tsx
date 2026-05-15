@@ -27,13 +27,13 @@ const differentials = [
     number: "04",
     title: "Orientação a resultados",
     description:
-      "Cada estratégia é desenhada com métricas claras e objectivos concretos. O sucesso da sua marca é a única métrica que importa para a KLAGENCY.",
+      "Cada estratégia é desenhada com métricas claras e objectivos concretos. O sucesso da sua marca é a única métrica que importa para a KL Agency.",
   },
 ];
 
 export default function Differentials() {
   return (
-    <section className="relative py-28 lg:py-36 bg-white overflow-hidden">
+    <section className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#F8FAFC" }}>
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
 
       {/* Background decoration */}
@@ -58,7 +58,7 @@ export default function Differentials() {
               </span>
             </h2>
             <p className="text-[#64748B] text-lg leading-relaxed mb-8 max-w-md">
-              A KLAGENCY começa sempre pela raiz: identidade, propósito e posicionamento.
+              A KL Agency começa sempre pela raiz — identidade, propósito e posicionamento.
               Só depois vem a execução. É isso que nos diferencia.
             </p>
 
