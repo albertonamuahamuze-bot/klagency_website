@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Briefcase, Trophy } from "lucide-react";
+import { MessageCircle, ArrowRight, Handshake, Trophy } from "lucide-react";
 import { WHATSAPP_PRIMARY } from "@/lib/constants";
 
 export default function Hero() {
@@ -22,7 +22,7 @@ export default function Hero() {
       />
       {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.035]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -78,10 +78,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="text-white/70 text-lg leading-relaxed mb-10 max-w-[480px]"
+              className="text-white/65 text-lg leading-relaxed mb-10 max-w-[480px]"
             >
               Estratégia, branding, marketing e tecnologia para empresas que querem
-              crescer com autoridade no mercado africano e global.
+              crescer com autoridade.
             </motion.p>
 
             <motion.div
@@ -94,7 +94,7 @@ export default function Hero() {
                 href={WHATSAPP_PRIMARY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 text-[#001B8F] font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 text-[0.9375rem]"
+                className="flex items-center justify-center gap-2.5 text-[#001B8F] font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 text-[0.9375rem]"
                 style={{
                   background: "#14D6C7",
                   boxShadow: "0 8px 32px rgba(20,214,199,0.45)",
@@ -107,8 +107,8 @@ export default function Hero() {
                 href="#servicos"
                 className="flex items-center justify-center gap-2.5 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:-translate-y-0.5 text-[0.9375rem]"
                 style={{
-                  border: "1px solid rgba(255,255,255,0.25)",
-                  background: "rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  background: "rgba(255,255,255,0.07)",
                 }}
               >
                 Ver Serviços
@@ -127,7 +127,7 @@ export default function Hero() {
             <div className="relative w-[380px] h-[420px]">
               {/* Glow orb */}
               <div
-                className="absolute inset-0 rounded-full blur-3xl opacity-25 pointer-events-none"
+                className="absolute inset-0 rounded-full blur-3xl opacity-20 pointer-events-none"
                 style={{ background: "radial-gradient(circle, #14D6C7 0%, #0057FF 60%, transparent 100%)" }}
               />
 
@@ -137,16 +137,19 @@ export default function Hero() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-8 rounded-3xl flex flex-col items-center justify-center"
                 style={{
-                  background: "rgba(6, 16, 70, 0.75)",
+                  background: "rgba(5, 12, 58, 0.65)",
                   backdropFilter: "blur(24px)",
                   WebkitBackdropFilter: "blur(24px)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  boxShadow: "0 32px 80px rgba(0,27,143,0.4)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  boxShadow: "0 32px 80px rgba(0,27,143,0.4), inset 0 1px 0 rgba(255,255,255,0.08)",
                 }}
               >
                 <div
                   className="w-20 h-20 rounded-3xl flex items-center justify-center mb-4"
-                  style={{ background: "linear-gradient(135deg, #0057FF, #14D6C7)" }}
+                  style={{
+                    background: "linear-gradient(135deg, #0057FF, #14D6C7)",
+                    boxShadow: "0 8px 32px rgba(20,214,199,0.3)",
+                  }}
                 >
                   <span
                     className="text-white font-black text-4xl"
@@ -164,7 +167,7 @@ export default function Hero() {
                 <p className="text-[#14D6C7] text-xs tracking-wider">Conexões que geram sucesso</p>
                 <div
                   className="mt-5 px-4 py-1.5 rounded-full flex items-center gap-2"
-                  style={{ background: "rgba(20,214,199,0.12)", border: "1px solid rgba(20,214,199,0.2)" }}
+                  style={{ background: "rgba(20,214,199,0.1)", border: "1px solid rgba(20,214,199,0.2)" }}
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-[#14D6C7] animate-pulse" />
                   <span className="text-[#14D6C7] text-[0.65rem] font-semibold uppercase tracking-widest">
@@ -173,56 +176,56 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Floating metric: Projectos */}
+              {/* Floating metric: +100 Projectos */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -top-6 -left-10 rounded-2xl p-4"
                 style={{
-                  background: "rgba(6, 16, 70, 0.9)",
+                  background: "rgba(5, 12, 58, 0.88)",
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(20,214,199,0.25)",
-                  boxShadow: "0 20px 60px rgba(0,27,143,0.4)",
+                  border: "1px solid rgba(20,214,199,0.22)",
+                  boxShadow: "0 20px 60px rgba(0,27,143,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
                 }}
               >
                 <div className="flex items-center gap-3">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(20,214,199,0.15)" }}
+                    style={{ background: "rgba(20,214,199,0.12)" }}
                   >
-                    <Briefcase size={18} className="text-[#14D6C7]" />
+                    <Handshake size={18} className="text-[#14D6C7]" />
                   </div>
                   <div>
-                    <p className="text-white font-black text-2xl leading-none">100+</p>
-                    <p className="text-white/55 text-[0.62rem] mt-0.5">Projectos entregues</p>
+                    <p className="text-white font-black text-2xl leading-none">+100</p>
+                    <p className="text-white/50 text-[0.62rem] mt-0.5">Projectos entregues</p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Floating metric: Marcas */}
+              {/* Floating metric: +20 Marcas */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
                 className="absolute -bottom-6 -right-10 rounded-2xl p-4"
                 style={{
-                  background: "rgba(6, 16, 70, 0.9)",
+                  background: "rgba(5, 12, 58, 0.88)",
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(96,165,250,0.25)",
-                  boxShadow: "0 20px 60px rgba(0,27,143,0.4)",
+                  border: "1px solid rgba(96,165,250,0.22)",
+                  boxShadow: "0 20px 60px rgba(0,27,143,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
                 }}
               >
                 <div className="flex items-center gap-3">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(96,165,250,0.15)" }}
+                    style={{ background: "rgba(96,165,250,0.12)" }}
                   >
                     <Trophy size={18} className="text-[#60A5FA]" />
                   </div>
                   <div>
                     <p className="text-white font-black text-2xl leading-none">+20</p>
-                    <p className="text-white/55 text-[0.62rem] mt-0.5">Marcas posicionadas</p>
+                    <p className="text-white/50 text-[0.62rem] mt-0.5">Marcas posicionadas</p>
                   </div>
                 </div>
               </motion.div>
@@ -231,9 +234,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom fade */}
+      {/* Bottom atmospheric fade into Manifesto (#00105C) */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{ background: "linear-gradient(to top, #00105C, transparent)" }}
       />
     </section>

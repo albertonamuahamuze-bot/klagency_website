@@ -7,7 +7,7 @@ import { WHATSAPP_PRIMARY } from "@/lib/constants";
 export default function CTA() {
   return (
     <section className="relative py-28 lg:py-36 overflow-hidden">
-      {/* Background gradient */}
+      {/* Background gradient — continues from Portfolio's bottom fade */}
       <div
         className="absolute inset-0"
         style={{
@@ -23,15 +23,21 @@ export default function CTA() {
       />
       {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.035]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#0057FF]/20 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#0057FF]/18 blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#14D6C7]/8 blur-3xl pointer-events-none" />
+
+      {/* Bottom transition to Contact (#00105C) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+        style={{ background: "linear-gradient(to top, #00105C, transparent)" }}
+      />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <motion.div
@@ -63,9 +69,8 @@ export default function CTA() {
             </span>
           </h2>
 
-          <p className="text-white/70 text-lg lg:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-            Conexões que geram sucesso. Comece hoje a construir a presença que a sua marca
-            merece no mercado.
+          <p className="text-white/65 text-lg lg:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
+            Conexões que geram sucesso. Comece hoje a construir a presença que a sua marca merece.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -73,7 +78,7 @@ export default function CTA() {
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 text-[#001B8F] font-bold px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 text-base"
+              className="flex items-center justify-center gap-2.5 text-[#001B8F] font-bold px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 text-base"
               style={{
                 background: "#14D6C7",
                 boxShadow: "0 8px 32px rgba(20,214,199,0.45)",
@@ -86,8 +91,8 @@ export default function CTA() {
               href="#servicos"
               className="flex items-center justify-center gap-2.5 text-white font-semibold px-10 py-4 rounded-full transition-all duration-200 hover:-translate-y-0.5 text-base"
               style={{
-                border: "1px solid rgba(255,255,255,0.25)",
-                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.22)",
+                background: "rgba(255,255,255,0.07)",
               }}
             >
               Ver nossos serviços

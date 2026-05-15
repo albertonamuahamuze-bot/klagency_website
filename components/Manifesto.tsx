@@ -1,26 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Eye, Compass, Sparkles } from "lucide-react";
+import { Eye, Compass, Sparkles, Handshake, Trophy } from "lucide-react";
 
 const pillars = [
   {
     icon: Eye,
     label: "Visão",
     title: "Referência em estratégia e posicionamento.",
-    body: "Ser a agência de referência em estratégia, marketing e posicionamento de marcas — reconhecida pela profundidade, clareza e impacto dos resultados que entregamos.",
+    body: "Ser reconhecida pela profundidade, clareza e impacto dos resultados que entregamos em estratégia, marketing e posicionamento de marcas.",
   },
   {
     icon: Compass,
     label: "Missão",
     title: "Transformar marcas em líderes de mercado.",
-    body: "Ajudar marcas e líderes a tornarem-se referências no seu mercado, com presença forte, autoridade consolidada e domínio concreto no seu sector de actuação.",
+    body: "Ajudar marcas e líderes a tornarem-se referências no seu mercado, com presença forte, autoridade consolidada e domínio concreto.",
   },
   {
     icon: Sparkles,
     label: "Propósito",
     title: "Actuar com autoridade e domínio real.",
-    body: "Posicionar marcas e líderes para actuarem com autoridade e domínio concreto nos seus mercados, gerando impacto real e crescimento sustentável.",
+    body: "Posicionar marcas para actuarem com autoridade e domínio concreto nos seus mercados, gerando impacto real e crescimento sustentável.",
   },
 ];
 
@@ -32,14 +32,17 @@ const fadeUp = {
 export default function Manifesto() {
   return (
     <section className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#00105C" }}>
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(20,214,199,0.3), transparent)" }}
-      />
+      {/* Ambient glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[500px] rounded-full bg-[#0057FF]/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#14D6C7]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Bottom atmospheric fade into Services (#001B8F) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+        style={{ background: "linear-gradient(to top, #001B8F, transparent)" }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,11 +80,11 @@ export default function Manifesto() {
               transition={{ duration: 0.7, delay: i * 0.12, ease: "easeOut" }}
               className="group relative rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1"
               style={{
-                background: "rgba(6, 16, 70, 0.72)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
+                background: "rgba(5, 12, 58, 0.65)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
                 border: "1px solid rgba(255,255,255,0.1)",
-                boxShadow: "0 4px 24px rgba(0,27,143,0.2)",
+                boxShadow: "0 8px 32px rgba(0,87,255,0.15), inset 0 1px 0 rgba(255,255,255,0.07)",
               }}
             >
               {/* Left accent bar */}
@@ -93,8 +96,8 @@ export default function Manifesto() {
               <div
                 className="relative w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={{
-                  background: "rgba(20, 214, 199, 0.12)",
-                  border: "1px solid rgba(20, 214, 199, 0.2)",
+                  background: "rgba(20, 214, 199, 0.1)",
+                  border: "1px solid rgba(20, 214, 199, 0.18)",
                 }}
               >
                 <p.icon size={22} className="text-[#14D6C7]" />
@@ -104,7 +107,7 @@ export default function Manifesto() {
                 {p.label}
               </span>
               <h3 className="relative text-white font-bold text-xl leading-snug mb-3">{p.title}</h3>
-              <p className="relative text-white/55 text-sm leading-relaxed">{p.body}</p>
+              <p className="relative text-white/50 text-sm leading-relaxed">{p.body}</p>
             </motion.div>
           ))}
         </div>
@@ -117,29 +120,52 @@ export default function Manifesto() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="rounded-2xl overflow-hidden"
           style={{
-            background: "rgba(6, 16, 70, 0.72)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            border: "1px solid rgba(20,214,199,0.15)",
-            boxShadow: "0 8px 40px rgba(0,27,143,0.25)",
+            background: "rgba(5, 12, 58, 0.65)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            border: "1px solid rgba(20,214,199,0.12)",
+            boxShadow: "0 8px 40px rgba(0,27,143,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
           }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* +100 Projectos */}
             <div className="relative flex flex-col items-center justify-center py-16 px-12 text-center">
               <div
                 className="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-px"
-                style={{ background: "rgba(255,255,255,0.08)" }}
+                style={{ background: "rgba(255,255,255,0.07)" }}
               />
-              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none">
-                100+
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5"
+                style={{
+                  background: "rgba(20,214,199,0.1)",
+                  border: "1px solid rgba(20,214,199,0.18)",
+                  filter: "drop-shadow(0 0 12px rgba(20,214,199,0.2))",
+                }}
+              >
+                <Handshake size={32} className="text-[#14D6C7]" />
+              </div>
+              <span className="text-7xl lg:text-8xl font-black text-white mb-2 leading-none">
+                +100
               </span>
               <span className="text-[#14D6C7] text-base font-semibold tracking-wide">
                 Projectos Entregues
               </span>
             </div>
+
+            {/* +20 Marcas */}
             <div className="flex flex-col items-center justify-center py-16 px-12 text-center">
-              <span className="text-7xl lg:text-8xl font-black text-white mb-3 leading-none">
-                20+
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5"
+                style={{
+                  background: "rgba(96,165,250,0.1)",
+                  border: "1px solid rgba(96,165,250,0.18)",
+                  filter: "drop-shadow(0 0 12px rgba(96,165,250,0.2))",
+                }}
+              >
+                <Trophy size={32} className="text-[#60A5FA]" />
+              </div>
+              <span className="text-7xl lg:text-8xl font-black text-white mb-2 leading-none">
+                +20
               </span>
               <span className="text-[#14D6C7] text-base font-semibold tracking-wide">
                 Marcas Posicionadas

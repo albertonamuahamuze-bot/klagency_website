@@ -20,24 +20,31 @@ export default function Header() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={
         scrolled
           ? {
-              background: "rgba(0, 27, 143, 0.88)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              borderBottom: "1px solid rgba(255,255,255,0.1)",
+              background: "linear-gradient(180deg, rgba(0,87,255,0.88) 0%, rgba(0,27,143,0.82) 100%)",
+              backdropFilter: "blur(18px)",
+              WebkitBackdropFilter: "blur(18px)",
+              boxShadow: "0 8px 40px rgba(0,102,255,0.22)",
             }
-          : { background: "transparent" }
+          : {
+              background: "linear-gradient(180deg, rgba(0,27,143,0.3) 0%, transparent 100%)",
+              backdropFilter: "blur(4px)",
+              WebkitBackdropFilter: "blur(4px)",
+            }
       }
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 lg:py-5 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2.5 group flex-shrink-0">
+        <a href="#home" className="flex items-center gap-2.5 flex-shrink-0">
           <div
-            className="w-9 h-9 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
-            style={{ background: "linear-gradient(135deg, #0057FF, #14D6C7)" }}
+            className="w-9 h-9 rounded-2xl flex items-center justify-center flex-shrink-0"
+            style={{
+              background: "linear-gradient(135deg, #0057FF, #14D6C7)",
+              boxShadow: "0 4px 16px rgba(20,214,199,0.3)",
+            }}
           >
             <span className="text-white font-black text-base leading-none">K</span>
           </div>
@@ -69,10 +76,10 @@ export default function Header() {
             href={WHATSAPP_PRIMARY}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#001B8F] font-bold text-sm px-5 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-px"
+            className="text-[#001B8F] font-bold text-sm px-5 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-px hover:brightness-110"
             style={{
               background: "#14D6C7",
-              boxShadow: "0 4px 20px rgba(20,214,199,0.35)",
+              boxShadow: "0 4px 20px rgba(20,214,199,0.4)",
             }}
           >
             Falar Connosco

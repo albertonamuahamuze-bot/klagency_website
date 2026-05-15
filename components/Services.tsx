@@ -16,54 +16,39 @@ const mainServices = [
   {
     icon: LineChart,
     title: "Consultoria Estratégica",
-    description:
-      "Diagnóstico profundo da marca e desenvolvimento de estratégias claras para crescimento sustentável e domínio de mercado.",
+    description: "Diagnóstico profundo e estratégias claras para crescimento sustentável e domínio de mercado.",
   },
   {
     icon: Megaphone,
     title: "Marketing Digital",
-    description:
-      "Campanhas orientadas a resultados com posicionamento estratégico, geração de leads qualificados e conversão real.",
+    description: "Posicionamento estratégico, leads qualificados e conversão real com resultados mensuráveis.",
   },
   {
     icon: Target,
     title: "Posicionamento de Marca",
-    description:
-      "Definição clara do lugar que a sua marca ocupa na mente do mercado. Diferenciação que gera autoridade e reconhecimento.",
+    description: "Diferenciação estratégica que gera autoridade, reconhecimento e domínio de mercado.",
   },
 ];
 
 const otherServices = [
-  {
-    icon: Code2,
-    title: "Desenvolvimento de Softwares & Websites",
-    description: "Soluções digitais premium, com foco em performance, design e experiência.",
-  },
-  {
-    icon: Palette,
-    title: "Branding",
-    description: "Construção completa da identidade visual e verbal da marca.",
-  },
-  {
-    icon: FolderKanban,
-    title: "Gestão de Projectos",
-    description: "Coordenação estratégica com clareza, prazos e entregas de impacto.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Capacitação & Treinamentos",
-    description: "Formação especializada em estratégia, marketing, vendas e posicionamento.",
-  },
-  {
-    icon: Award,
-    title: "Identidade Corporativa",
-    description: "Alinhamento entre propósito, cultura e presença com autoridade.",
-  },
+  { icon: Code2, title: "Desenvolvimento de Websites & Software", description: "Soluções digitais premium com foco em performance e experiência." },
+  { icon: Palette, title: "Branding", description: "Identidade visual e verbal — da essência ao logotipo." },
+  { icon: FolderKanban, title: "Gestão de Projectos", description: "Coordenação estratégica com prazos e entregas de impacto." },
+  { icon: GraduationCap, title: "Capacitação & Treinamentos", description: "Formação em estratégia, marketing e posicionamento." },
+  { icon: Award, title: "Identidade Corporativa", description: "Propósito, cultura e presença alinhados com autoridade." },
 ];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 },
+};
+
+const cardStyle = {
+  background: "rgba(5, 12, 58, 0.65)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid rgba(255,255,255,0.1)",
+  boxShadow: "0 8px 32px rgba(0,87,255,0.15), inset 0 1px 0 rgba(255,255,255,0.07)",
 };
 
 export default function Services() {
@@ -73,17 +58,16 @@ export default function Services() {
       className="relative py-28 lg:py-36 overflow-hidden"
       style={{ background: "#001B8F" }}
     >
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(20,214,199,0.25), transparent)" }}
-      />
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(0,87,255,0.2), transparent)" }}
-      />
+      {/* Ambient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#0057FF]/6 blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Bottom transition to Differentials (same colour — subtle deepening) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+        style={{ background: "linear-gradient(to top, rgba(0,16,92,0.5), transparent)" }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +87,7 @@ export default function Services() {
               Resultados que ficam.
             </span>
           </h2>
-          <p className="text-white/60 text-lg mt-5 max-w-lg mx-auto leading-relaxed">
+          <p className="text-white/55 text-lg mt-5 max-w-lg mx-auto leading-relaxed">
             Cada serviço é desenhado para entregar clareza, posicionamento e crescimento com autoridade.
           </p>
         </motion.div>
@@ -119,13 +103,7 @@ export default function Services() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
               className="group relative rounded-2xl p-8 cursor-default transition-all duration-300 hover:-translate-y-1.5"
-              style={{
-                background: "rgba(6, 16, 70, 0.72)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                border: "1px solid rgba(20,214,199,0.15)",
-                boxShadow: "0 4px 30px rgba(0,27,143,0.25)",
-              }}
+              style={cardStyle}
             >
               {/* Cyan accent line on hover */}
               <div
@@ -134,17 +112,17 @@ export default function Services() {
               />
 
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
                 style={{
-                  background: "rgba(20, 214, 199, 0.12)",
-                  border: "1px solid rgba(20, 214, 199, 0.2)",
+                  background: "rgba(20, 214, 199, 0.1)",
+                  border: "1px solid rgba(20, 214, 199, 0.18)",
                 }}
               >
                 <s.icon size={26} className="text-[#14D6C7]" />
               </div>
 
               <h3 className="text-white font-bold text-xl leading-snug mb-3">{s.title}</h3>
-              <p className="text-white/55 text-sm leading-relaxed">{s.description}</p>
+              <p className="text-white/50 text-sm leading-relaxed">{s.description}</p>
             </motion.div>
           ))}
         </div>
@@ -161,21 +139,21 @@ export default function Services() {
               transition={{ duration: 0.6, delay: i * 0.07, ease: "easeOut" }}
               className="group relative rounded-2xl p-5 cursor-default transition-all duration-300 hover:-translate-y-1"
               style={{
-                background: "rgba(6, 16, 70, 0.5)",
+                background: "rgba(5, 12, 58, 0.45)",
                 border: "1px solid rgba(255,255,255,0.08)",
               }}
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                 style={{
-                  background: "rgba(96, 165, 250, 0.12)",
-                  border: "1px solid rgba(96, 165, 250, 0.18)",
+                  background: "rgba(96, 165, 250, 0.1)",
+                  border: "1px solid rgba(96, 165, 250, 0.16)",
                 }}
               >
                 <s.icon size={18} className="text-[#60A5FA]" />
               </div>
               <h3 className="text-white font-semibold text-sm leading-snug mb-1.5">{s.title}</h3>
-              <p className="text-white/45 text-xs leading-relaxed">{s.description}</p>
+              <p className="text-white/40 text-xs leading-relaxed">{s.description}</p>
             </motion.div>
           ))}
         </div>

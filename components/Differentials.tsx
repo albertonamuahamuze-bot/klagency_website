@@ -8,39 +8,38 @@ const differentials = [
   {
     number: "01",
     title: "Clareza antes da estratégia",
-    description:
-      "Antes de qualquer execução, entendemos profundamente a essência da marca, o mercado e o posicionamento actual. Sem clareza, não há estratégia eficaz.",
+    description: "Antes de qualquer execução, compreendemos a essência da marca e o mercado. Sem clareza, não há estratégia eficaz.",
   },
   {
     number: "02",
     title: "Conexão honesta com o cliente",
-    description:
-      "Relações directas e transparentes. Não vendemos promessas — entregamos estratégia com base em dados, objectivos reais e capacidade de execução.",
+    description: "Relações directas e transparentes. Entregamos estratégia com base em dados e objectivos reais.",
   },
   {
     number: "03",
     title: "Construção desde a raiz",
-    description:
-      "Trabalhamos identidade, propósito e posicionamento antes de qualquer acção de marketing ou comunicação. A raiz forte garante o crescimento sustentável.",
+    description: "Identidade e posicionamento antes de qualquer marketing. A raiz forte garante crescimento sustentável.",
   },
   {
     number: "04",
     title: "Orientação a resultados",
-    description:
-      "Cada estratégia é desenhada com métricas claras e objectivos concretos. O sucesso da sua marca é a única métrica que importa para a KL Agency.",
+    description: "Cada estratégia tem métricas claras e objectivos concretos. O sucesso da sua marca é o que importa.",
   },
 ];
 
 export default function Differentials() {
   return (
     <section className="relative py-28 lg:py-36 overflow-hidden" style={{ background: "#001B8F" }}>
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(0,87,255,0.3), transparent)" }}
-      />
+      {/* Ambient */}
       <div className="absolute top-1/2 -left-32 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#0057FF]/10 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Bottom transition to Portfolio (#00105C) */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+        style={{ background: "linear-gradient(to top, #00105C, transparent)" }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left */}
           <motion.div
@@ -61,9 +60,9 @@ export default function Differentials() {
                 da estratégia.
               </span>
             </h2>
-            <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-md">
+            <p className="text-white/55 text-lg leading-relaxed mb-8 max-w-md">
               A KL Agency começa sempre pela raiz — identidade, propósito e posicionamento.
-              Só depois vem a execução. É isso que nos diferencia.
+              Só depois vem a execução.
             </p>
 
             <a
@@ -84,14 +83,14 @@ export default function Differentials() {
             <div className="mt-12 flex items-center gap-8">
               <div>
                 <p className="text-5xl font-black text-white leading-none">100%</p>
-                <p className="text-white/50 text-sm mt-1.5 max-w-[140px]">
+                <p className="text-white/45 text-sm mt-1.5 max-w-[140px]">
                   das estratégias começam com diagnóstico
                 </p>
               </div>
               <div className="w-px h-16 self-stretch" style={{ background: "rgba(255,255,255,0.1)" }} />
               <div>
                 <p className="text-5xl font-black text-white leading-none">3×</p>
-                <p className="text-white/50 text-sm mt-1.5 max-w-[140px]">
+                <p className="text-white/45 text-sm mt-1.5 max-w-[140px]">
                   mais eficácia quando a raiz está definida
                 </p>
               </div>
@@ -109,11 +108,11 @@ export default function Differentials() {
                 transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
                 className="group flex gap-5 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5"
                 style={{
-                  background: "rgba(6, 16, 70, 0.72)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
+                  background: "rgba(5, 12, 58, 0.65)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
                   border: "1px solid rgba(255,255,255,0.09)",
-                  boxShadow: "0 4px 20px rgba(0,27,143,0.15)",
+                  boxShadow: "0 8px 32px rgba(0,87,255,0.12), inset 0 1px 0 rgba(255,255,255,0.06)",
                 }}
               >
                 <div className="flex-shrink-0 flex items-start pt-0.5">
@@ -124,7 +123,7 @@ export default function Differentials() {
                     <span className="text-[#14D6C7] text-xs font-bold">{d.number}</span>
                     <h3 className="text-white font-bold text-base">{d.title}</h3>
                   </div>
-                  <p className="text-white/55 text-sm leading-relaxed">{d.description}</p>
+                  <p className="text-white/50 text-sm leading-relaxed">{d.description}</p>
                 </div>
               </motion.div>
             ))}
