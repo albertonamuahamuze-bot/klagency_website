@@ -19,11 +19,13 @@ export default function Footer() {
   return (
     <footer
       className="relative pt-20 pb-10 overflow-hidden"
-      style={{ background: "#010410" }}
+      style={{ background: "#0B1120" }}
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* Subtle glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#2563EB]/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,15 +36,18 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <a href="#home" className="flex items-center gap-3 mb-5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00059B] to-[#2563EB] flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20"
+                style={{ background: "linear-gradient(135deg, #00059B, #2563EB)" }}
+              >
                 <span className="text-white font-black text-base">K</span>
               </div>
               <span className="text-white font-bold text-xl tracking-tight">KLAGENCY</span>
             </a>
-            <p className="text-[#475569] text-sm leading-relaxed mb-6">
+            <p className="text-[#06B6D4] text-sm font-medium leading-relaxed mb-3">
               Conexões que geram sucesso.
             </p>
-            <p className="text-[#94A3B8] text-sm leading-relaxed max-w-xs">
+            <p className="text-[#64748B] text-sm leading-relaxed max-w-xs">
               Posicionamos marcas e líderes para dominar os seus mercados com estratégia,
               branding e tecnologia.
             </p>
@@ -113,7 +118,7 @@ export default function Footer() {
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-[#1d4ed8] text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all duration-200"
+              className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/20"
             >
               <MessageCircle size={14} />
               Falar no WhatsApp

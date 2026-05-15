@@ -70,9 +70,9 @@ const fadeUp = {
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative py-28 lg:py-36 bg-[#020617] overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute top-1/2 -left-32 w-80 h-80 rounded-full bg-[#00059B]/10 blur-3xl pointer-events-none" />
+    <section id="servicos" className="relative py-28 lg:py-36 bg-[#F8FAFC] overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -83,16 +83,16 @@ export default function Services() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <p className="text-[#2563EB] text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <p className="text-[#2563EB] text-sm font-bold uppercase tracking-[0.25em] mb-4">
             O que fazemos
           </p>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight max-w-2xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#0F172A] leading-tight max-w-2xl mx-auto">
             Serviços que posicionam.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] to-[#2563EB]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#06B6D4]">
               Resultados que ficam.
             </span>
           </h2>
-          <p className="text-[#94A3B8] text-lg mt-5 max-w-lg mx-auto leading-relaxed">
+          <p className="text-[#64748B] text-lg mt-5 max-w-lg mx-auto leading-relaxed">
             Cada serviço é desenhado para entregar clareza, posicionamento e crescimento com autoridade.
           </p>
         </motion.div>
@@ -107,36 +107,29 @@ export default function Services() {
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
               transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
-              className="group relative rounded-2xl p-6 cursor-default transition-all duration-300 hover:-translate-y-1"
+              className="group relative rounded-2xl p-6 bg-white cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               style={{
-                background: "rgba(255, 255, 255, 0.03)",
-                border: "1px solid rgba(255, 255, 255, 0.07)",
+                border: "1px solid #E2E8F0",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
               }}
             >
-              {/* Hover border glow */}
+              {/* Cyan top accent on hover */}
               <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(37,99,235,0.08) 0%, transparent 100%)",
-                  border: "1px solid rgba(37,99,235,0.2)",
-                }}
+                className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: "linear-gradient(90deg, #2563EB, #06B6D4)" }}
               />
 
               <div
-                className="relative w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20"
-                style={{
-                  background: "rgba(37, 99, 235, 0.12)",
-                  border: "1px solid rgba(37, 99, 235, 0.18)",
-                }}
+                className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:shadow-md group-hover:shadow-blue-100"
+                style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}
               >
                 <s.icon size={20} className="text-[#2563EB]" />
               </div>
 
-              <h3 className="relative text-white font-bold text-base leading-snug mb-2.5">
+              <h3 className="text-[#0F172A] font-bold text-base leading-snug mb-2.5">
                 {s.title}
               </h3>
-              <p className="relative text-[#94A3B8] text-sm leading-relaxed">{s.description}</p>
+              <p className="text-[#64748B] text-sm leading-relaxed">{s.description}</p>
             </motion.div>
           ))}
         </div>

@@ -40,10 +40,10 @@ export default function Contact() {
   return (
     <section
       id="contactos"
-      className="relative py-28 lg:py-36 bg-[#020617] overflow-hidden"
+      className="relative py-28 lg:py-36 bg-white overflow-hidden"
     >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#2563EB]/6 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E2E8F0] to-transparent" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#EFF6FF] blur-3xl pointer-events-none opacity-60" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -54,16 +54,16 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <p className="text-[#2563EB] text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+            <p className="text-[#2563EB] text-sm font-bold uppercase tracking-[0.25em] mb-4">
               Contacte-nos
             </p>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#0F172A] leading-tight mb-6">
               Vamos trabalhar{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] to-[#2563EB]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#06B6D4]">
                 juntos.
               </span>
             </h2>
-            <p className="text-[#94A3B8] text-lg leading-relaxed mb-10 max-w-md">
+            <p className="text-[#64748B] text-lg leading-relaxed mb-10 max-w-md">
               Estamos prontos para ajudar a posicionar a sua marca no mercado. Entre em contacto
               e vamos começar uma conversa estratégica.
             </p>
@@ -74,7 +74,7 @@ export default function Contact() {
                 href={WHATSAPP_PRIMARY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-px text-sm"
+                className="flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-px text-sm"
               >
                 <MessageCircle size={18} />
                 +258 852 170 974
@@ -83,10 +83,10 @@ export default function Contact() {
                 href={WHATSAPP_SECONDARY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 text-white font-semibold px-7 py-3.5 rounded-xl text-sm transition-all duration-200 hover:-translate-y-px"
+                className="flex items-center justify-center gap-2.5 text-[#0F172A] font-semibold px-7 py-3.5 rounded-xl text-sm transition-all duration-200 hover:-translate-y-px"
                 style={{
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  background: "#F8FAFC",
+                  border: "1px solid #E2E8F0",
                 }}
               >
                 <MessageCircle size={18} />
@@ -105,23 +105,20 @@ export default function Contact() {
                 viewport={{ once: true, margin: "-40px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-                className="rounded-2xl p-6"
+                className="rounded-2xl p-6 bg-white"
                 style={{
-                  background: "rgba(255, 255, 255, 0.03)",
-                  border: "1px solid rgba(255, 255, 255, 0.07)",
+                  border: "1px solid #E2E8F0",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
                 }}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{
-                      background: "rgba(37, 99, 235, 0.12)",
-                      border: "1px solid rgba(37, 99, 235, 0.18)",
-                    }}
+                    style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}
                   >
                     <c.icon size={16} className="text-[#2563EB]" />
                   </div>
-                  <span className="text-[#94A3B8] text-sm font-medium">{c.label}</span>
+                  <span className="text-[#64748B] text-sm font-medium">{c.label}</span>
                 </div>
 
                 <div className="space-y-2">
@@ -131,12 +128,12 @@ export default function Contact() {
                       href={item.href}
                       target={item.external ? "_blank" : undefined}
                       rel={item.external ? "noopener noreferrer" : undefined}
-                      className="flex items-center gap-2 text-white font-medium text-sm hover:text-[#60A5FA] transition-colors duration-200 group"
+                      className="flex items-center gap-2 text-[#0F172A] font-medium text-sm hover:text-[#2563EB] transition-colors duration-200 group"
                     >
                       {item.text}
                       <ExternalLink
                         size={12}
-                        className="text-[#475569] group-hover:text-[#60A5FA] transition-colors opacity-0 group-hover:opacity-100 duration-200"
+                        className="text-[#94A3B8] group-hover:text-[#2563EB] transition-colors opacity-0 group-hover:opacity-100 duration-200"
                       />
                     </a>
                   ))}
