@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Services from "@/components/Services";
 import Differentials from "@/components/Differentials";
+import CinematicSection from "@/components/CinematicSection";
 import Portfolio from "@/components/Portfolio";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
@@ -16,6 +17,7 @@ export default function Home() {
       <Manifesto />
       <Services />
       <Differentials />
+      <CinematicSection />
       <Portfolio />
       <CTA />
       <Contact />

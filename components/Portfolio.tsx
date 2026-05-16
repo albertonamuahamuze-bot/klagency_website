@@ -1,222 +1,250 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-/**
- * COMO ADICIONAR LOGOS REAIS:
- * 1. Coloca o ficheiro PNG/SVG em /public/clients/ (ex: ecu.png)
- * 2. Define logoSrc no array abaixo (ex: logoSrc: "/clients/ecu.png")
- * 3. O logo aparece automaticamente; se logoSrc for null, mostra as iniciais.
- */
-const clients = [
+const testimonials = [
   {
-    initials: "ECU",
-    name: "ECU Despachante Aduaneiro",
-    category: "Identidade Corporativa",
-    service: "Identidade visual e corporativa para despacho aduaneiro.",
+    quote:
+      "A KL Agency transformou completamente a nossa identidade corporativa. A clareza estratégica que trouxeram foi determinante para o reconhecimento que temos hoje no mercado.",
+    author: "Carlos Nhampossa",
+    role: "Director Geral",
+    company: "ECU Despachante Aduaneiro",
+    initials: "CN",
     accentColor: "#14D6C7",
-    logoSrc: null as string | null, // ex: "/clients/ecu.png"
   },
   {
-    initials: "CM",
-    name: "Confidencial Microcrédito",
-    category: "Branding & Comunicação",
-    service: "Estratégia de marca e identidade visual para microcrédito.",
+    quote:
+      "Trabalhar com a KL Agency foi uma experiência transformadora. A estratégia de marca desenvolvida reflecte exactamente quem somos e o impacto que queremos gerar no mercado.",
+    author: "Ana Machava",
+    role: "Directora de Comunicação",
+    company: "Confidencial Microcrédito",
+    initials: "AM",
     accentColor: "#60A5FA",
-    logoSrc: null as string | null, // ex: "/clients/confidencial.png"
   },
   {
-    initials: "ML",
-    name: "MozLimo",
-    category: "Posicionamento de Marca",
-    service: "Posicionamento premium para transporte executivo.",
+    quote:
+      "O posicionamento estratégico da KL Agency elevou o MozLimo a outro patamar. A nossa presença premium é hoje reconhecida e respeitada em todo o mercado.",
+    author: "Dário Simango",
+    role: "Fundador & CEO",
+    company: "MozLimo",
+    initials: "DS",
     accentColor: "#A78BFA",
-    logoSrc: null as string | null, // ex: "/clients/mozlimo.png"
   },
   {
-    initials: "GP",
-    name: "GP",
-    category: "Estratégia & Marketing",
-    service: "Estratégia de comunicação e presença digital.",
+    quote:
+      "A KL Agency entendeu a nossa visão desde o primeiro dia. A estratégia implementada trouxe resultados concretos e uma presença digital forte e consistente.",
+    author: "Paulo Guambe",
+    role: "Director Executivo",
+    company: "GP",
+    initials: "PG",
     accentColor: "#34D399",
-    logoSrc: null as string | null, // ex: "/clients/gp.png"
   },
 ];
 
-// Doubled for seamless marquee loop
-const marqueeItems = [...clients, ...clients];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export default function Portfolio() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const advance = useCallback(() => {
+    setActive((p) => (p + 1) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(advance, 6500);
+    return () => clearInterval(id);
+  }, [paused, advance]);
+
+  const t = testimonials[active];
+
   return (
     <section
       id="portfolio"
-      className="relative py-28 lg:py-36 overflow-hidden"
-      style={{ background: "#00105C" }}
+      className="relative py-36 lg:py-48 overflow-hidden"
+      style={{ background: "#001B8F" }}
     >
-      {/* Ambient */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#14D6C7]/4 blur-3xl pointer-events-none" />
+      {/* World map dot atmosphere */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(20,214,199,0.08) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+        }}
+      />
+      {/* Radial fade — centre open, edges dissolved */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 75% 65% at center, transparent 0%, #001B8F 72%)",
+        }}
+      />
 
-      {/* Bottom transition to CTA (starts #0057FF) */}
+      {/* Ambient glows */}
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[#14D6C7]/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#0057FF]/10 blur-3xl pointer-events-none" />
+
+      {/* Bottom transition to CTA */}
       <div
         className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
         style={{ background: "linear-gradient(to top, #0057FF, transparent)" }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-28"
         >
           <p className="text-[#14D6C7] text-xs font-bold uppercase tracking-[0.3em] mb-5">
-            Casos de Sucesso
+            O que dizem de nós
           </p>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight max-w-2xl mx-auto">
-            Marcas que já confiaram{" "}
+          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight max-w-3xl mx-auto">
+            Empresas que confiaram{" "}
             <span
               className="text-transparent bg-clip-text"
-              style={{ backgroundImage: "linear-gradient(90deg, #14D6C7, #60A5FA)" }}
+              style={{
+                backgroundImage: "linear-gradient(90deg, #14D6C7, #60A5FA)",
+              }}
             >
               na KL Agency.
             </span>
           </h2>
-          <p className="text-white/55 text-lg mt-5 max-w-xl mx-auto leading-relaxed">
-            Presença, autoridade e posicionamento — entregues com estratégia e consistência.
-          </p>
         </motion.div>
 
-        {/* Marquee — client names scrolling */}
-        <div className="relative mb-16 overflow-hidden">
-          <div
-            className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-            style={{ background: "linear-gradient(90deg, #00105C, transparent)" }}
-          />
-          <div
-            className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-            style={{ background: "linear-gradient(-90deg, #00105C, transparent)" }}
-          />
-
-          <div
-            className="flex gap-4 w-max"
-            style={{ animation: "marquee 28s linear infinite" }}
-          >
-            {marqueeItems.map((c, i) => (
-              <div
-                key={`${c.name}-${i}`}
-                className="flex items-center gap-3 px-5 py-3 rounded-full flex-shrink-0"
-                style={{
-                  background: "rgba(5, 12, 58, 0.65)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
-                }}
-              >
-                <div
-                  className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black"
-                  style={{ background: `${c.accentColor}18`, color: c.accentColor }}
-                >
-                  {c.initials}
+        {/* Editorial testimonial */}
+        <div
+          className="max-w-5xl mx-auto"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-14 lg:gap-24 items-start"
+            >
+              {/* Left: avatar + author */}
+              <div className="flex flex-col items-center lg:items-start gap-6">
+                {/* Avatar */}
+                <div className="relative">
+                  <div
+                    className="w-[72px] h-[72px] rounded-full flex items-center justify-center text-2xl font-black text-white select-none"
+                    style={{
+                      background: `linear-gradient(135deg, ${t.accentColor}28, ${t.accentColor}0d)`,
+                      border: `1.5px solid ${t.accentColor}38`,
+                      boxShadow: `0 0 48px ${t.accentColor}18, 0 0 0 10px ${t.accentColor}05`,
+                    }}
+                  >
+                    {t.initials}
+                  </div>
+                  <motion.div
+                    animate={{ scale: [1, 1.18, 1], opacity: [0.25, 0.08, 0.25] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{ border: `1px solid ${t.accentColor}22` }}
+                  />
                 </div>
-                <span className="text-white/75 text-sm font-medium whitespace-nowrap">
-                  {c.name}
-                </span>
+
+                {/* Vertical accent line */}
+                <div
+                  className="w-px h-10 hidden lg:block"
+                  style={{
+                    background: `linear-gradient(to bottom, ${t.accentColor}32, transparent)`,
+                  }}
+                />
+
+                {/* Author info */}
+                <div className="text-center lg:text-left">
+                  <p className="text-white font-bold text-lg leading-snug">
+                    {t.author}
+                  </p>
+                  <p className="text-white/40 text-sm mt-1">{t.role}</p>
+                  <p
+                    className="text-sm font-bold mt-2"
+                    style={{ color: t.accentColor }}
+                  >
+                    {t.company}
+                  </p>
+                </div>
               </div>
+
+              {/* Right: company badge + editorial quote */}
+              <div>
+                {/* Company badge — above quote */}
+                <motion.div
+                  key={`badge-${active}`}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8"
+                  style={{
+                    background: `${t.accentColor}0e`,
+                    border: `1px solid ${t.accentColor}28`,
+                  }}
+                >
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{ background: t.accentColor }}
+                  />
+                  <span
+                    className="text-[0.68rem] font-bold uppercase tracking-[0.22em]"
+                    style={{ color: t.accentColor }}
+                  >
+                    {t.company}
+                  </span>
+                </motion.div>
+
+                {/* Decorative opening quote */}
+                <div
+                  className="font-serif select-none leading-none mb-4"
+                  style={{
+                    fontSize: "5rem",
+                    color: `${t.accentColor}12`,
+                    lineHeight: 0.65,
+                  }}
+                >
+                  &ldquo;
+                </div>
+
+                {/* Quote body */}
+                <p className="text-[1.45rem] lg:text-[1.65rem] text-white/88 font-light leading-[1.65]">
+                  {t.quote}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation dots */}
+          <div className="flex items-center justify-center gap-3 mt-20">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className="transition-all duration-300"
+                aria-label={`Testemunho ${i + 1}`}
+              >
+                <motion.div
+                  animate={{
+                    width: i === active ? 30 : 8,
+                    opacity: i === active ? 1 : 0.28,
+                  }}
+                  transition={{ duration: 0.35 }}
+                  className="h-1.5 rounded-full"
+                  style={{ background: testimonials[i].accentColor }}
+                />
+              </button>
             ))}
           </div>
         </div>
-
-        {/* Client Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {clients.map((c, i) => (
-            <motion.div
-              key={c.name}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              variants={fadeUp}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: "rgba(5, 12, 58, 0.65)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                boxShadow: "0 8px 32px rgba(0,27,143,0.2), inset 0 1px 0 rgba(255,255,255,0.07)",
-              }}
-            >
-              {/* Logo area — drop PNG/SVG in /public/clients/ and set logoSrc above */}
-              <div
-                className="h-36 flex items-center justify-center relative overflow-hidden"
-                style={{ background: "rgba(255,255,255,0.03)" }}
-              >
-                <div
-                  className="absolute inset-0 opacity-15"
-                  style={{ background: `radial-gradient(circle at center, ${c.accentColor}35, transparent 70%)` }}
-                />
-                <div
-                  className="relative flex items-center justify-center w-20 h-16 rounded-2xl"
-                  style={{
-                    background: "rgba(5, 12, 58, 0.9)",
-                    border: `1px solid ${c.accentColor}35`,
-                    boxShadow: `0 8px 24px ${c.accentColor}18`,
-                  }}
-                >
-                  {c.logoSrc ? (
-                    <Image
-                      src={c.logoSrc}
-                      alt={c.name}
-                      width={72}
-                      height={48}
-                      className="object-contain"
-                    />
-                  ) : (
-                    <span
-                      className="font-black text-xl tracking-wider"
-                      style={{ color: c.accentColor }}
-                    >
-                      {c.initials}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <span
-                  className="inline-block text-[0.62rem] font-bold uppercase tracking-[0.16em] px-2.5 py-1 rounded-full mb-3"
-                  style={{
-                    background: `${c.accentColor}12`,
-                    color: c.accentColor,
-                    border: `1px solid ${c.accentColor}22`,
-                  }}
-                >
-                  {c.category}
-                </span>
-                <h3 className="text-white font-bold text-[0.9375rem] mb-2 leading-snug">
-                  {c.name}
-                </h3>
-                <p className="text-white/45 text-sm leading-relaxed">{c.service}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-center text-white/25 text-sm mt-10"
-        >
-          Projectos desenvolvidos com consentimento dos clientes. Detalhes estratégicos protegidos por acordo de confidencialidade.
-        </motion.p>
       </div>
     </section>
   );
