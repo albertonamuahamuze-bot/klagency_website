@@ -5,33 +5,19 @@
   to { transform: translateX(-50%); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
-}
-
-@keyframes glow-breathe {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.65; }
-}
-
 @keyframes fade-slide-up {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @theme {
-  --color-kl-primary: #0057FF;
-  --color-kl-deep: #001B8F;
-  --color-kl-dark: #00105C;
-  --color-kl-card: #07164A;
-  --color-kl-cyan: #14D6C7;
-  --color-kl-offwhite: #F8FAFC;
+  --color-kl-blue: #00059D;
+  --color-kl-navy: #00034F;
+  --color-kl-soft: #F6F9FC;
+  --color-kl-ice: #EEF4FB;
+  --color-kl-text: #101828;
+  --color-kl-muted: #65758B;
+  --color-kl-border: #DDE8F7;
 }
 
 @layer base {
@@ -40,8 +26,8 @@
   }
 
   body {
-    background-color: #001B8F;
-    color: #FFFFFF;
+    background-color: #F6F9FC;
+    color: #101828;
     font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -53,15 +39,15 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #001B8F;
+    background: #F6F9FC;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #14D6C7;
+    background: #00059D;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #0057FF;
+    background: #00034F;
   }
 }

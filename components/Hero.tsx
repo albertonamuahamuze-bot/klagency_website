@@ -1,244 +1,78 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Handshake, Trophy } from "lucide-react";
-import { WHATSAPP_PRIMARY } from "@/lib/constants";
+import { ArrowRight, BriefcaseBusiness, MessageCircle } from "lucide-react";
+import { WHATSAPP_PRIMARY, VISUAL_ASSETS } from "@/lib/constants";
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #0066FF 0%, #001B8F 55%, #00105C 100%)",
-      }}
-    >
-      {/* Radial glow top-center */}
+    <section id="home" className="relative min-h-[92vh] overflow-hidden text-white">
       <div
-        className="absolute top-0 left-0 right-0 h-[70%] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% -10%, rgba(20,214,199,0.2) 0%, transparent 65%)",
-        }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${VISUAL_ASSETS.hero})` }}
       />
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-      {/* Depth glows */}
-      <div className="absolute top-1/3 -left-24 w-[500px] h-[500px] rounded-full bg-[#0057FF]/25 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 -right-24 w-[500px] h-[500px] rounded-full bg-[#14D6C7]/8 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,3,79,0.94)_0%,rgba(0,5,157,0.76)_42%,rgba(0,3,79,0.24)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_45%,rgba(0,5,157,0.48),transparent_34%)]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-36 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-          >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8"
-              style={{
-                border: "1px solid rgba(20, 214, 199, 0.35)",
-                background: "rgba(20, 214, 199, 0.1)",
-              }}
+      <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 pb-32 pt-36 lg:px-8 lg:pt-40">
+        <motion.div
+          initial={{ opacity: 0, y: 28, scale: 1.02 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.85, ease: "easeOut" }}
+          className="max-w-3xl"
+        >
+          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-[#00034F]/55 px-5 py-3 text-[0.72rem] font-bold uppercase tracking-[0.18em] shadow-2xl backdrop-blur-md">
+            <BriefcaseBusiness size={16} />
+            Conexões que geram sucesso.
+          </div>
+
+          <h1 className="max-w-3xl text-5xl font-black leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+            Marcas fortes nascem de{" "}
+            <span className="text-[#DCE8FF]">estratégia clara.</span>
+          </h1>
+
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/84 lg:text-xl">
+            Ajudamos empresas e líderes a superar a estagnação, ganhar autoridade
+            e crescer com posicionamento, estratégia, comunicação e execução.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href={WHATSAPP_PRIMARY}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-[#00059D] px-8 py-4 text-sm font-bold text-white shadow-[0_20px_50px_rgba(0,5,157,0.35)] transition hover:-translate-y-0.5 hover:bg-[#00036F]"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#14D6C7] animate-pulse" />
-              <span className="text-[#14D6C7] text-xs font-semibold uppercase tracking-[0.18em]">
-                Agência Premium · Moçambique
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-white leading-[1.1] tracking-tight mb-6"
+              <MessageCircle size={18} />
+              Falar com a KLAGENCY
+            </a>
+            <a
+              href="#portfolio"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 bg-white/8 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white hover:text-[#00034F]"
             >
-              Posicionamos{" "}
-              <span
-                className="text-transparent bg-clip-text"
-                style={{ backgroundImage: "linear-gradient(90deg, #14D6C7, #60A5FA)" }}
-              >
-                marcas
-              </span>{" "}
-              e líderes para dominar os seus mercados.
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.3 }}
-              className="text-white/65 text-lg leading-relaxed mb-10 max-w-[480px]"
-            >
-              Estratégia, branding, marketing e tecnologia para empresas que querem
-              crescer com autoridade.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <a
-                href={WHATSAPP_PRIMARY}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 text-[#001B8F] font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 text-[0.9375rem]"
-                style={{
-                  background: "#14D6C7",
-                  boxShadow: "0 8px 32px rgba(20,214,199,0.45)",
-                }}
-              >
-                <MessageCircle size={19} />
-                Falar no WhatsApp
-              </a>
-              <a
-                href="#servicos"
-                className="flex items-center justify-center gap-2.5 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:-translate-y-0.5 text-[0.9375rem]"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.22)",
-                  background: "rgba(255,255,255,0.07)",
-                }}
-              >
-                Ver Serviços
-                <ArrowRight size={17} />
-              </a>
-            </motion.div>
-          </motion.div>
-
-          {/* Right: brand visual + floating metrics */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.1, delay: 0.35, ease: "easeOut" }}
-            className="hidden lg:flex items-center justify-center"
-          >
-            <div className="relative w-[380px] h-[420px]">
-              {/* Glow orb */}
-              <div
-                className="absolute inset-0 rounded-full blur-3xl opacity-20 pointer-events-none"
-                style={{ background: "radial-gradient(circle, #14D6C7 0%, #0057FF 60%, transparent 100%)" }}
-              />
-
-              {/* Central card */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-8 rounded-3xl flex flex-col items-center justify-center"
-                style={{
-                  background: "rgba(5, 12, 58, 0.65)",
-                  backdropFilter: "blur(24px)",
-                  WebkitBackdropFilter: "blur(24px)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  boxShadow: "0 32px 80px rgba(0,27,143,0.4), inset 0 1px 0 rgba(255,255,255,0.08)",
-                }}
-              >
-                <div
-                  className="w-20 h-20 rounded-3xl flex items-center justify-center mb-4"
-                  style={{
-                    background: "linear-gradient(135deg, #0057FF, #14D6C7)",
-                    boxShadow: "0 8px 32px rgba(20,214,199,0.3)",
-                  }}
-                >
-                  <span
-                    className="text-white font-black text-4xl"
-                    style={{ fontFamily: "var(--font-nunito, var(--font-inter), system-ui)" }}
-                  >
-                    K
-                  </span>
-                </div>
-                <p
-                  className="text-white font-bold text-xl mb-1"
-                  style={{ fontFamily: "var(--font-nunito, var(--font-inter), system-ui)" }}
-                >
-                  KL Agency
-                </p>
-                <p className="text-[#14D6C7] text-xs tracking-wider">Conexões que geram sucesso</p>
-                <div
-                  className="mt-5 px-4 py-1.5 rounded-full flex items-center gap-2"
-                  style={{ background: "rgba(20,214,199,0.1)", border: "1px solid rgba(20,214,199,0.2)" }}
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#14D6C7] animate-pulse" />
-                  <span className="text-[#14D6C7] text-[0.65rem] font-semibold uppercase tracking-widest">
-                    Activo · Moçambique
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Floating metric: +100 Projectos */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -left-10 rounded-2xl p-4"
-                style={{
-                  background: "rgba(5, 12, 58, 0.88)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(20,214,199,0.22)",
-                  boxShadow: "0 20px 60px rgba(0,27,143,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
-                }}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(20,214,199,0.12)" }}
-                  >
-                    <Handshake size={18} className="text-[#14D6C7]" />
-                  </div>
-                  <div>
-                    <p className="text-white font-black text-2xl leading-none">+100</p>
-                    <p className="text-white/50 text-[0.62rem] mt-0.5">Projectos entregues</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating metric: +20 Marcas */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                className="absolute -bottom-6 -right-10 rounded-2xl p-4"
-                style={{
-                  background: "rgba(5, 12, 58, 0.88)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(96,165,250,0.22)",
-                  boxShadow: "0 20px 60px rgba(0,27,143,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
-                }}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(96,165,250,0.12)" }}
-                  >
-                    <Trophy size={18} className="text-[#60A5FA]" />
-                  </div>
-                  <div>
-                    <p className="text-white font-black text-2xl leading-none">+20</p>
-                    <p className="text-white/50 text-[0.62rem] mt-0.5">Marcas posicionadas</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+              Ver portfólio
+              <ArrowRight size={17} />
+            </a>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Bottom atmospheric fade into Manifesto (#00105C) */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-        style={{ background: "linear-gradient(to top, #00105C, transparent)" }}
-      />
+      <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block">
+        <svg viewBox="0 0 1440 130" className="h-[110px] w-full" preserveAspectRatio="none">
+          <path fill="#F6F9FC">
+            <animate
+              attributeName="d"
+              dur="7s"
+              repeatCount="indefinite"
+              values="
+                M0,72 C260,126 470,18 740,64 C1020,112 1190,28 1440,76 L1440,130 L0,130 Z;
+                M0,62 C260,8 490,114 760,66 C1010,22 1200,112 1440,58 L1440,130 L0,130 Z;
+                M0,72 C260,126 470,18 740,64 C1020,112 1190,28 1440,76 L1440,130 L0,130 Z
+              "
+            />
+          </path>
+        </svg>
+      </div>
     </section>
   );
 }

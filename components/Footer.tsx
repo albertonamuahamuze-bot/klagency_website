@@ -2,73 +2,82 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
-import { WHATSAPP_PRIMARY, NAV_LINKS, CONTACTS } from "@/lib/constants";
+import { CONTACTS, NAV_LINKS, SOCIAL_LINKS, WHATSAPP_PRIMARY } from "@/lib/constants";
 
 const serviceLinks = [
-  "Consultoria Estratégica",
-  "Desenvolvimento de Websites",
-  "Marketing Digital",
-  "Posicionamento de Marca",
-  "Branding",
-  "Gestão de Projectos",
+  "Posicionamento Estratégico",
+  "Estratégia de Marca",
+  "Crescimento e Escala",
+  "Consultoria Executiva",
+  "Marketing Estratégico",
+  "Identidade Corporativa",
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      className="relative pt-20 pb-10 overflow-hidden"
-      style={{ background: "#000E40" }}
-    >
-      {/* Subtle top glow — continues from Contact transition */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[180px] bg-[#0057FF]/5 blur-3xl pointer-events-none" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
-        >
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <a href="#home" className="flex items-center gap-2.5 mb-5">
-              <div
-                className="w-9 h-9 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
-                style={{ background: "linear-gradient(135deg, #0057FF, #14D6C7)" }}
-              >
-                <span className="text-white font-black text-base">K</span>
-              </div>
-              <span
-                className="text-white font-bold text-xl tracking-tight"
-                style={{ fontFamily: "var(--font-nunito, var(--font-inter), system-ui)" }}
-              >
-                KL Agency
+    <footer className="bg-[#F6F9FC] px-6 pb-10 pt-8 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mx-auto max-w-7xl border-t border-[#DDE8F7] pt-16"
+      >
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <a href="#home" className="mb-6 flex items-center gap-3">
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-[#00059D] font-black text-white">
+                K
               </span>
+              <span className="text-xl font-black text-[#00059D]">KLAGENCY</span>
             </a>
-            <p className="text-[#14D6C7] text-sm font-medium leading-relaxed mb-3">
+            <p className="mb-4 text-base font-black text-[#101828]">
               Conexões que geram sucesso.
             </p>
-            <p className="text-white/35 text-sm leading-relaxed max-w-xs">
-              Posicionamos marcas e líderes para dominar os seus mercados com estratégia,
-              branding e tecnologia.
+            <p className="max-w-xs leading-8 text-[#65758B]">
+              Estratégia, posicionamento e comunicação para marcas e líderes que
+              querem crescer com autoridade.
             </p>
+
+            <div className="mt-7 flex gap-3">
+              <a
+                href={SOCIAL_LINKS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#00059D] shadow-sm"
+                aria-label="Instagram"
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4.5" />
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a
+                href={SOCIAL_LINKS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#00059D] shadow-sm"
+                aria-label="LinkedIn"
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect width="4" height="12" x="2" y="9" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+            </div>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h4 className="text-white/70 font-semibold text-xs mb-5 uppercase tracking-widest">
+            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.16em] text-[#101828]">
               Navegação
             </h4>
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-white/35 hover:text-white/70 text-sm transition-colors duration-200"
-                  >
+                  <a href={link.href} className="text-[#65758B] transition hover:text-[#00059D]">
                     {link.label}
                   </a>
                 </li>
@@ -76,84 +85,54 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h4 className="text-white/70 font-semibold text-xs mb-5 uppercase tracking-widest">
+            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.16em] text-[#101828]">
               Serviços
             </h4>
             <ul className="space-y-3">
-              {serviceLinks.map((s) => (
-                <li key={s}>
-                  <a
-                    href="#servicos"
-                    className="text-white/35 hover:text-white/70 text-sm transition-colors duration-200"
-                  >
-                    {s}
+              {serviceLinks.map((service) => (
+                <li key={service}>
+                  <a href="#servicos" className="text-[#65758B] transition hover:text-[#00059D]">
+                    {service}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-white/70 font-semibold text-xs mb-5 uppercase tracking-widest">
+            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.16em] text-[#101828]">
               Contacto
             </h4>
-            <ul className="space-y-3 mb-6">
-              {CONTACTS.phones.map((p) => (
-                <li key={p}>
-                  <span className="text-white/35 text-sm">{p}</span>
-                </li>
+            <ul className="mb-7 space-y-3 text-[#65758B]">
+              {CONTACTS.phones.map((phone) => (
+                <li key={phone}>{phone}</li>
               ))}
-              {CONTACTS.emails.slice(0, 2).map((e) => (
-                <li key={e}>
-                  <a
-                    href={`mailto:${e}`}
-                    className="text-white/35 hover:text-white/70 text-sm transition-colors duration-200 break-all"
-                  >
-                    {e}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href={`mailto:${CONTACTS.emails[0]}`} className="break-all hover:text-[#00059D]">
+                  {CONTACTS.emails[0]}
+                </a>
+              </li>
             </ul>
-
             <a
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#001B8F] text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-px"
-              style={{
-                background: "#14D6C7",
-                boxShadow: "0 4px 16px rgba(20,214,199,0.25)",
-              }}
+              className="inline-flex items-center gap-2 rounded-full bg-[#00059D] px-5 py-3 text-sm font-black text-white transition hover:bg-[#00036F]"
             >
-              <MessageCircle size={14} />
-              Falar no WhatsApp
+              <MessageCircle size={16} />
+              WhatsApp
             </a>
           </div>
-        </motion.div>
-
-        {/* Bottom bar */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
-        >
-          <p className="text-white/20 text-sm">
-            © {year} KL Agency. Todos os direitos reservados.
-          </p>
-          <p className="text-white/20 text-sm">
-            <a
-              href={`https://${CONTACTS.website}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white/40 transition-colors"
-            >
-              {CONTACTS.website}
-            </a>
-          </p>
         </div>
-      </div>
+
+        <div className="mt-14 flex flex-col gap-3 border-t border-[#DDE8F7] pt-7 text-sm text-[#65758B] sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} KLAGENCY. Todos os direitos reservados.</p>
+          <a href={`https://${CONTACTS.website}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#00059D]">
+            {CONTACTS.website}
+          </a>
+        </div>
+      </motion.div>
     </footer>
   );
 }

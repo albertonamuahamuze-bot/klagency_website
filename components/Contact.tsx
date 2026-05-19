@@ -1,142 +1,71 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Mail, Phone } from "lucide-react";
-import { WHATSAPP_PRIMARY, WHATSAPP_SECONDARY, CONTACTS } from "@/lib/constants";
+import { Mail, MessageCircle, Phone } from "lucide-react";
+import { CONTACTS, WHATSAPP_PRIMARY, WHATSAPP_SECONDARY } from "@/lib/constants";
 
 export default function Contact() {
   return (
-    <section
-      id="contactos"
-      className="relative py-36 lg:py-52 overflow-hidden"
-      style={{ background: "#00105C" }}
-    >
-      {/* Centre ambient glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(0,87,255,0.08) 0%, transparent 70%)",
-        }}
-      />
-      {/* Right glow */}
-      <div
-        className="absolute top-1/2 -right-40 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#14D6C7]/3 blur-3xl pointer-events-none"
-      />
-
-      {/* Bottom transition to Footer (#000E40) */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-        style={{ background: "linear-gradient(to top, #000E40, transparent)" }}
-      />
-
-      <div className="relative z-10 max-w-2xl mx-auto px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.85, ease: "easeOut" }}
-        >
-          <p className="text-[#14D6C7] text-xs font-bold uppercase tracking-[0.3em] mb-6">
-            Contacte-nos
+    <section id="contacto" className="bg-[#F6F9FC] px-6 py-24 lg:px-8 lg:py-32">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.7 }}
+        className="mx-auto grid max-w-6xl overflow-hidden rounded-xl bg-white shadow-[0_26px_80px_rgba(15,37,74,0.08)] lg:grid-cols-[0.9fr_1.1fr]"
+      >
+        <div className="bg-[linear-gradient(135deg,#00059D,#00034F)] p-10 text-white lg:p-14">
+          <p className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-white/65">
+            Contacto
           </p>
-
-          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-7">
-            Vamos trabalhar{" "}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: "linear-gradient(90deg, #14D6C7, #60A5FA)",
-              }}
-            >
-              juntos.
-            </span>
+          <h2 className="mb-6 text-4xl font-black leading-[1.08] sm:text-5xl">
+            Vamos criar a próxima conexão estratégica.
           </h2>
-
-          <p className="text-white/45 text-lg leading-relaxed mb-16 max-w-lg mx-auto">
-            Entre em contacto e vamos começar uma conversa estratégica sobre
-            o posicionamento da sua marca.
+          <p className="leading-8 text-white/74">
+            Fale connosco para alinhar posicionamento, comunicação e crescimento.
           </p>
+        </div>
 
-          {/* Contact details — clean, editorial */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="flex flex-col items-center gap-5 mb-14"
-          >
+        <div className="p-10 lg:p-14">
+          <div className="space-y-5">
             <a
               href={`tel:${CONTACTS.phones[0].replace(/\s/g, "")}`}
-              className="flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300 group"
+              className="flex items-center gap-4 rounded-lg border border-[#DDE8F7] p-5 text-[#101828] transition hover:border-[#00059D]"
             >
-              <Phone size={15} className="text-[#14D6C7]" />
-              <span className="text-lg font-medium tracking-wide">
-                {CONTACTS.phones[0]}
-              </span>
+              <Phone className="text-[#00059D]" size={20} />
+              <span className="font-bold">{CONTACTS.phones[0]}</span>
             </a>
-            <a
-              href={`tel:${CONTACTS.phones[1].replace(/\s/g, "")}`}
-              className="flex items-center gap-3 text-white/40 hover:text-white/70 transition-colors duration-300"
-            >
-              <Phone size={15} className="text-[#14D6C7]/50" />
-              <span className="text-base font-medium tracking-wide">
-                {CONTACTS.phones[1]}
-              </span>
-            </a>
-
-            {/* Separator */}
-            <div
-              className="w-10 h-px my-1"
-              style={{ background: "rgba(255,255,255,0.1)" }}
-            />
-
             <a
               href={`mailto:${CONTACTS.emails[0]}`}
-              className="flex items-center gap-3 text-white/50 hover:text-white/80 transition-colors duration-300"
+              className="flex items-center gap-4 rounded-lg border border-[#DDE8F7] p-5 text-[#101828] transition hover:border-[#00059D]"
             >
-              <Mail size={15} className="text-[#60A5FA]" />
-              <span className="text-base font-medium">{CONTACTS.emails[0]}</span>
+              <Mail className="text-[#00059D]" size={20} />
+              <span className="font-bold">{CONTACTS.emails[0]}</span>
             </a>
-          </motion.div>
+          </div>
 
-          {/* WhatsApp CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 text-[#001B8F] font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 text-sm"
-              style={{
-                background: "#14D6C7",
-                boxShadow: "0 8px 32px rgba(20,214,199,0.42)",
-              }}
+              className="inline-flex flex-1 items-center justify-center gap-3 rounded-full bg-[#00059D] px-7 py-4 text-sm font-black text-white transition hover:bg-[#00036F]"
             >
               <MessageCircle size={18} />
-              {CONTACTS.phones[0]}
+              WhatsApp principal
             </a>
             <a
               href={WHATSAPP_SECONDARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:-translate-y-0.5 text-sm"
-              style={{
-                background: "rgba(5, 12, 58, 0.55)",
-                border: "1px solid rgba(255,255,255,0.12)",
-              }}
+              className="inline-flex flex-1 items-center justify-center gap-3 rounded-full border border-[#DDE8F7] px-7 py-4 text-sm font-black text-[#101828] transition hover:border-[#00059D]"
             >
               <MessageCircle size={18} />
-              {CONTACTS.phones[1]}
+              Alternativo
             </a>
-          </motion.div>
-        </motion.div>
-      </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

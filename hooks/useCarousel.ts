@@ -38,6 +38,7 @@ export function useCarousel({
 
   // Clamp page when spv changes
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPage((p) => Math.min(p, Math.max(0, totalPages - 1)));
   }, [totalPages]);
 

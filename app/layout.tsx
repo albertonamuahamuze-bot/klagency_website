@@ -6,6 +6,7 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const nunito = Nunito({
@@ -16,32 +17,34 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "KL Agency — Estratégia, Marketing & Branding | Moçambique",
+  title: "KLAGENCY — Estratégia, Posicionamento & Crescimento | Moçambique",
   description:
-    "A KL Agency posiciona marcas e líderes para dominar os seus mercados. Estratégia, branding, marketing e tecnologia para empresas que querem crescer com autoridade.",
+    "A KLAGENCY ajuda empresas e líderes a superar a estagnação, construir autoridade e crescer com estratégia. Posicionamento, Strategy, Growth e Consulting.",
   keywords: [
-    "KL Agency",
+    "KLAGENCY",
     "estratégia",
-    "marketing digital",
-    "branding",
     "posicionamento de marca",
-    "agência Moçambique",
     "consultoria estratégica",
-    "identidade corporativa",
-    "Moçambique",
+    "marketing",
+    "branding",
+    "agência Moçambique",
+    "crescimento",
+    "autoridade de marca",
   ],
-  authors: [{ name: "KL Agency" }],
+  authors: [{ name: "KLAGENCY" }],
   openGraph: {
-    title: "KL Agency — Conexões que geram sucesso",
-    description: "A KL Agency posiciona marcas e líderes para dominar os seus mercados.",
+    title: "KLAGENCY — Conexões que geram sucesso",
+    description:
+      "Ajudamos empresas e líderes a superar a estagnação, construir autoridade e crescer com estratégia.",
     type: "website",
     url: "https://www.klagency.com",
-    siteName: "KL Agency",
+    siteName: "KLAGENCY",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KL Agency — Conexões que geram sucesso",
-    description: "A KL Agency posiciona marcas e líderes para dominar os seus mercados.",
+    title: "KLAGENCY — Conexões que geram sucesso",
+    description:
+      "Ajudamos empresas e líderes a superar a estagnação, construir autoridade e crescer com estratégia.",
   },
   robots: { index: true, follow: true },
 };

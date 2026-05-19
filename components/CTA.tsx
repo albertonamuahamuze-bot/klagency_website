@@ -1,105 +1,65 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight } from "lucide-react";
-import { WHATSAPP_PRIMARY } from "@/lib/constants";
+import { ArrowRight, Megaphone } from "lucide-react";
+import { VISUAL_ASSETS, WHATSAPP_PRIMARY } from "@/lib/constants";
 
 export default function CTA() {
   return (
-    <section className="relative py-28 lg:py-36 overflow-hidden">
-      {/* Background gradient — continues from Portfolio's bottom fade */}
+    <section className="relative overflow-hidden px-6 py-28 text-white lg:px-8 lg:py-36">
       <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(135deg, #0057FF 0%, #001B8F 50%, #00105C 100%)",
-        }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${VISUAL_ASSETS.cta})` }}
       />
-      {/* Radial center glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% 50%, rgba(20,214,199,0.15) 0%, transparent 60%)",
-        }}
+      <motion.div
+        aria-hidden
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${VISUAL_ASSETS.cta})` }}
+        animate={{ scale: [1, 1.055, 1], y: [0, -10, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#0057FF]/18 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#14D6C7]/8 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[#00034F]/80" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,5,157,0.38),transparent_36%)]" />
 
-      {/* Bottom transition to Contact (#00105C) */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-        style={{ background: "linear-gradient(to top, #00105C, transparent)" }}
-      />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.75 }}
+        className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center"
+      >
+        <div className="mb-7 inline-flex items-center gap-3 rounded-full bg-[#00034F]/55 px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] backdrop-blur-md">
+          <Megaphone size={16} />
+          Vamos construir algo memoravel.
+        </div>
+        <h2 className="mb-9 text-4xl font-black leading-[1.08] sm:text-5xl lg:text-6xl">
+          A sua marca nao precisa de mais ruido. Precisa de direcao.
+        </h2>
+        <a
+          href={WHATSAPP_PRIMARY}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 rounded-full bg-[#00059D] px-9 py-4 text-sm font-black shadow-[0_22px_60px_rgba(0,5,157,0.35)] transition hover:-translate-y-0.5 hover:bg-[#00036F]"
         >
-          <div
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8"
-            style={{
-              border: "1px solid rgba(20,214,199,0.3)",
-              background: "rgba(20,214,199,0.08)",
-            }}
-          >
-            <div className="w-1.5 h-1.5 rounded-full bg-[#14D6C7] animate-pulse" />
-            <span className="text-[#14D6C7] text-xs font-semibold uppercase tracking-[0.15em]">
-              Pronto para crescer?
-            </span>
-          </div>
+          Iniciar conversa
+          <ArrowRight size={18} />
+        </a>
+      </motion.div>
 
-          <h2 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
-            Vamos posicionar a sua marca para{" "}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{ backgroundImage: "linear-gradient(90deg, #14D6C7, #60A5FA)" }}
-            >
-              crescer com autoridade.
-            </span>
-          </h2>
-
-          <p className="text-white/65 text-lg lg:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-            Conexões que geram sucesso. Comece hoje a construir a presença que a sua marca merece.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={WHATSAPP_PRIMARY}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 text-[#001B8F] font-bold px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 text-base"
-              style={{
-                background: "#14D6C7",
-                boxShadow: "0 8px 32px rgba(20,214,199,0.45)",
-              }}
-            >
-              <MessageCircle size={20} />
-              Falar no WhatsApp
-            </a>
-            <a
-              href="#servicos"
-              className="flex items-center justify-center gap-2.5 text-white font-semibold px-10 py-4 rounded-full transition-all duration-200 hover:-translate-y-0.5 text-base"
-              style={{
-                border: "1px solid rgba(255,255,255,0.22)",
-                background: "rgba(255,255,255,0.07)",
-              }}
-            >
-              Ver nossos serviços
-              <ArrowRight size={18} />
-            </a>
-          </div>
-        </motion.div>
+      <div className="absolute bottom-0 left-0 right-0 hidden md:block">
+        <svg viewBox="0 0 1440 120" className="h-[90px] w-full" preserveAspectRatio="none">
+          <path fill="#F6F9FC" d="M0,70 C260,10 500,116 820,70 C1080,34 1230,86 1440,48 L1440,120 L0,120 Z">
+            <animate
+              attributeName="d"
+              dur="7s"
+              repeatCount="indefinite"
+              values="
+                M0,70 C260,10 500,116 820,70 C1080,34 1230,86 1440,48 L1440,120 L0,120 Z;
+                M0,52 C290,104 510,34 825,62 C1090,88 1238,30 1440,70 L1440,120 L0,120 Z;
+                M0,70 C260,10 500,116 820,70 C1080,34 1230,86 1440,48 L1440,120 L0,120 Z"
+            />
+          </path>
+        </svg>
       </div>
     </section>
   );
