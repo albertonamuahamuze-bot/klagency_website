@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Nunito } from "next/font/google";
+import { Inter, Nunito, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,6 +14,14 @@ const nunito = Nunito({
   variable: "--font-nunito",
   display: "swap",
   weight: ["700", "800", "900"],
+});
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  variable: "--font-dm-serif",
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -55,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" className={`${inter.variable} ${nunito.variable}`}>
+    <html lang="pt" className={`${inter.variable} ${nunito.variable} ${dmSerif.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

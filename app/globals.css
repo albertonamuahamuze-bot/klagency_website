@@ -18,6 +18,7 @@
   --color-kl-text: #101828;
   --color-kl-muted: #65758B;
   --color-kl-border: #DDE8F7;
+  --font-display: var(--font-dm-serif), Georgia, "Times New Roman", serif;
 }
 
 @layer base {
