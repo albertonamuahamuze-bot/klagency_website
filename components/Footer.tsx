@@ -17,14 +17,14 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F6F9FC] px-6 pb-10 pt-8 lg:px-8">
+    <footer className="bg-[#F6F9FC] px-5 pb-10 pt-8 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="mx-auto max-w-7xl border-t border-[#DDE8F7] pt-16"
       >
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-4">
           <div>
             <a href="#home" className="mb-6 flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-full bg-[#00059D] font-black text-white">

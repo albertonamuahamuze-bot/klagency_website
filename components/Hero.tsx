@@ -6,7 +6,7 @@ import { WHATSAPP_PRIMARY, VISUAL_ASSETS } from "@/lib/constants";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[96vh] overflow-hidden text-white">
+    <section id="home" className="relative min-h-[100svh] overflow-hidden text-white">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -21,17 +21,17 @@ export default function Hero() {
       }} />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[96vh] max-w-7xl flex-col justify-center px-6 pb-36 pt-36 lg:px-8">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-5 pb-28 pt-28 sm:px-6 sm:pb-32 sm:pt-32 lg:px-8 lg:pb-36 lg:pt-40">
 
         {/* Overline */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-10 flex items-center gap-3"
+          className="mb-8 flex items-center gap-3"
         >
-          <div className="h-px w-10 bg-[#00059D]" />
-          <span className="text-[0.68rem] font-bold uppercase tracking-[0.25em] text-white/60">
+          <div className="h-px w-8 shrink-0 bg-[#00059D] sm:w-10" />
+          <span className="text-[0.62rem] font-bold uppercase tracking-[0.22em] text-white/60 sm:text-[0.68rem] sm:tracking-[0.25em]">
             Estratégia · Posicionamento · Crescimento
           </span>
         </motion.div>
@@ -41,7 +41,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl text-[3.2rem] font-black leading-[1.0] tracking-[-0.03em] sm:text-[4.5rem] lg:text-[5.75rem]"
+          className="max-w-4xl text-[1.9rem] font-black leading-[1.05] tracking-[-0.02em] min-[380px]:text-[2.2rem] sm:text-[3.4rem] sm:leading-[1.0] sm:tracking-[-0.03em] lg:text-[5.75rem]"
         >
           Marcas fortes{" "}
           <br className="hidden sm:block" />
@@ -51,12 +51,12 @@ export default function Hero() {
           </em>
         </motion.h1>
 
-        {/* Divider line */}
+        {/* Divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}
-          className="my-10 h-px w-24 origin-left bg-white/20"
+          className="my-7 h-px w-16 origin-left bg-white/20 sm:my-10 sm:w-24"
         />
 
         {/* Sub-headline */}
@@ -64,7 +64,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65, ease: "easeOut" }}
-          className="max-w-xl text-base font-light leading-8 text-white/70 lg:text-lg"
+          className="max-w-sm text-sm font-light leading-7 text-white/70 sm:max-w-xl sm:text-base sm:leading-8 lg:text-lg"
         >
           Ajudamos empresas e líderes a construir autoridade,
           ganhar posicionamento e crescer com intenção.
@@ -75,27 +75,27 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
-          className="mt-12 flex flex-col gap-4 sm:flex-row"
+          className="mt-10 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:gap-4"
         >
           <a
             href={WHATSAPP_PRIMARY}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold text-[#00034F] shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_70px_rgba(0,0,0,0.35)]"
+            className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#00034F] shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_70px_rgba(0,0,0,0.35)] sm:px-8 sm:py-4"
           >
             <MessageCircle size={17} />
             Falar com a KLAGENCY
           </a>
           <a
             href="#portfolio"
-            className="inline-flex items-center justify-center gap-3 rounded-full border border-white/20 px-8 py-4 text-sm font-medium text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:text-white"
+            className="inline-flex items-center justify-center gap-3 rounded-full border border-white/20 px-7 py-3.5 text-sm font-medium text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:text-white sm:px-8 sm:py-4"
           >
             Ver portfólio
             <ArrowRight size={16} />
           </a>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — desktop only */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -115,7 +115,7 @@ export default function Hero() {
 
       {/* Wave transition */}
       <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block">
-        <svg viewBox="0 0 1440 130" className="h-[110px] w-full" preserveAspectRatio="none">
+        <svg viewBox="0 0 1440 130" className="h-[90px] w-full sm:h-[110px]" preserveAspectRatio="none">
           <path fill="#ffffff">
             <animate
               attributeName="d"

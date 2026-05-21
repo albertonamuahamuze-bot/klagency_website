@@ -6,7 +6,7 @@ import { VISUAL_ASSETS, WHATSAPP_PRIMARY } from "@/lib/constants";
 
 export default function CTA() {
   return (
-    <section className="relative overflow-hidden px-6 py-28 text-white lg:px-8 lg:py-36">
+    <section className="relative overflow-hidden px-5 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-36">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${VISUAL_ASSETS.cta})` }}
@@ -32,7 +32,7 @@ export default function CTA() {
           <Megaphone size={16} />
           Vamos construir algo memoravel.
         </div>
-        <h2 className="mb-9 text-4xl font-black leading-[1.08] sm:text-5xl lg:text-6xl">
+        <h2 className="mb-8 text-2xl font-black leading-[1.1] sm:mb-9 sm:text-4xl lg:text-6xl">
           A sua marca nao precisa de mais ruido. Precisa de direcao.
         </h2>
         <a

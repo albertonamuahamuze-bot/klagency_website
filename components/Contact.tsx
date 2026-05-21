@@ -6,7 +6,7 @@ import { CONTACTS, WHATSAPP_PRIMARY, WHATSAPP_SECONDARY } from "@/lib/constants"
 
 export default function Contact() {
   return (
-    <section id="contacto" className="bg-[#F6F9FC] px-6 py-24 lg:px-8 lg:py-32">
+    <section id="contacto" className="bg-[#F6F9FC] px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-32">
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -14,11 +14,11 @@ export default function Contact() {
         transition={{ duration: 0.7 }}
         className="mx-auto grid max-w-6xl overflow-hidden rounded-xl bg-white shadow-[0_26px_80px_rgba(15,37,74,0.08)] lg:grid-cols-[0.9fr_1.1fr]"
       >
-        <div className="bg-[linear-gradient(135deg,#00059D,#00034F)] p-10 text-white lg:p-14">
-          <p className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-white/65">
+        <div className="bg-[linear-gradient(135deg,#00059D,#00034F)] p-6 text-white sm:p-10 lg:p-14">
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-white/65 sm:mb-5">
             Contacto
           </p>
-          <h2 className="mb-6 text-4xl font-black leading-[1.08] sm:text-5xl">
+          <h2 className="mb-5 text-2xl font-black leading-[1.1] sm:mb-6 sm:text-3xl lg:text-4xl">
             Vamos criar a próxima conexão estratégica.
           </h2>
           <p className="leading-8 text-white/74">
@@ -26,7 +26,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="p-10 lg:p-14">
+        <div className="p-6 sm:p-10 lg:p-14">
           <div className="space-y-5">
             <a
               href={`tel:${CONTACTS.phones[0].replace(/\s/g, "")}`}
@@ -44,12 +44,12 @@ export default function Contact() {
             </a>
           </div>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
             <a
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex flex-1 items-center justify-center gap-3 rounded-full bg-[#00059D] px-7 py-4 text-sm font-black text-white transition hover:bg-[#00036F]"
+              className="inline-flex flex-1 items-center justify-center gap-3 rounded-full bg-[#00059D] px-6 py-3.5 text-sm font-black text-white transition hover:bg-[#00036F] sm:px-7 sm:py-4"
             >
               <MessageCircle size={18} />
               WhatsApp principal
@@ -58,7 +58,7 @@ export default function Contact() {
               href={WHATSAPP_SECONDARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex flex-1 items-center justify-center gap-3 rounded-full border border-[#DDE8F7] px-7 py-4 text-sm font-black text-[#101828] transition hover:border-[#00059D]"
+              className="inline-flex flex-1 items-center justify-center gap-3 rounded-full border border-[#DDE8F7] px-6 py-3.5 text-sm font-black text-[#101828] transition hover:border-[#00059D] sm:px-7 sm:py-4"
             >
               <MessageCircle size={18} />
               Alternativo

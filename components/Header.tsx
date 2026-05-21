@@ -92,7 +92,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="mx-4 mt-2 rounded-3xl border border-[#DDE8F7] bg-[#F6F9FC] p-6 shadow-2xl md:hidden"
+            className="mx-3 mt-2 rounded-3xl border border-[#DDE8F7] bg-[#F6F9FC] p-5 shadow-2xl sm:mx-4 sm:p-6 md:hidden"
           >
             <div className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => (

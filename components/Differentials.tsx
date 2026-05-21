@@ -83,7 +83,7 @@ export default function Differentials() {
 
   return (
     <section
-      className="relative py-20 lg:py-36 overflow-hidden"
+      className="relative overflow-hidden py-14 sm:py-20 lg:py-36"
       style={{ background: "#001B8F" }}
     >
       {/* Ambient */}
@@ -93,8 +93,8 @@ export default function Differentials() {
         style={{ background: "linear-gradient(to top, #00105C, transparent)" }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left — text & stats */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -105,7 +105,7 @@ export default function Differentials() {
             <p className="text-[#14D6C7] text-xs font-bold uppercase tracking-[0.3em] mb-4">
               Por que a KL Agency
             </p>
-            <h2 className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-5">
+            <h2 className="mb-5 text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl">
               Clareza antes{" "}
               <span
                 className="text-transparent bg-clip-text"
@@ -136,9 +136,9 @@ export default function Differentials() {
             </a>
 
             {/* Stats */}
-            <div className="mt-10 flex items-center gap-8">
+            <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-8">
               <div>
-                <p className="text-4xl lg:text-5xl font-black text-white leading-none">
+                <p className="text-3xl font-black leading-none text-white sm:text-4xl lg:text-5xl">
                   100%
                 </p>
                 <p className="text-white/40 text-xs mt-1.5 max-w-[130px]">
@@ -150,7 +150,7 @@ export default function Differentials() {
                 style={{ background: "rgba(255,255,255,0.1)" }}
               />
               <div>
-                <p className="text-4xl lg:text-5xl font-black text-white leading-none">
+                <p className="text-3xl font-black leading-none text-white sm:text-4xl lg:text-5xl">
                   3×
                 </p>
                 <p className="text-white/40 text-xs mt-1.5 max-w-[130px]">

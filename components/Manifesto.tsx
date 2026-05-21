@@ -82,7 +82,7 @@ function PillarCard({ p }: { p: (typeof pillars)[0] }) {
 
 function StatCard({ s }: { s: (typeof stats)[0] }) {
   return (
-    <div className="flex flex-col items-center justify-center py-10 px-8 text-center h-full">
+    <div className="flex flex-col items-center justify-center h-full px-5 py-7 text-center sm:px-8 sm:py-10">
       <motion.div
         animate={{ y: [0, -5, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
@@ -95,7 +95,7 @@ function StatCard({ s }: { s: (typeof stats)[0] }) {
       >
         <s.icon size={28} style={{ color: s.accent }} />
       </motion.div>
-      <span className="text-6xl lg:text-7xl font-black text-white leading-none mb-2">
+      <span className="mb-2 text-5xl font-black leading-none text-white sm:text-6xl lg:text-7xl">
         {s.value}
       </span>
       <span className="text-sm font-semibold tracking-wide" style={{ color: s.accent }}>
@@ -123,7 +123,7 @@ export default function Manifesto() {
 
   return (
     <section
-      className="relative py-20 lg:py-36 overflow-hidden"
+      className="relative overflow-hidden py-14 sm:py-20 lg:py-36"
       style={{ background: "#00105C" }}
     >
       {/* Ambient glows */}
@@ -134,7 +134,7 @@ export default function Manifesto() {
         style={{ background: "linear-gradient(to top, #001B8F, transparent)" }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -146,7 +146,7 @@ export default function Manifesto() {
           <p className="text-[#14D6C7] text-xs font-bold uppercase tracking-[0.3em] mb-4">
             Quem Somos
           </p>
-          <h2 className="text-3xl lg:text-5xl font-bold text-white leading-tight max-w-2xl mx-auto">
+          <h2 className="mx-auto max-w-2xl text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl">
             Mais do que uma agência.{" "}
             <span
               className="text-transparent bg-clip-text"

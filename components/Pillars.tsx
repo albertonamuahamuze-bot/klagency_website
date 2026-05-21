@@ -5,7 +5,7 @@ import { siteContent } from "@/lib/site-content";
 
 export default function Pillars() {
   return (
-    <section className="bg-white px-6 py-20 lg:px-8 lg:py-28">
+    <section className="bg-white px-5 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
 
         {/* Section label */}
@@ -31,16 +31,16 @@ export default function Pillars() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group flex cursor-default flex-col gap-4 py-10 transition-all duration-300 lg:grid lg:grid-cols-[96px_1fr_auto] lg:items-center lg:gap-16 lg:py-12"
+              className="group flex cursor-default flex-col gap-3 py-8 transition-all duration-300 sm:gap-4 sm:py-10 lg:grid lg:grid-cols-[96px_1fr_auto] lg:items-center lg:gap-16 lg:py-12"
             >
               {/* Number */}
-              <span className="font-black text-[3rem] leading-none text-[#EEF4FB] transition-all duration-500 group-hover:text-[#00059D] lg:text-[4rem]">
+              <span className="font-black text-[2.2rem] leading-none text-[#EEF4FB] transition-all duration-500 group-hover:text-[#00059D] sm:text-[3rem] lg:text-[4rem]">
                 0{index + 1}
               </span>
 
               {/* Title */}
               <h3
-                className="text-2xl font-black leading-tight tracking-tight text-[#101828] transition-colors duration-300 group-hover:text-[#00059D] lg:text-3xl xl:text-[2rem]"
+                className="text-xl font-black leading-tight tracking-tight text-[#101828] transition-colors duration-300 group-hover:text-[#00059D] sm:text-2xl lg:text-3xl xl:text-[2rem]"
               >
                 {item.title}
               </h3>
