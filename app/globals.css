@@ -1,54 +1,232 @@
 @import "tailwindcss";
 
+/* ── CSS Custom Properties — on :root directly (no layer wrapper) ── */
+:root {
+  --kl-blue-deep:    #00059B;
+  --kl-blue-mid:     #0D1FA8;
+  --kl-blue-bright:  #2563EB;
+  --kl-navy:         #020617;
+  --kl-navy-soft:    #050B3D;
+  --kl-navy-glass:   rgba(2, 6, 23, 0.72);
+  --kl-white:        #FFFFFF;
+  --kl-soft-white:   #F8FAFC;
+  --kl-silver:       #CBD5E1;
+  --kl-muted:        #94A3B8;
+  --kl-border:       rgba(255, 255, 255, 0.10);
+  --kl-border-hover: rgba(255, 255, 255, 0.22);
+  --kl-gradient:        linear-gradient(135deg, #020617 0%, #00059B 55%, #2563EB 100%);
+  --kl-gradient-subtle: linear-gradient(160deg, #020617 0%, #050B3D 60%, #00059B 100%);
+  --kl-gradient-card:   linear-gradient(135deg, rgba(5,12,58,0.80) 0%, rgba(0,5,155,0.30) 100%);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+}
+
+/* ── Keyframes ── */
 @keyframes marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
-
 @keyframes fade-slide-up {
   from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 5, 155, 0); }
+  50%      { box-shadow: 0 0 0 8px rgba(0, 5, 155, 0.08); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
+/* ── Ticker conveyor belt ── */
+.kl-ticker-track {
+  display: flex;
+  gap: 4rem;
+  width: max-content;
+  animation: scrollLeft 25s linear infinite;
+}
+.kl-ticker-wrapper:hover .kl-ticker-track {
+  animation-play-state: paused;
+}
+
+/* ── Tailwind v4 Theme Tokens (Tailwind utilities only) ── */
 @theme {
-  --color-kl-blue: #00059D;
-  --color-kl-navy: #00034F;
-  --color-kl-soft: #F6F9FC;
-  --color-kl-ice: #EEF4FB;
-  --color-kl-text: #101828;
-  --color-kl-muted: #65758B;
-  --color-kl-border: #DDE8F7;
-  --font-display: var(--font-dm-serif), Georgia, "Times New Roman", serif;
+  --color-kl-blue-deep:   #00059B;
+  --color-kl-blue-bright: #2563EB;
+  --color-kl-navy:        #020617;
+  --color-kl-navy-soft:   #050B3D;
+  --color-kl-silver:      #CBD5E1;
+  --color-kl-muted:       #94A3B8;
+  --color-kl-accent:      #93C5FD;
+  --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-body:    var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
 }
 
+/* ── Base styles ── */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: #F6F9FC;
-    color: #101828;
-    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #020617;
+    color: #FFFFFF;
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
-  ::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #F6F9FC;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #00059D;
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #00034F;
-  }
+  ::-webkit-scrollbar       { width: 4px; }
+  ::-webkit-scrollbar-track { background: #050B3D; }
+  ::-webkit-scrollbar-thumb { background: #00059B; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #0D1FA8; }
 }
+
+/* ── Typography ── */
+.kl-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.kl-heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+.kl-subheading {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: #CBD5E1;
+}
+.kl-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94A3B8;
+}
+.kl-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.75;
+  color: #CBD5E1;
+}
+
+/* ── Buttons ── */
+.kl-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: #FFFFFF;
+  color: #020617;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+.kl-btn-primary:hover {
+  background: #F8FAFC;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+}
+.kl-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: transparent;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+.kl-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Glass Card ── */
+.kl-glass {
+  background: linear-gradient(135deg, rgba(5,12,58,0.80) 0%, rgba(0,5,155,0.30) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.kl-glass:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-3px);
+}
+
+/* ── Tag / Badge ── */
+.kl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.30);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #93C5FD;
+}
+
+/* ── Divider ── */
+.kl-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #2563EB, transparent);
+  border-radius: 2px;
+}
+
+/* ── Section container ── */
+.kl-section {
+  padding: 6rem 2.5rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ── Animation utilities ── */
+.fade-up { animation: fadeUp 0.65s ease both; }
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.24s; }
+.delay-3 { animation-delay: 0.38s; }
+.delay-4 { animation-delay: 0.52s; }

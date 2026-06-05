@@ -1,9 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Pillars from "@/components/Pillars";
-import About from "@/components/About";
+import Manifesto from "@/components/Manifesto";
 import Services from "@/components/Services";
-import LogoMarquee from "@/components/LogoMarquee";
+import ClientsTicker from "@/components/ClientsTicker";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -13,10 +12,9 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <Pillars />
-      <About />
+      <Manifesto />
       <Services />
-      <LogoMarquee />
+      <ClientsTicker />
       <CTA />
       <Contact />
       <Footer />

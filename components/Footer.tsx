@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
 import { CONTACTS, NAV_LINKS, SOCIAL_LINKS, WHATSAPP_PRIMARY } from "@/lib/constants";
+import { AnimateOnScroll, AnimateStagger, AnimateStaggerItem } from "./AnimateOnScroll";
 
-const serviceLinks = [
+const SERVICE_LINKS = [
   "Posicionamento Estratégico",
   "Estratégia de Marca",
   "Crescimento e Escala",
@@ -17,38 +16,105 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F6F9FC] px-5 pb-10 pt-8 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 22 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mx-auto max-w-7xl border-t border-[#DDE8F7] pt-16"
-      >
-        <div className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-4">
-          <div>
-            <a href="#home" className="mb-6 flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-[#00059D] font-black text-white">
+    <footer
+      style={{
+        background: "#010412",
+        padding: "4rem 2rem 2.5rem",
+        borderTop: "1px solid var(--kl-border)",
+      }}
+    >
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+        {/* Top grid com AnimateStagger */}
+        <AnimateStagger
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.4fr 1fr 1.2fr 1fr",
+            gap: "3rem",
+            marginBottom: "3.5rem",
+          }}
+          className="footer-grid"
+        >
+          {/* Brand column */}
+          <AnimateStaggerItem>
+            <a
+              href="#home"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.6rem",
+                textDecoration: "none",
+                marginBottom: "1rem",
+              }}
+              aria-label="KLAgency"
+            >
+              <span
+                style={{
+                  display: "grid",
+                  width: 36,
+                  height: 36,
+                  placeItems: "center",
+                  borderRadius: 8,
+                  background: "var(--kl-blue-deep)",
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 700,
+                  fontSize: "1.1rem",
+                  color: "#fff",
+                }}
+              >
                 K
               </span>
-              <span className="text-xl font-black text-[#00059D]">KLAGENCY</span>
+              <span
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 600,
+                  fontSize: "1.05rem",
+                  color: "#fff",
+                }}
+              >
+                KLAgency
+              </span>
             </a>
-            <p className="mb-4 text-base font-black text-[#101828]">
+
+            <p
+              style={{
+                fontFamily: "var(--font-body)",
+                fontWeight: 300,
+                fontStyle: "italic",
+                fontSize: "0.88rem",
+                color: "var(--kl-muted)",
+                marginBottom: "1.5rem",
+              }}
+            >
               Conexões que geram sucesso.
             </p>
-            <p className="max-w-xs leading-8 text-[#65758B]">
-              Estratégia, posicionamento e comunicação para marcas e líderes que
-              querem crescer com autoridade.
-            </p>
 
-            <div className="mt-7 flex gap-3">
+            {/* Social icons */}
+            <div style={{ display: "flex", gap: "0.75rem" }}>
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#00059D] shadow-sm"
                 aria-label="Instagram"
+                style={{
+                  display: "grid",
+                  width: 36,
+                  height: 36,
+                  placeItems: "center",
+                  borderRadius: "50%",
+                  border: "1px solid var(--kl-border)",
+                  color: "var(--kl-muted)",
+                  transition: "border-color 0.2s, color 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--kl-border-hover)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--kl-border)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--kl-muted)";
+                }}
               >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                   <circle cx="12" cy="12" r="4.5" />
                   <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
@@ -58,58 +124,108 @@ export default function Footer() {
                 href={SOCIAL_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#00059D] shadow-sm"
                 aria-label="LinkedIn"
+                style={{
+                  display: "grid",
+                  width: 36,
+                  height: 36,
+                  placeItems: "center",
+                  borderRadius: "50%",
+                  border: "1px solid var(--kl-border)",
+                  color: "var(--kl-muted)",
+                  transition: "border-color 0.2s, color 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--kl-border-hover)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--kl-border)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--kl-muted)";
+                }}
               >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                   <rect width="4" height="12" x="2" y="9" />
                   <circle cx="4" cy="4" r="2" />
                 </svg>
               </a>
             </div>
-          </div>
+          </AnimateStaggerItem>
 
-          <div>
-            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.16em] text-[#101828]">
-              Navegação
-            </h4>
-            <ul className="space-y-3">
+          {/* Navigation */}
+          <AnimateStaggerItem>
+            <h4 className="kl-label" style={{ marginBottom: "1.2rem" }}>Navegação</h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-[#65758B] transition hover:text-[#00059D]">
+                  <a
+                    href={link.href}
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.85rem",
+                      color: "var(--kl-muted)",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--kl-muted)")}
+                  >
                     {link.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </AnimateStaggerItem>
 
-          <div>
-            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.16em] text-[#101828]">
-              Serviços
-            </h4>
-            <ul className="space-y-3">
-              {serviceLinks.map((service) => (
+          {/* Services */}
+          <AnimateStaggerItem>
+            <h4 className="kl-label" style={{ marginBottom: "1.2rem" }}>Serviços</h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {SERVICE_LINKS.map((service) => (
                 <li key={service}>
-                  <a href="#servicos" className="text-[#65758B] transition hover:text-[#00059D]">
+                  <a
+                    href="#servicos"
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.82rem",
+                      color: "var(--kl-muted)",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--kl-muted)")}
+                  >
                     {service}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </AnimateStaggerItem>
 
-          <div>
-            <h4 className="mb-5 text-xs font-black uppercase tracking-[0.16em] text-[#101828]">
-              Contacto
-            </h4>
-            <ul className="mb-7 space-y-3 text-[#65758B]">
+          {/* Contact */}
+          <AnimateStaggerItem>
+            <h4 className="kl-label" style={{ marginBottom: "1.2rem" }}>Contacto</h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
               {CONTACTS.phones.map((phone) => (
-                <li key={phone}>{phone}</li>
+                <li key={phone}>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "0.85rem", color: "var(--kl-muted)" }}>{phone}</span>
+                </li>
               ))}
               <li>
-                <a href={`mailto:${CONTACTS.emails[0]}`} className="break-all hover:text-[#00059D]">
+                <a
+                  href={`mailto:${CONTACTS.emails[0]}`}
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.82rem",
+                    color: "var(--kl-muted)",
+                    textDecoration: "none",
+                    wordBreak: "break-all",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--kl-muted)")}
+                >
                   {CONTACTS.emails[0]}
                 </a>
               </li>
@@ -118,21 +234,62 @@ export default function Footer() {
               href={WHATSAPP_PRIMARY}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#00059D] px-5 py-3 text-sm font-black text-white transition hover:bg-[#00036F]"
+              className="kl-btn-primary"
+              style={{ fontSize: "0.8rem", padding: "10px 18px" }}
             >
-              <MessageCircle size={16} />
               WhatsApp
             </a>
-          </div>
-        </div>
+          </AnimateStaggerItem>
+        </AnimateStagger>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-[#DDE8F7] pt-7 text-sm text-[#65758B] sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} KLAGENCY. Todos os direitos reservados.</p>
-          <a href={`https://${CONTACTS.website}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#00059D]">
+        {/* Bottom bar */}
+        <AnimateOnScroll
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "0.75rem",
+            borderTop: "1px solid var(--kl-border)",
+            paddingTop: "1.5rem",
+          }}
+        >
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "var(--kl-muted)" }}>
+            © {year} KLAgency. Todos os direitos reservados.
+          </p>
+          <a
+            href={`https://${CONTACTS.website}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "0.75rem",
+              color: "var(--kl-muted)",
+              textDecoration: "none",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--kl-muted)")}
+          >
             {CONTACTS.website}
           </a>
-        </div>
-      </motion.div>
+        </AnimateOnScroll>
+      </div>
+
+      {/* Mobile responsive */}
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .footer-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

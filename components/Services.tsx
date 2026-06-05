@@ -1,59 +1,266 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { siteContent } from "@/lib/site-content";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { AnimateOnScroll } from "./AnimateOnScroll";
+
+const SERVICES = [
+  {
+    number: "01",
+    category: "Posicionamento",
+    title: "Definimos onde a sua marca compete — e como ganha.",
+    desc: "Território, público e mensagem central. Clareza estratégica antes de qualquer execução.",
+  },
+  {
+    number: "02",
+    category: "Estratégia de Marca",
+    title: "Construímos o mapa. A sua marca para de reagir e começa a liderar.",
+    desc: "Direção clara para decisões melhores. Do propósito à expressão — em todos os pontos de contacto.",
+  },
+  {
+    number: "03",
+    category: "Growth",
+    title: "Crescimento não é acidente. É arquitectura.",
+    desc: "Tracção para marcas em movimento. Estruturas de escala sustentadas por estratégia real.",
+  },
+  {
+    number: "04",
+    category: "Consultoria",
+    title: "Trabalhamos ao lado de quem decide — com clareza, sem rodeios.",
+    desc: "Apoio estratégico para líderes que querem crescer com intenção e dominar o seu sector.",
+  },
+  {
+    number: "05",
+    category: "Marketing",
+    title: "Comunicação que posiciona, não apenas que aparece.",
+    desc: "Campanhas com função e resultado. Cada mensagem serve um propósito estratégico.",
+  },
+  {
+    number: "06",
+    category: "Branding",
+    title: "A sua marca precisa de ser reconhecida antes de ser explicada.",
+    desc: "Sistema visual e verbal coerente. Identidade que comunica autoridade ao primeiro contacto.",
+  },
+];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
+};
+
+function ServiceCard({
+  s,
+  active,
+  index,
+  onActivate,
+}: {
+  s: typeof SERVICES[0];
+  active: boolean;
+  index: number;
+  onActivate: (i: number) => void;
+}) {
+  return (
+    <div
+      onClick={() => onActivate(index)}
+      style={{
+        padding: "2rem 2.2rem",
+        background: active ? "rgba(37,99,235,0.12)" : "transparent",
+        cursor: "pointer",
+        transition: "background 0.2s",
+        height: "100%",
+        boxSizing: "border-box",
+      }}
+      onMouseEnter={(e) => {
+        if (!active)
+          (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)";
+      }}
+      onMouseLeave={(e) => {
+        if (!active)
+          (e.currentTarget as HTMLDivElement).style.background = "transparent";
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          marginBottom: "1rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 400,
+            fontSize: "0.75rem",
+            color: active ? "#60A5FA" : "var(--kl-muted)",
+            letterSpacing: "0.1em",
+          }}
+        >
+          {s.number}
+        </span>
+        <span className="kl-tag" style={{ fontSize: "0.65rem", padding: "3px 10px" }}>
+          {s.category}
+        </span>
+      </div>
+
+      <h3
+        style={{
+          fontFamily: "var(--font-display)",
+          fontWeight: 500,
+          fontSize: "1rem",
+          color: active ? "#fff" : "var(--kl-silver)",
+          lineHeight: 1.4,
+          marginBottom: "0.7rem",
+        }}
+      >
+        {s.title}
+      </h3>
+
+      <div
+        style={{
+          fontSize: "0.8rem",
+          color: "var(--kl-muted)",
+          lineHeight: 1.65,
+          maxHeight: active ? "100px" : "0px",
+          overflow: "hidden",
+          transition: "max-height 0.35s ease",
+        }}
+      >
+        {s.desc}
+      </div>
+    </div>
+  );
+}
 
 export default function Services() {
-  const track = [...siteContent.services, ...siteContent.services];
+  const [active, setActive] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const SectionHeader = (
+    <AnimateOnScroll style={{ marginBottom: "4rem" }}>
+      <p className="kl-label" style={{ marginBottom: "1rem" }}>Serviços</p>
+      <div className="kl-divider" style={{ marginBottom: "1.5rem" }} />
+      <h2
+        className="kl-heading"
+        style={{
+          fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
+          color: "#fff",
+          maxWidth: 520,
+        }}
+      >
+        Soluções estratégicas.{" "}
+        <span style={{ color: "#93C5FD", fontStyle: "italic" }}>
+          Menos ruído. Mais direcção.
+        </span>
+      </h2>
+    </AnimateOnScroll>
+  );
+
+  if (isMobile) {
+    return (
+      <section
+        id="servicos"
+        style={{
+          background: "var(--kl-navy, #020617)",
+          padding: "4rem 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          {SectionHeader}
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            slidesPerView={1}
+            spaceBetween={16}
+            loop={true}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            style={{ paddingBottom: "2.5rem" }}
+          >
+            {SERVICES.map((s, i) => (
+              <SwiperSlide key={s.number}>
+                <div
+                  style={{
+                    border: "1px solid var(--kl-border)",
+                    borderRadius: "var(--radius-lg)",
+                    overflow: "hidden",
+                    minHeight: 180,
+                  }}
+                >
+                  <ServiceCard
+                    s={s}
+                    active={active === i}
+                    index={i}
+                    onActivate={setActive}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <style>{`
+          .swiper-pagination-bullet { background: var(--kl-muted) !important; opacity: 1; }
+          .swiper-pagination-bullet-active { background: #2563EB !important; }
+        `}</style>
+      </section>
+    );
+  }
 
   return (
-    <section id="servicos" className="overflow-hidden bg-[#EEF4FB] px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-32">
-      <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-10 max-w-3xl text-center sm:mb-14"
-        >
-          <h2 className="text-2xl font-black leading-[1.08] text-[#101828] sm:text-4xl lg:text-5xl">
-            Solucoes estrategicas.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-[#65758B] sm:mt-5 sm:text-lg">
-            Menos ruido. Mais direcao para marcas que querem avancar.
-          </p>
-        </motion.div>
+    <section
+      id="servicos"
+      style={{
+        background: "var(--kl-navy, #020617)",
+        padding: "6rem 2rem",
+      }}
+    >
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+        {SectionHeader}
 
-        <div className="relative">
-          <motion.div
-            className="flex w-max gap-4 sm:gap-7"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 62, repeat: Infinity, ease: "linear" }}
-          >
-            {track.map((service, index) => (
-              <article
-                key={`${service.title}-${index}`}
-                className="w-[260px] overflow-hidden rounded-lg bg-white shadow-[0_20px_60px_rgba(15,37,74,0.08)] sm:w-[310px] lg:w-[360px]"
-              >
-                <div className="relative h-44 overflow-hidden sm:h-52 lg:h-56">
-                  <img src={service.image} alt={service.title} className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#00034F]/74 to-transparent" />
-                  <span className="absolute right-5 top-5 rounded-full bg-[#00034F]/88 px-4 py-2 text-[0.65rem] font-black uppercase tracking-[0.12em] text-white">
-                    {service.tag}
-                  </span>
-                </div>
-                <div className="p-5 text-center sm:p-7">
-                  <h3 className="mb-2 text-base font-black text-[#101828] sm:mb-3 sm:text-xl">{service.title}</h3>
-                  <p className="mb-5 text-sm leading-7 text-[#65758B] sm:mb-6 sm:text-base">{service.text}</p>
-                  <a href="#contacto" className="inline-flex items-center gap-2 text-sm font-black text-[#00059D]">
-                    Saber mais
-                    <ArrowRight size={16} />
-                  </a>
-                </div>
-              </article>
-            ))}
-          </motion.div>
-        </div>
+        {/* Grid 2×3 com stagger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "1px",
+            border: "1px solid var(--kl-border)",
+            borderRadius: "var(--radius-lg)",
+            overflow: "hidden",
+          }}
+        >
+          {SERVICES.map((s, i) => (
+            <motion.div
+              key={s.number}
+              variants={cardVariants}
+              style={{
+                borderBottom: i < 4 ? "1px solid var(--kl-border)" : "none",
+                borderRight: i % 2 === 0 ? "1px solid var(--kl-border)" : "none",
+              }}
+            >
+              <ServiceCard
+                s={s}
+                active={active === i}
+                index={i}
+                onActivate={setActive}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

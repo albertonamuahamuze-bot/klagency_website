@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { NAV_LINKS, WHATSAPP_PRIMARY } from "@/lib/constants";
 
 export default function Header() {
@@ -10,7 +10,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 36);
+    const handler = () => setScrolled(window.scrollY > 40);
     handler();
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
@@ -18,93 +18,130 @@ export default function Header() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50">
+      {/* Main bar */}
       <div
-        className="transition-all duration-500"
         style={{
-          background: scrolled
-            ? "rgba(246,249,252,0.86)"
-            : "linear-gradient(180deg,rgba(2,18,58,0.62),rgba(2,18,58,0.04))",
-          backdropFilter: scrolled ? "blur(18px)" : "blur(8px)",
-          borderBottom: scrolled ? "1px solid rgba(15,37,74,0.08)" : "1px solid transparent",
+          background: scrolled ? "rgba(2,6,23,0.92)" : "transparent",
+          backdropFilter: scrolled ? "blur(20px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.07)" : "none",
+          transition: "all 0.3s ease",
         }}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <a href="#home" className="flex items-center gap-3">
+        <div className="mx-auto flex max-w-[1120px] items-center justify-between px-6 py-4 lg:px-8">
+          {/* Logo */}
+          <a href="#home" className="flex items-center gap-2.5" aria-label="KLAgency">
             <span
-              className="grid h-10 w-10 place-items-center rounded-full font-black"
+              className="grid h-9 w-9 place-items-center rounded-lg text-base font-bold text-white"
               style={{
-                backgroundColor: scrolled ? "#00059D" : "#FFFFFF",
-                color: scrolled ? "#FFFFFF" : "#00059D",
+                background: "var(--kl-blue-deep)",
+                fontFamily: "var(--font-display)",
               }}
             >
               K
             </span>
             <span
-              className="text-lg font-black tracking-tight"
-              style={{ color: scrolled ? "#101828" : "#FFFFFF" }}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontWeight: 600,
+                fontSize: "0.95rem",
+                letterSpacing: "0.06em",
+                color: "#fff",
+              }}
             >
-              KLAGENCY
+              KLAgency
             </span>
           </a>
 
-          <nav className="hidden items-center gap-9 md:flex">
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-semibold transition hover:opacity-70"
-                style={{ color: scrolled ? "#101828" : "rgba(255,255,255,0.9)" }}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.83rem",
+                  fontWeight: 400,
+                  color: "var(--kl-silver)",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    "var(--kl-silver)")
+                }
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
+          {/* CTA — desktop */}
           <a
             href={WHATSAPP_PRIMARY}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full border px-7 py-3 text-sm font-bold transition hover:-translate-y-0.5 md:inline-flex"
-            style={{
-              color: scrolled ? "#101828" : "#FFFFFF",
-              borderColor: scrolled ? "rgba(16,24,40,0.12)" : "rgba(255,255,255,0.28)",
-              backgroundColor: scrolled ? "rgba(255,255,255,0.42)" : "rgba(255,255,255,0.08)",
-            }}
+            className="hidden md:inline-flex kl-btn-primary"
+            style={{ fontSize: "0.8rem", padding: "10px 20px" }}
           >
-            Iniciar projeto
-            <ArrowRight size={15} />
+            Iniciar projecto →
           </a>
 
+          {/* Hamburger — mobile */}
           <button
             className="md:hidden"
-            onClick={() => setMobileOpen((value) => !value)}
-            aria-label="Menu"
-            style={{ color: scrolled ? "#101828" : "#FFFFFF" }}
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+            style={{ color: "var(--kl-silver)", background: "none", border: "none", cursor: "pointer" }}
           >
-            {mobileOpen ? <X /> : <Menu />}
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="mx-3 mt-2 rounded-3xl border border-[#DDE8F7] bg-[#F6F9FC] p-5 shadow-2xl sm:mx-4 sm:p-6 md:hidden"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="kl-glass mx-3 mt-2 p-6 md:hidden"
+            style={{ borderRadius: "var(--radius-lg)" }}
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-5">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-base font-bold text-[#101828]"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 500,
+                    fontSize: "1rem",
+                    color: "var(--kl-silver)",
+                    textDecoration: "none",
+                  }}
                 >
                   {link.label}
                 </a>
               ))}
+              <a
+                href={WHATSAPP_PRIMARY}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="kl-btn-primary"
+                style={{ justifyContent: "center", marginTop: "0.5rem" }}
+              >
+                Iniciar projecto →
+              </a>
             </div>
           </motion.div>
         )}

@@ -1,35 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Nunito, DM_Serif_Display } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
+import IconSprite from "@/components/icons/IconSprite";
+import ConversionPopup from "@/components/ConversionPopup";
 
-const inter = Inter({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  variable: "--font-nunito",
-  display: "swap",
-  weight: ["700", "800", "900"],
-});
-
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  variable: "--font-dm-serif",
-  weight: "400",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
 
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "KLAGENCY — Estratégia, Posicionamento & Crescimento | Moçambique",
+  title: "KLAgency — Estratégia, Posicionamento & Crescimento | Moçambique",
   description:
-    "A KLAGENCY ajuda empresas e líderes a superar a estagnação, construir autoridade e crescer com estratégia. Posicionamento, Strategy, Growth e Consulting.",
+    "A KLAgency ajuda marcas e líderes a construir autoridade e crescer com estratégia. Posicionamento, Branding e Consultoria em Moçambique.",
   keywords: [
-    "KLAGENCY",
+    "KLAgency",
     "estratégia",
     "posicionamento de marca",
     "consultoria estratégica",
@@ -39,20 +34,20 @@ export const metadata: Metadata = {
     "crescimento",
     "autoridade de marca",
   ],
-  authors: [{ name: "KLAGENCY" }],
+  authors: [{ name: "KLAgency" }],
   openGraph: {
-    title: "KLAGENCY — Conexões que geram sucesso",
+    title: "KLAgency — Conexões que geram sucesso",
     description:
-      "Ajudamos empresas e líderes a superar a estagnação, construir autoridade e crescer com estratégia.",
+      "Ajudamos marcas e líderes a construir autoridade e crescer com estratégia.",
     type: "website",
     url: "https://www.klagency.com",
-    siteName: "KLAGENCY",
+    siteName: "KLAgency",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KLAGENCY — Conexões que geram sucesso",
+    title: "KLAgency — Conexões que geram sucesso",
     description:
-      "Ajudamos empresas e líderes a superar a estagnação, construir autoridade e crescer com estratégia.",
+      "Ajudamos marcas e líderes a construir autoridade e crescer com estratégia.",
   },
   robots: { index: true, follow: true },
 };
@@ -63,8 +58,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" className={`${inter.variable} ${nunito.variable} ${dmSerif.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html
+      lang="pt"
+      className={`${playfair.variable} ${dmSans.variable}`}
+    >
+      <body className="antialiased">
+        <IconSprite />
+        {children}
+        <ConversionPopup />
+      </body>
     </html>
   );
 }

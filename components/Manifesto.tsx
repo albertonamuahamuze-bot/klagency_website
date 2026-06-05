@@ -1,301 +1,164 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Eye, Compass, Sparkles, Handshake, Trophy } from "lucide-react";
-import { useCarousel } from "@/hooks/useCarousel";
+import { AnimateStagger, AnimateStaggerItem } from "./AnimateOnScroll";
 
-const pillars = [
+const VALUES = [
   {
-    icon: Eye,
-    label: "Visão",
-    title: "Referência em estratégia e posicionamento.",
-    body: "Ser reconhecida pela profundidade, clareza e impacto dos resultados que entregamos em estratégia, marketing e posicionamento de marcas.",
+    icon: "◈",
+    title: "Autoridade",
+    desc: "Construímos presença que antecede a conversa.",
   },
   {
-    icon: Compass,
-    label: "Missão",
-    title: "Transformar marcas em líderes de mercado.",
-    body: "Ajudar marcas e líderes a tornarem-se referências no seu mercado, com presença forte, autoridade consolidada e domínio concreto.",
+    icon: "◎",
+    title: "Integridade",
+    desc: "Conexão honesta. Sem atalhos, sem promessas vazias.",
   },
   {
-    icon: Sparkles,
-    label: "Propósito",
-    title: "Actuar com autoridade e domínio real.",
-    body: "Posicionar marcas para actuarem com autoridade e domínio concreto nos seus mercados, gerando impacto real e crescimento sustentável.",
+    icon: "◆",
+    title: "Excelência",
+    desc: "O padrão mínimo é o que o cliente ainda não espera.",
+  },
+  {
+    icon: "◉",
+    title: "Inovação",
+    desc: "Estratégia que evolui com o mercado e o lidera.",
   },
 ];
 
-const stats = [
-  {
-    icon: Handshake,
-    value: "+100",
-    label: "Projectos Entregues",
-    accent: "#14D6C7",
-  },
-  {
-    icon: Trophy,
-    value: "+20",
-    label: "Marcas Posicionadas",
-    accent: "#60A5FA",
-  },
-];
-
-function PillarCard({ p }: { p: (typeof pillars)[0] }) {
-  return (
-    <div
-      className="relative rounded-2xl p-6 h-full"
-      style={{
-        background: "rgba(5, 12, 58, 0.65)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow:
-          "0 8px 32px rgba(0,87,255,0.15), inset 0 1px 0 rgba(255,255,255,0.07)",
-      }}
-    >
-      {/* Left accent bar */}
-      <div
-        className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full"
-        style={{ background: "linear-gradient(180deg, #0057FF, #14D6C7)" }}
-      />
-      <motion.div
-        animate={{ y: [0, -4, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="relative w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-        style={{
-          background: "rgba(20, 214, 199, 0.1)",
-          border: "1px solid rgba(20, 214, 199, 0.18)",
-        }}
-      >
-        <p.icon size={20} className="text-[#14D6C7]" />
-      </motion.div>
-      <span className="relative text-[#14D6C7] text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-1.5 block">
-        {p.label}
-      </span>
-      <h3 className="relative text-white font-bold text-lg leading-snug mb-2">
-        {p.title}
-      </h3>
-      <p className="relative text-white/48 text-sm leading-relaxed">{p.body}</p>
-    </div>
-  );
-}
-
-function StatCard({ s }: { s: (typeof stats)[0] }) {
-  return (
-    <div className="flex flex-col items-center justify-center h-full px-5 py-7 text-center sm:px-8 sm:py-10">
-      <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
-        style={{
-          background: `${s.accent}12`,
-          border: `1px solid ${s.accent}20`,
-          filter: `drop-shadow(0 0 10px ${s.accent}22)`,
-        }}
-      >
-        <s.icon size={28} style={{ color: s.accent }} />
-      </motion.div>
-      <span className="mb-2 text-5xl font-black leading-none text-white sm:text-6xl lg:text-7xl">
-        {s.value}
-      </span>
-      <span className="text-sm font-semibold tracking-wide" style={{ color: s.accent }}>
-        {s.label}
-      </span>
-    </div>
-  );
-}
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
+});
 
 export default function Manifesto() {
-  /* Pillar carousel — mobile only (desktop shows 3 at once) */
-  const pillarC = useCarousel({
-    total: pillars.length,
-    mobileSPV: 1,
-    desktopSPV: 3,
-  });
-
-  /* Stats carousel — mobile only (desktop shows 2 at once) */
-  const statsC = useCarousel({
-    total: stats.length,
-    mobileSPV: 1,
-    desktopSPV: 2,
-    autoplayDelay: 4000,
-  });
-
   return (
     <section
-      className="relative overflow-hidden py-14 sm:py-20 lg:py-36"
-      style={{ background: "#00105C" }}
+      id="sobre"
+      style={{
+        background: "var(--kl-navy-soft, #050B3D)",
+        padding: "6rem 2rem",
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
-      {/* Ambient glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[400px] rounded-full bg-[#0057FF]/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#14D6C7]/5 blur-3xl pointer-events-none" />
+      {/* Subtle radial glow */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-        style={{ background: "linear-gradient(to top, #001B8F, transparent)" }}
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: 480,
+          height: 480,
+          borderRadius: "50%",
+          background: "rgba(37,99,235,0.06)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+        }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-10 lg:mb-16"
-        >
-          <p className="text-[#14D6C7] text-xs font-bold uppercase tracking-[0.3em] mb-4">
-            Quem Somos
-          </p>
-          <h2 className="mx-auto max-w-2xl text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-5xl">
-            Mais do que uma agência.{" "}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: "linear-gradient(90deg, #14D6C7, #60A5FA)",
-              }}
-            >
-              Um parceiro estratégico.
-            </span>
-          </h2>
-          <p className="text-white/55 text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
-            Ajudamos marcas e líderes a obter resultados concretos e a se
-            posicionarem no mercado, mesmo quando começam do zero.
-          </p>
-        </motion.div>
+      <div
+        style={{
+          maxWidth: 1120,
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "5rem",
+          alignItems: "center",
+          position: "relative",
+        }}
+        className="flex-col-on-mobile"
+      >
+        {/* Left — Label + Headline + Body */}
+        <div>
+          <motion.p {...fadeUp(0)} className="kl-label" style={{ marginBottom: "1.2rem" }}>
+            O Nosso Manifesto
+          </motion.p>
 
-        {/* ── Pillars ── */}
-
-        {/* Mobile: carousel (1/view) */}
-        <div
-          className="lg:hidden mb-8 overflow-hidden"
-          onTouchStart={pillarC.onTouchStart}
-          onTouchEnd={pillarC.onTouchEnd}
-        >
           <motion.div
-            style={pillarC.trackStyle}
-            animate={{ x: pillarC.translateX }}
-            transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+            {...fadeUp(0.08)}
+            className="kl-divider"
+            style={{ marginBottom: "1.8rem" }}
+          />
+
+          <motion.h2
+            {...fadeUp(0.16)}
+            className="kl-heading"
+            style={{
+              fontSize: "clamp(1.8rem, 3.5vw, 2.9rem)",
+              color: "#fff",
+              marginBottom: "1.8rem",
+            }}
           >
-            {Array.from({ length: pillarC.totalSlots }, (_, i) => (
-              <div
-                key={i}
-                style={{ width: pillarC.itemWidth, flexShrink: 0 }}
-                className="px-2"
-              >
-                {pillars[i] && <PillarCard p={pillars[i]} />}
-              </div>
-            ))}
-          </motion.div>
+            A KLAgency não cria campanhas.{" "}
+            <span style={{ color: "#93C5FD", fontStyle: "italic" }}>
+              Constrói percepção.
+            </span>
+          </motion.h2>
 
-          {/* Pillar dots */}
-          <div className="flex items-center justify-center gap-2 mt-4">
-            {Array.from({ length: pillarC.totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => pillarC.goTo(i)}
-                aria-label={`Pilar ${i + 1}`}
-              >
-                <motion.div
-                  animate={{
-                    width: i === pillarC.page ? 20 : 7,
-                    opacity: i === pillarC.page ? 1 : 0.3,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="h-1 rounded-full bg-[#14D6C7]"
-                />
-              </button>
-            ))}
-          </div>
+          <motion.p {...fadeUp(0.24)} className="kl-body" style={{ marginBottom: "1.2rem" }}>
+            Não vendemos serviços. Entregamos posicionamento. Cada marca que
+            trabalhamos sai mais forte, mais clara e mais reconhecida.
+          </motion.p>
+
+          <motion.p {...fadeUp(0.32)} className="kl-body">
+            Começamos pela raiz — identidade, propósito e clareza — antes de
+            falar em estratégia. Porque uma marca sem fundação é apenas barulho.
+          </motion.p>
         </div>
 
-        {/* Desktop: 3-column grid */}
-        <div className="hidden lg:grid grid-cols-3 gap-6 mb-12">
-          {pillars.map((p, i) => (
-            <motion.div
-              key={p.label}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.7, delay: i * 0.12, ease: "easeOut" }}
-            >
-              <PillarCard p={p} />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* ── Stats ribbon ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="rounded-2xl overflow-hidden"
+        {/* Right — 2×2 values grid com AnimateStagger */}
+        <AnimateStagger
           style={{
-            background: "rgba(5, 12, 58, 0.65)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(20,214,199,0.12)",
-            boxShadow:
-              "0 8px 40px rgba(0,27,143,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "1rem",
           }}
         >
-          {/* Mobile: stats carousel */}
-          <div
-            className="lg:hidden overflow-hidden"
-            onTouchStart={statsC.onTouchStart}
-            onTouchEnd={statsC.onTouchEnd}
-          >
-            <motion.div
-              style={statsC.trackStyle}
-              animate={{ x: statsC.translateX }}
-              transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-            >
-              {Array.from({ length: statsC.totalSlots }, (_, i) => (
-                <div
-                  key={i}
-                  style={{ width: statsC.itemWidth, flexShrink: 0 }}
-                >
-                  {stats[i] && <StatCard s={stats[i]} />}
+          {VALUES.map(({ icon, title, desc }) => (
+            <AnimateStaggerItem key={title}>
+              <div className="kl-glass" style={{ padding: "1.5rem", height: "100%" }}>
+                <div style={{ fontSize: "1.3rem", marginBottom: "0.7rem", color: "#60A5FA" }}>
+                  {icon}
                 </div>
-              ))}
-            </motion.div>
-            {/* Dots */}
-            <div className="flex justify-center gap-2 pb-5">
-              {Array.from({ length: statsC.totalPages }, (_, i) => (
-                <button key={i} onClick={() => statsC.goTo(i)} aria-label={`Estatística ${i + 1}`}>
-                  <motion.div
-                    animate={{
-                      width: i === statsC.page ? 16 : 6,
-                      opacity: i === statsC.page ? 1 : 0.3,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="h-1 rounded-full bg-[#14D6C7]"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop: side by side */}
-          <div className="hidden lg:grid grid-cols-2">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="relative"
-                style={
-                  i === 0
-                    ? {
-                        borderRight: "1px solid rgba(255,255,255,0.07)",
-                      }
-                    : {}
-                }
-              >
-                <StatCard s={s} />
+                <div
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 600,
+                    fontSize: "0.9rem",
+                    marginBottom: "0.4rem",
+                    color: "#fff",
+                  }}
+                >
+                  {title}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "var(--kl-muted)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {desc}
+                </div>
               </div>
-            ))}
-          </div>
-        </motion.div>
+            </AnimateStaggerItem>
+          ))}
+        </AnimateStagger>
       </div>
+
+      {/* Mobile: stack columns */}
+      <style>{`
+        @media (max-width: 768px) {
+          .flex-col-on-mobile {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
