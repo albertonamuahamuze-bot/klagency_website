@@ -1,12 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { AnimateOnScroll } from "./AnimateOnScroll";
+import {
+  FadeUpScroll,
+  StaggerScroll,
+  StaggerScrollItem,
+  HoverLiftCard,
+  HoverIconButton,
+  HighlightReveal,
+} from "./AnimateOnScroll";
 
 const SERVICES = [
   {
@@ -47,10 +53,6 @@ const SERVICES = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
-};
 
 function ServiceCard({
   s,
@@ -132,6 +134,29 @@ function ServiceCard({
       >
         {s.desc}
       </div>
+
+      <div
+        style={{
+          maxHeight: active ? "40px" : "0px",
+          overflow: "hidden",
+          transition: "max-height 0.35s ease",
+        }}
+      >
+        <HoverIconButton
+          label="Ver detalhe"
+          href="#contacto"
+          style={{
+            marginTop: "0.8rem",
+            fontFamily: "var(--font-body)",
+            fontSize: "0.75rem",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#93C5FD",
+            textDecoration: "none",
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -148,23 +173,31 @@ export default function Services() {
   }, []);
 
   const SectionHeader = (
-    <AnimateOnScroll style={{ marginBottom: "4rem" }}>
-      <p className="kl-label" style={{ marginBottom: "1rem" }}>Serviços</p>
-      <div className="kl-divider" style={{ marginBottom: "1.5rem" }} />
-      <h2
-        className="kl-heading"
-        style={{
-          fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-          color: "#fff",
-          maxWidth: 520,
-        }}
-      >
-        Soluções estratégicas.{" "}
-        <span style={{ color: "#93C5FD", fontStyle: "italic" }}>
-          Menos ruído. Mais direcção.
-        </span>
-      </h2>
-    </AnimateOnScroll>
+    <div style={{ marginBottom: "4rem" }}>
+      <FadeUpScroll>
+        <p className="kl-label" style={{ marginBottom: "1rem" }}>Serviços</p>
+      </FadeUpScroll>
+      <FadeUpScroll delay={0.08}>
+        <div className="kl-divider" style={{ marginBottom: "1.5rem" }} />
+      </FadeUpScroll>
+      <FadeUpScroll delay={0.16}>
+        <h2
+          className="kl-heading"
+          style={{
+            fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
+            color: "#fff",
+            maxWidth: 520,
+          }}
+        >
+          Soluções estratégicas.{" "}
+          <HighlightReveal>
+            <em style={{ color: "#93C5FD", fontStyle: "italic" }}>
+              Menos ruído. Mais direcção.
+            </em>
+          </HighlightReveal>
+        </h2>
+      </FadeUpScroll>
+    </div>
   );
 
   if (isMobile) {
@@ -230,12 +263,8 @@ export default function Services() {
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
         {SectionHeader}
 
-        {/* Grid 2×3 com stagger */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        {/* Grid 2×3 com StaggerScroll + HoverLiftCard */}
+        <StaggerScroll
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -246,23 +275,24 @@ export default function Services() {
           }}
         >
           {SERVICES.map((s, i) => (
-            <motion.div
+            <StaggerScrollItem
               key={s.number}
-              variants={cardVariants}
               style={{
                 borderBottom: i < 4 ? "1px solid var(--kl-border)" : "none",
                 borderRight: i % 2 === 0 ? "1px solid var(--kl-border)" : "none",
               }}
             >
-              <ServiceCard
-                s={s}
-                active={active === i}
-                index={i}
-                onActivate={setActive}
-              />
-            </motion.div>
+              <HoverLiftCard style={{ height: "100%" }}>
+                <ServiceCard
+                  s={s}
+                  active={active === i}
+                  index={i}
+                  onActivate={setActive}
+                />
+              </HoverLiftCard>
+            </StaggerScrollItem>
           ))}
-        </motion.div>
+        </StaggerScroll>
       </div>
 
       {/* Transição suave Serviços → Ticker */}

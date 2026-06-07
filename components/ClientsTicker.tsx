@@ -1,5 +1,7 @@
 "use client";
 
+import { ClientLogo, FadeScroll } from "./AnimateOnScroll";
+
 const CLIENTS = [
   "IP-MLNG",
   "Bispo Kobbe",
@@ -23,47 +25,50 @@ export default function ClientsTicker() {
         overflow: "hidden",
       }}
     >
-      {/* Label */}
-      <p
+      {/* Label com fade */}
+      <FadeScroll style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.65rem",
+            fontWeight: 600,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "var(--kl-muted)",
+          }}
+        >
+          Aprovado por organizações de excelência e grande renome
+        </p>
+      </FadeScroll>
+
+      {/* Máscara fade nas extremidades — padrão Dintell */}
+      <div
         style={{
-          textAlign: "center",
-          fontFamily: "var(--font-body)",
-          fontSize: "0.65rem",
-          fontWeight: 600,
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
-          color: "var(--kl-muted)",
-          marginBottom: "1.5rem",
+          overflow: "hidden",
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
         }}
       >
-        Aprovado por organizações de excelência e grande renome
-      </p>
-
-      <div className="kl-ticker-track">
-        {items.map((client, i) => (
-          <span
-            key={`${client}-${i}`}
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 400,
-              fontSize: "1.05rem",
-              color: "var(--kl-muted)",
-              letterSpacing: "0.08em",
-              whiteSpace: "nowrap",
-              transition: "color 0.2s",
-              cursor: "default",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLSpanElement).style.color = "#fff")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLSpanElement).style.color =
-                "var(--kl-muted)")
-            }
-          >
-            {client}
-          </span>
-        ))}
+        <div className="kl-ticker-track">
+          {items.map((client, i) => (
+            <ClientLogo key={`${client}-${i}`}>
+              <span
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 400,
+                  fontSize: "1.05rem",
+                  color: "var(--kl-muted)",
+                  letterSpacing: "0.08em",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {client}
+              </span>
+            </ClientLogo>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { AnimateStagger, AnimateStaggerItem } from "./AnimateOnScroll";
+import {
+  FadeUpScroll,
+  StaggerScroll,
+  StaggerScrollItem,
+  HoverLiftCard,
+  HighlightReveal,
+} from "./AnimateOnScroll";
 
 const VALUES = [
   {
@@ -25,13 +30,6 @@ const VALUES = [
     desc: "Estratégia que evolui com o mercado e o lidera.",
   },
 ];
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
-});
 
 export default function Manifesto() {
   return (
@@ -74,44 +72,51 @@ export default function Manifesto() {
       >
         {/* Left — Label + Headline + Body */}
         <div>
-          <motion.p {...fadeUp(0)} className="kl-label" style={{ marginBottom: "1.2rem" }}>
-            O Nosso Manifesto
-          </motion.p>
+          <FadeUpScroll>
+            <p className="kl-label" style={{ marginBottom: "1.2rem" }}>
+              O Nosso Manifesto
+            </p>
+          </FadeUpScroll>
 
-          <motion.div
-            {...fadeUp(0.08)}
-            className="kl-divider"
-            style={{ marginBottom: "1.8rem" }}
-          />
+          <FadeUpScroll delay={0.08}>
+            <div className="kl-divider" style={{ marginBottom: "1.8rem" }} />
+          </FadeUpScroll>
 
-          <motion.h2
-            {...fadeUp(0.16)}
-            className="kl-heading"
-            style={{
-              fontSize: "clamp(1.8rem, 3.5vw, 2.9rem)",
-              color: "#fff",
-              marginBottom: "1.8rem",
-            }}
-          >
-            A KLAgency não cria campanhas.{" "}
-            <span style={{ color: "#93C5FD", fontStyle: "italic" }}>
-              Constrói percepção.
-            </span>
-          </motion.h2>
+          <FadeUpScroll delay={0.16}>
+            <h2
+              className="kl-heading"
+              style={{
+                fontSize: "clamp(1.8rem, 3.5vw, 2.9rem)",
+                color: "#fff",
+                marginBottom: "1.8rem",
+              }}
+            >
+              A KLAgency não cria campanhas.{" "}
+              <HighlightReveal>
+                <em style={{ color: "#93C5FD", fontStyle: "italic" }}>
+                  Constrói percepção.
+                </em>
+              </HighlightReveal>
+            </h2>
+          </FadeUpScroll>
 
-          <motion.p {...fadeUp(0.24)} className="kl-body" style={{ marginBottom: "1.2rem" }}>
-            Não vendemos serviços. Entregamos posicionamento. Cada marca que
-            trabalhamos sai mais forte, mais clara e mais reconhecida.
-          </motion.p>
+          <FadeUpScroll delay={0.24}>
+            <p className="kl-body" style={{ marginBottom: "1.2rem" }}>
+              Não vendemos serviços. Entregamos posicionamento. Cada marca que
+              trabalhamos sai mais forte, mais clara e mais reconhecida.
+            </p>
+          </FadeUpScroll>
 
-          <motion.p {...fadeUp(0.32)} className="kl-body">
-            Começamos pela raiz — identidade, propósito e clareza — antes de
-            falar em estratégia. Porque uma marca sem fundação é apenas barulho.
-          </motion.p>
+          <FadeUpScroll delay={0.32}>
+            <p className="kl-body">
+              Começamos pela raiz — identidade, propósito e clareza — antes de
+              falar em estratégia. Porque uma marca sem fundação é apenas barulho.
+            </p>
+          </FadeUpScroll>
         </div>
 
-        {/* Right — 2×2 values grid com AnimateStagger */}
-        <AnimateStagger
+        {/* Right — 2×2 values grid com StaggerScroll + HoverLiftCard */}
+        <StaggerScroll
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -119,35 +124,37 @@ export default function Manifesto() {
           }}
         >
           {VALUES.map(({ icon, title, desc }) => (
-            <AnimateStaggerItem key={title}>
-              <div className="kl-glass" style={{ padding: "1.5rem", height: "100%" }}>
-                <div style={{ fontSize: "1.3rem", marginBottom: "0.7rem", color: "#60A5FA" }}>
-                  {icon}
+            <StaggerScrollItem key={title}>
+              <HoverLiftCard style={{ height: "100%" }}>
+                <div className="kl-glass" style={{ padding: "1.5rem", height: "100%" }}>
+                  <div style={{ fontSize: "1.3rem", marginBottom: "0.7rem", color: "#60A5FA" }}>
+                    {icon}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontWeight: 600,
+                      fontSize: "0.9rem",
+                      marginBottom: "0.4rem",
+                      color: "#fff",
+                    }}
+                  >
+                    {title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.78rem",
+                      color: "var(--kl-muted)",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {desc}
+                  </div>
                 </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontWeight: 600,
-                    fontSize: "0.9rem",
-                    marginBottom: "0.4rem",
-                    color: "#fff",
-                  }}
-                >
-                  {title}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.78rem",
-                    color: "var(--kl-muted)",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {desc}
-                </div>
-              </div>
-            </AnimateStaggerItem>
+              </HoverLiftCard>
+            </StaggerScrollItem>
           ))}
-        </AnimateStagger>
+        </StaggerScroll>
       </div>
 
       {/* Transição suave Manifesto → Serviços */}

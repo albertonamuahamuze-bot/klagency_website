@@ -1,7 +1,7 @@
 "use client";
 
 import { CONTACTS, NAV_LINKS, SOCIAL_LINKS, WHATSAPP_PRIMARY } from "@/lib/constants";
-import { AnimateOnScroll, AnimateStagger, AnimateStaggerItem } from "./AnimateOnScroll";
+import { FadeUpScroll, StaggerScroll, StaggerScrollItem } from "./AnimateOnScroll";
 
 const SERVICE_LINKS = [
   "Posicionamento Estratégico",
@@ -24,8 +24,8 @@ export default function Footer() {
       }}
     >
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-        {/* Top grid com AnimateStagger */}
-        <AnimateStagger
+        {/* Top grid com StaggerScroll */}
+        <StaggerScroll
           style={{
             display: "grid",
             gridTemplateColumns: "1.4fr 1fr 1.2fr 1fr",
@@ -35,7 +35,7 @@ export default function Footer() {
           className="footer-grid"
         >
           {/* Brand column */}
-          <AnimateStaggerItem>
+          <StaggerScrollItem>
             <a
               href="#home"
               style={{
@@ -151,10 +151,10 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-          </AnimateStaggerItem>
+          </StaggerScrollItem>
 
           {/* Navigation */}
-          <AnimateStaggerItem>
+          <StaggerScrollItem>
             <h4 className="kl-label" style={{ marginBottom: "1.2rem" }}>Navegação</h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {NAV_LINKS.map((link) => (
@@ -176,10 +176,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </AnimateStaggerItem>
+          </StaggerScrollItem>
 
           {/* Services */}
-          <AnimateStaggerItem>
+          <StaggerScrollItem>
             <h4 className="kl-label" style={{ marginBottom: "1.2rem" }}>Serviços</h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {SERVICE_LINKS.map((service) => (
@@ -201,10 +201,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </AnimateStaggerItem>
+          </StaggerScrollItem>
 
           {/* Contact */}
-          <AnimateStaggerItem>
+          <StaggerScrollItem>
             <h4 className="kl-label" style={{ marginBottom: "1.2rem" }}>Contacto</h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
               {CONTACTS.phones.map((phone) => (
@@ -239,11 +239,11 @@ export default function Footer() {
             >
               WhatsApp
             </a>
-          </AnimateStaggerItem>
-        </AnimateStagger>
+          </StaggerScrollItem>
+        </StaggerScroll>
 
         {/* Bottom bar */}
-        <AnimateOnScroll
+        <FadeUpScroll
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -273,7 +273,7 @@ export default function Footer() {
           >
             {CONTACTS.website}
           </a>
-        </AnimateOnScroll>
+        </FadeUpScroll>
       </div>
 
       {/* Mobile responsive */}

@@ -1,7 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { WHATSAPP_PRIMARY } from "@/lib/constants";
+import {
+  HeroStagger,
+  HeroStaggerItem,
+  ScrollProgressIndicator,
+  SwitchTextButton,
+  HighlightReveal,
+} from "./AnimateOnScroll";
 
 const STATS = [
   { num: "+100", label: "Projectos entregues" },
@@ -62,98 +68,105 @@ export default function Hero() {
         className="relative z-10 mx-auto w-full px-5 sm:px-6 lg:px-8"
         style={{ maxWidth: 1120, paddingTop: "100px", paddingBottom: "80px" }}
       >
-        {/* 3D entry — tag + headline + subtitle + CTAs */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.05, rotateX: 30 }}
-          animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0, 0.25, 1] }}
-          style={{ transformPerspective: 1200 }}
-        >
+        {/* HeroStagger — cada filho entra com stagger 300ms, scale + rotateX */}
+        <HeroStagger>
           {/* Tag pill */}
-          <div className="kl-tag" style={{ marginBottom: "2rem", display: "inline-flex" }}>
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: "#60A5FA",
-                display: "inline-block",
-                flexShrink: 0,
-              }}
-            />
-            Estratégia · Posicionamento · Crescimento
-          </div>
+          <HeroStaggerItem>
+            <div className="kl-tag" style={{ marginBottom: "2rem", display: "inline-flex" }}>
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "#60A5FA",
+                  display: "inline-block",
+                  flexShrink: 0,
+                }}
+              />
+              Estratégia · Posicionamento · Crescimento
+            </div>
+          </HeroStaggerItem>
 
           {/* Headline */}
-          <h1
-            className="kl-display"
-            style={{
-              fontSize: "clamp(2.4rem, 6vw, 5.2rem)",
-              maxWidth: "780px",
-              marginBottom: "1.8rem",
-              color: "#fff",
-            }}
-          >
-            Posicionamos marcas e líderes para{" "}
-            <em style={{ fontStyle: "italic", color: "#93C5FD" }}>dominar</em>{" "}
-            os seus mercados.
-          </h1>
+          <HeroStaggerItem>
+            <h1
+              className="kl-display"
+              style={{
+                fontSize: "clamp(2.4rem, 6vw, 5.2rem)",
+                maxWidth: "780px",
+                marginBottom: "1.8rem",
+                color: "#fff",
+              }}
+            >
+              Posicionamos marcas e líderes para{" "}
+              <HighlightReveal>
+                <em style={{ fontStyle: "italic", color: "#93C5FD" }}>dominar</em>
+              </HighlightReveal>{" "}
+              os seus mercados.
+            </h1>
+          </HeroStaggerItem>
 
           {/* Subtitle */}
-          <p
-            className="kl-subheading"
-            style={{ fontSize: "1.1rem", maxWidth: "560px", marginBottom: "3rem" }}
-          >
-            Da identidade à estratégia. Do posicionamento ao domínio.
-            <br className="hidden sm:block" />
-            Trabalhamos com marcas que querem liderar — não apenas existir.
-          </p>
+          <HeroStaggerItem>
+            <p
+              className="kl-subheading"
+              style={{ fontSize: "1.1rem", maxWidth: "560px", marginBottom: "3rem" }}
+            >
+              Da identidade à estratégia. Do posicionamento ao domínio.
+              <br className="hidden sm:block" />
+              Trabalhamos com marcas que querem liderar — não apenas existir.
+            </p>
+          </HeroStaggerItem>
 
           {/* CTAs */}
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <a
-              href={WHATSAPP_PRIMARY}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="kl-btn-primary"
-            >
-              Falar com a KLAgency →
-            </a>
-            <a href="#portfolio" className="kl-btn-ghost">
-              Ver portfólio
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Stats row — animação separada com delay maior */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
-          style={{
-            display: "flex",
-            gap: "clamp(1.5rem, 4vw, 3rem)",
-            flexWrap: "wrap",
-            borderTop: "1px solid var(--kl-border)",
-            paddingTop: "2.5rem",
-            marginTop: "4.5rem",
-          }}
-        >
-          {STATS.map(({ num, label }) => (
-            <div key={label}>
-              <div
-                className="kl-display"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "#fff", marginBottom: "0.35rem" }}
-              >
-                {num}
-              </div>
-              <div style={{ fontSize: "0.78rem", color: "var(--kl-muted)", letterSpacing: "0.05em" }}>
-                {label}
-              </div>
+          <HeroStaggerItem>
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <SwitchTextButton
+                text="Falar com a KLAgency →"
+                href={WHATSAPP_PRIMARY}
+                className="kl-btn-primary"
+                primary
+              />
+              <SwitchTextButton
+                text="Ver portfólio"
+                href="#portfolio"
+                className="kl-btn-ghost"
+              />
             </div>
-          ))}
-        </motion.div>
+          </HeroStaggerItem>
+
+          {/* Stats row */}
+          <HeroStaggerItem>
+            <div
+              style={{
+                display: "flex",
+                gap: "clamp(1.5rem, 4vw, 3rem)",
+                flexWrap: "wrap",
+                borderTop: "1px solid var(--kl-border)",
+                paddingTop: "2.5rem",
+                marginTop: "4.5rem",
+              }}
+            >
+              {STATS.map(({ num, label }) => (
+                <div key={label}>
+                  <div
+                    className="kl-display"
+                    style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "#fff", marginBottom: "0.35rem" }}
+                  >
+                    {num}
+                  </div>
+                  <div style={{ fontSize: "0.78rem", color: "var(--kl-muted)", letterSpacing: "0.05em" }}>
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </HeroStaggerItem>
+        </HeroStagger>
       </div>
+
+      {/* Indicador de scroll lateral fixo */}
+      <ScrollProgressIndicator />
 
       {/* Wave SVG — transição suave Hero → Manifesto (desktop) */}
       <div

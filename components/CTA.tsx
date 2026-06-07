@@ -1,7 +1,12 @@
 "use client";
 
 import { WHATSAPP_PRIMARY } from "@/lib/constants";
-import { AnimateOnScroll } from "./AnimateOnScroll";
+import {
+  StaggerScroll,
+  StaggerScrollItem,
+  HighlightReveal,
+  SwitchTextButton,
+} from "./AnimateOnScroll";
 
 export default function CTA() {
   return (
@@ -33,8 +38,8 @@ export default function CTA() {
         K
       </div>
 
-      <AnimateOnScroll
-        delay={0.1}
+      <StaggerScroll
+        distance={50}
         style={{
           maxWidth: 760,
           margin: "0 auto",
@@ -43,57 +48,65 @@ export default function CTA() {
         }}
       >
         {/* Tag */}
-        <div
-          className="kl-tag"
-          style={{ marginBottom: "2rem", display: "inline-flex" }}
-        >
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              background: "#60A5FA",
-              display: "inline-block",
-              flexShrink: 0,
-            }}
-          />
-          A sua próxima fase começa aqui
-        </div>
+        <StaggerScrollItem distance={50}>
+          <div
+            className="kl-tag"
+            style={{ marginBottom: "2rem", display: "inline-flex" }}
+          >
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: "#60A5FA",
+                display: "inline-block",
+                flexShrink: 0,
+              }}
+            />
+            A sua próxima fase começa aqui
+          </div>
+        </StaggerScrollItem>
 
         {/* Headline */}
-        <h2
-          className="kl-heading"
-          style={{
-            fontSize: "clamp(2rem, 4vw, 3.4rem)",
-            color: "#fff",
-            marginBottom: "1.5rem",
-          }}
-        >
-          A sua marca não precisa de mais ruído.{" "}
-          <span style={{ color: "#93C5FD", fontStyle: "italic" }}>
-            Precisa de direcção.
-          </span>
-        </h2>
+        <StaggerScrollItem distance={50}>
+          <h2
+            className="kl-heading"
+            style={{
+              fontSize: "clamp(2rem, 4vw, 3.4rem)",
+              color: "#fff",
+              marginBottom: "1.5rem",
+            }}
+          >
+            A sua marca não precisa de mais ruído.{" "}
+            <HighlightReveal>
+              <em style={{ color: "#93C5FD", fontStyle: "italic" }}>
+                Precisa de direcção.
+              </em>
+            </HighlightReveal>
+          </h2>
+        </StaggerScrollItem>
 
         {/* Subtitle */}
-        <p
-          className="kl-subheading"
-          style={{ fontSize: "1.1rem", marginBottom: "2.8rem" }}
-        >
-          A sua próxima fase começa com uma conversa.
-        </p>
+        <StaggerScrollItem distance={50}>
+          <p
+            className="kl-subheading"
+            style={{ fontSize: "1.1rem", marginBottom: "2.8rem" }}
+          >
+            A sua próxima fase começa com uma conversa.
+          </p>
+        </StaggerScrollItem>
 
         {/* CTA button */}
-        <a
-          href={WHATSAPP_PRIMARY}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="kl-btn-primary"
-          style={{ fontSize: "0.9rem" }}
-        >
-          Iniciar conversa estratégica →
-        </a>
-      </AnimateOnScroll>
+        <StaggerScrollItem distance={50}>
+          <SwitchTextButton
+            text="Iniciar conversa estratégica →"
+            href={WHATSAPP_PRIMARY}
+            className="kl-btn-primary"
+            primary
+            style={{ fontSize: "0.9rem" }}
+          />
+        </StaggerScrollItem>
+      </StaggerScroll>
 
       {/* Transição suave CTA → Contacto */}
       <div style={{

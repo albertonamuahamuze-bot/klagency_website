@@ -1,32 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion, useScroll } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_PRIMARY } from "@/lib/constants";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrollY } = useScroll();
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    handler();
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
+    return scrollY.on("change", (y) => setIsSticky(y > 40));
+  }, [scrollY]);
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50">
       {/* Main bar */}
-      <div
-        style={{
-          background: scrolled ? "rgba(2,6,23,0.92)" : "transparent",
-          backdropFilter: scrolled ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.07)" : "none",
-          transition: "all 0.3s ease",
+      <motion.div
+        animate={{
+          backdropFilter: isSticky ? "blur(20px)" : "blur(0px)",
+          backgroundColor: isSticky ? "rgba(2,6,23,0.92)" : "transparent",
+          borderBottomColor: isSticky ? "rgba(255,255,255,0.07)" : "transparent",
         }}
+        transition={{ duration: 0.3 }}
+        style={{
+          borderBottom: "1px solid transparent",
+          WebkitBackdropFilter: isSticky ? "blur(20px)" : "blur(0px)",
+        } as React.CSSProperties}
       >
         <div className="mx-auto flex max-w-[1120px] items-center justify-between px-6 py-4 lg:px-8">
           {/* Logo */}
@@ -92,17 +92,43 @@ export default function Header() {
             Iniciar projecto →
           </a>
 
-          {/* Hamburger — mobile */}
+          {/* Hamburger — mobile com linhas animadas */}
           <button
             className="md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
-            style={{ color: "var(--kl-silver)", background: "none", border: "none", cursor: "pointer" }}
+            style={{
+              background: "none", border: "none", cursor: "pointer",
+              padding: 4, display: "flex", flexDirection: "column", gap: 0,
+            }}
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            <motion.span
+              animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 8 : 0 }}
+              transition={{ duration: 0.25 }}
+              style={{
+                display: "block", width: 24, height: 2,
+                background: "#fff", marginBottom: 6, borderRadius: 2,
+              }}
+            />
+            <motion.span
+              animate={{ opacity: mobileOpen ? 0 : 1 }}
+              transition={{ duration: 0.25 }}
+              style={{
+                display: "block", width: 24, height: 2,
+                background: "#fff", marginBottom: 6, borderRadius: 2,
+              }}
+            />
+            <motion.span
+              animate={{ rotate: mobileOpen ? -45 : 0, y: mobileOpen ? -8 : 0 }}
+              transition={{ duration: 0.25 }}
+              style={{
+                display: "block", width: 24, height: 2,
+                background: "#fff", borderRadius: 2,
+              }}
+            />
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Mobile menu */}
       <AnimatePresence>
