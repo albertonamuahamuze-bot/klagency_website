@@ -154,4 +154,36 @@
 ✅ **BRAND CONSISTENCY** — "KLAgency" em todo o site  
 ✅ **WHATSAPP LINKS** — Todos correctos via `WHATSAPP_PRIMARY`  
 
-*Última actualização: Fase 11 concluída — 2026-06-05*
+---
+
+## ELEVAÇÃO L99 — PROMPT_ELEVACAO_L99_KLAGENCY.md
+
+### Dependências instaladas
+| Pacote | Versão |
+|---|---|
+| `framer-motion` | 12.40.0 |
+| `swiper` | 12.2.0 |
+
+### Componentes novos criados
+- `components/AnimateOnScroll.tsx` — `AnimateOnScroll`, `AnimateStagger`, `AnimateStaggerItem`
+- `components/Testimonial.tsx` — retorna `null` (aguarda dados reais)
+
+### Componentes modificados (L99)
+| Componente | Alteração |
+|---|---|
+| `Hero.tsx` | Wave SVG decorativo na base (desktop), animação 3D 3A |
+| `Manifesto.tsx` | Stagger + gradiente de transição Manifesto→Serviços |
+| `Services.tsx` | Overflow hidden + gradiente Serviços→Ticker + Swiper mobile |
+| `CTA.tsx` | AnimateOnScroll + gradiente CTA→Contacto |
+| `Footer.tsx` | AnimateStagger nas 4 colunas |
+| `app/page.tsx` | Testimonial adicionado entre ClientsTicker e CTA |
+| `app/globals.css` | `.hero-wave` media query + conveyor belt CSS |
+
+### Build final L99
+`✅ Compiled in 67s — TypeScript OK — 4 static pages — Exit code 0`
+
+### Pendente L99
+- `Testimonial.tsx` retorna `null` — adicionar dados reais quando fornecidos
+- Componentes legacy com tema claro/copy inglês: ver `findings.md`
+
+*Última actualização: L99 Elevação concluída — 2026-06-07*

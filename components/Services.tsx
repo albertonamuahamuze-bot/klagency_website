@@ -223,6 +223,8 @@ export default function Services() {
       style={{
         background: "var(--kl-navy, #020617)",
         padding: "6rem 2rem",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
@@ -262,6 +264,13 @@ export default function Services() {
           ))}
         </motion.div>
       </div>
+
+      {/* Transição suave Serviços → Ticker */}
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, right: 0, height: 60,
+        background: "linear-gradient(to bottom, transparent, #050B3D)",
+        pointerEvents: "none",
+      }} />
     </section>
   );
 }

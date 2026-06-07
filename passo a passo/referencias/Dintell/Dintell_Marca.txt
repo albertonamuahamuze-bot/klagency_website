@@ -1,0 +1,107 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Plus Jakarta Sans",
+      "count": 92
+    },
+    {
+      "family": "sans-serif",
+      "count": 92
+    }
+  ],
+  "colors": {
+    "primary": "#1769FF",
+    "secondary": "#3B5998",
+    "accent": "#252840",
+    "background": "#FFFFFF",
+    "textPrimary": "#252840",
+    "link": "#252840"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Plus Jakarta Sans",
+      "heading": "Plus Jakarta Sans"
+    },
+    "fontStacks": {
+      "body": [
+        "Plus Jakarta Sans",
+        "sans-serif"
+      ],
+      "heading": [
+        "Plus Jakarta Sans",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Plus Jakarta Sans",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "36px",
+      "h2": "55.008px",
+      "body": "18px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "5px"
+  },
+  "components": {},
+  "images": {
+    "favicon": "https://dintell.co.mz/img/favicon.png?v=1780582115",
+    "ogImage": "https://www.dintell.co.mz/img/wp.jpg"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": -1,
+    "reasoning": "LLM failed",
+    "confidence": 0,
+    "rejected": true,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "confidence": 0
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "unknown"
+  },
+  "designSystem": {
+    "framework": "unknown",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": false,
+      "finalSource": "fallback",
+      "error": "LLM failed",
+      "rawLogoSelection": {
+        "selectedLogoIndex": -1,
+        "selectedLogoReasoning": "LLM failed",
+        "confidence": 0
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": false,
+      "error": "LLM call failed or returned fallback values"
+    }
+  }
+}

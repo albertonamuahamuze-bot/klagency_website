@@ -94,6 +94,13 @@ export default function CTA() {
           Iniciar conversa estratégica →
         </a>
       </AnimateOnScroll>
+
+      {/* Transição suave CTA → Contacto */}
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, right: 0, height: 80,
+        background: "linear-gradient(to bottom, transparent, #020617)",
+        pointerEvents: "none",
+      }} />
     </section>
   );
 }

@@ -224,6 +224,11 @@
   margin: 0 auto;
 }
 
+/* ── Hero wave — desktop only ── */
+@media (min-width: 768px) {
+  .hero-wave { display: block !important; }
+}
+
 /* ── Animation utilities ── */
 .fade-up { animation: fadeUp 0.65s ease both; }
 .delay-1 { animation-delay: 0.12s; }

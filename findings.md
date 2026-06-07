@@ -106,4 +106,27 @@ Não foi confirmado se existe `components/Header.tsx` no projecto actual.
 
 ---
 
-*Última actualização: Protocolo 0 — aguardar confirmação Fase 1*
+## ELEVAÇÃO L99 — AUDITORIA GREP (Passo 10)
+
+### KKLAgency — LIMPO ✅
+Nenhuma ocorrência em `components/` ou `app/`.
+
+### Textos em inglês — COMPONENTES LEGACY (inactivos)
+`lib/site-content.ts` contém "Innovation with Excellence", "Sustainable Solutions", "High-performance Results".
+Importado por `Pillars.tsx` e `LogoMarquee.tsx` — **não activos em `app/page.tsx`**.
+Ação futura: converter copy para português antes de reactivar.
+
+### Cores de tema claro (#F6F9FC, #EEF4FB, #101828) — COMPONENTES LEGACY
+Encontrado em: `About.tsx`, `Pillars.tsx`, `LogoMarquee.tsx`, `ConversionPopup.tsx`.
+Nenhum activo na homepage. Ação futura: converter para paleta oficial.
+
+### "KL Agency" com espaço — COMPONENTES LEGACY
+Encontrado em: `Differentials.tsx` (2×), `CinematicSection.tsx` (2×).
+Não activos em `app/page.tsx`. Ação futura: corrigir para "KLAgency" antes de reactivar.
+
+### Testimonial — Aguarda dados reais
+`components/Testimonial.tsx` retorna `null` (array vazio). Fornecer citações, nomes, cargos e fotos reais para activar.
+
+---
+
+*Última actualização: L99 Elevação — 2026-06-07*

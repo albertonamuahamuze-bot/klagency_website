@@ -150,6 +150,13 @@ export default function Manifesto() {
         </AnimateStagger>
       </div>
 
+      {/* Transição suave Manifesto → Serviços */}
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, right: 0, height: 80,
+        background: "linear-gradient(to bottom, transparent, #020617)",
+        pointerEvents: "none",
+      }} />
+
       {/* Mobile: stack columns */}
       <style>{`
         @media (max-width: 768px) {

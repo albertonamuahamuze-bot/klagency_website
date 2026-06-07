@@ -1,0 +1,141 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Ogilvy Sans",
+      "role": "heading"
+    },
+    {
+      "family": "Ogilvy Serif",
+      "role": "body"
+    },
+    {
+      "family": "Arial",
+      "role": "body"
+    },
+    {
+      "family": "Helvetica Neue",
+      "role": "body"
+    },
+    {
+      "family": "Georgia",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#EB3F43",
+    "secondary": "#F5BAC5",
+    "accent": "#5897FB",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#5897FB"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Ogilvy Serif",
+      "heading": "Ogilvy Sans"
+    },
+    "fontStacks": {
+      "heading": [
+        "Ogilvy Sans",
+        "Helvetica Neue",
+        "Helvetica",
+        "Arial",
+        "sans-serif"
+      ],
+      "body": [
+        "Ogilvy Sans",
+        "Helvetica Neue",
+        "Helvetica",
+        "Arial",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Ogilvy Sans",
+        "Helvetica Neue",
+        "Helvetica",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "16px",
+      "h2": "24px",
+      "body": "24px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "input": {
+      "background": "#FFFFFF",
+      "textColor": "#231F20",
+      "borderColor": null,
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20700%20273.7%22%20class%3D%22branding__logo%22%20style%3D%22--logo-scroll-width%3A196.032vw%3B%22%20data-fc-idx%3D%220%22%3E%3Cpath%20d%3D%22M99.1%208.8C45.5%208.8%200%2047.1%200%20106c0%2053%2040.5%2095%2098.5%2095%2053.5%200%2099.1-38.3%2099.1-97.2%200-52.9-40.5-95-98.5-95zm0%20180.8c-34.9%200-59.9-35.7-59.9-84.9%200-47.1%2023.7-84.4%2059.4-84.4%2034.9%200%2059.9%2035.7%2059.9%2084.9-.1%2047.1-23.8%2084.4-59.4%2084.4zM654.5%2081.7v8l10.7%202.1c3.7.8%204.8%203.7%202.4%209.6L643%20160.6c-1.1%202.4-2.4%202.4-3.2%200l-22.9-59.1c-2.4-6.1-1.1-8.8%202.7-9.6l10.6-2.1v-8h-94.8v8l10.7%202.1c3.7.8%205.1%203.7%202.7%209.6l-23.7%2062.3c-1.1%202.4-2.4%202.4-3.2%200l-24-62.3c-2.1-6.1-1.1-8.8%202.7-9.6l10.6-2.1v-8H451V90l5.9%201.3c4%20.8%206.4%202.9%208%206.7l40.7%20100.1H524L564.7%2098c2.1-5.3%204.5-7.5%208.8-7.5h1.6c3.5%200%206.1%201.3%208.3%206.4L626%20200.8%20614.6%20228c-7.5%2018.1-13%2021.3-20%2021.3-2.9%200-6.1-.5-9.3-.5-8.3%200-13.3%205.9-13.3%2012.2%200%207.2%205.9%2012.3%2015.2%2012.3%2013.3%200%2026.4-10.7%2037.3-36.2l58-136.1c2.7-6.1%206.1-8.8%2011.7-9.9L700%2090v-8.3h-45.5zm-373.3%20106l-44.5%205.6c-14.6%201.9-19.2-2.9-19.2-10.4%200-8.8%209.6-15.7%2042.9-15.7h.5c24.2%200%2052.7-14.6%2052.7-46.3%200-10.1-3.7-19.4-10.7-26.9a34.5%2034.5%200%200%201-3.2-16.5c0-23.4%2016-36.7%2032.5-36.7%206.9%200%209.1%201.1%209.1%205.9%200%201.3-.3%202.4-.3%204%200%208.3%206.9%2016%2016.8%2016%2010.1%200%2016.5-8%2016.5-16.8%200-13.3-12-23.2-34.1-23.2-30.4%200-53.8%2019.7-53.8%2049.8%200%202.4.3%204.3.3%206.1a64.4%2064.4%200%200%200-24.8-4.8c-24%200-52.7%2014.6-52.7%2046.3%200%2014.6%208.3%2028.2%2022.6%2036.2-21.3%202.9-33.5%2014.4-33.5%2032.2%200%2018.1%2014.4%2031.2%2041.3%2028l38.9-4.8c19.4-2.4%2025.8%204.5%2025.8%2014.6%200%2017.6-16.5%2031.7-42.9%2031.7-21%200-28.8-7.5-28.8-18.1l.3-5.3c0-6.4-4-10.9-10.4-11.2-7.5%200-12%205.3-12%2013%200%2017.6%2016.8%2033.3%2051.1%2033.3%2038.6%200%2063.1-25%2063.1-53.8.1-22.9-18.2-35.4-43.5-32.2zm-20-100.4c12.5%200%2022.6%2014.1%2022.6%2035.7%200%2018.6-8.5%2034.6-21.8%2034.6-12.8%200-22.9-14.1-22.9-35.7%200-18.3%208.5-34.6%2022.1-34.6z%22%20style%3D%22fill%3A%20rgb(235%2C%2063%2C%2067)%20!important%3B%22%2F%3E%3Cpath%20d%3D%22M440.7%20184.3V0l-46.9%2012v5.6l13.3%204.3c2.1.8%202.9%202.4%202.9%204.5v157.1c0%202.9-2.4%205.1-5.9%205.1l-11.9.2-12.6-.2c-3.5%200-5.9-2.1-5.9-5.1V77.2l-46.9%2012v5.6l13.3%204.3c2.1.8%202.9%202.4%202.9%204.5v80.7c0%202.4-1.3%203.7-3.2%204l-10.9%201.3v8.5h127.8v-8.5l-13-1.3c-1.7-.3-3-1.6-3-4z%22%20style%3D%22fill%3A%20rgb(235%2C%2063%2C%2067)%20!important%3B%22%2F%3E%3C%2Fsvg%3E",
+    "favicon": "https://www.ogilvy.com/safari-pinned-tab.svg",
+    "ogImage": null,
+    "logoHref": "https://www.ogilvy.com/#work"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand 'Ogilvy'.",
+    "confidence": 0.95,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "The button 'skip to content' is not a call-to-action but a navigation aid, lacking vibrant color or action-oriented text."
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "There is only one button detected, which is not suitable as a secondary CTA due to its purpose and color."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals and corporate clients"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.95,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand 'Ogilvy'.",
+        "confidence": 0.95
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

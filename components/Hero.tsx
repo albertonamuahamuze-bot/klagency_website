@@ -154,6 +154,21 @@ export default function Hero() {
           ))}
         </motion.div>
       </div>
+
+      {/* Wave SVG — transição suave Hero → Manifesto (desktop) */}
+      <div
+        className="hero-wave"
+        style={{ position: "absolute", bottom: 0, left: 0, width: "100%", lineHeight: 0, display: "none" }}
+      >
+        <svg
+          viewBox="0 0 1440 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          style={{ width: "100%", height: 80, display: "block" }}
+        >
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#050B3D" />
+        </svg>
+      </div>
     </section>
   );
 }
