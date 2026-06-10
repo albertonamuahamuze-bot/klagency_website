@@ -41,15 +41,26 @@ export default function About() {
               backdropFilter: "blur(12px)",
               border: "1px solid var(--kl-border)",
               borderRadius: 10, padding: "0.8rem 1.2rem",
+              display: "flex", alignItems: "center", gap: 10,
             }}>
-              <div style={{
-                fontFamily: "var(--font-display)",
-                fontWeight: 600, fontSize: "1.1rem", color: "#fff",
-              }}>KLAgency</div>
-              <div style={{
-                fontSize: "0.72rem", color: "var(--kl-muted)",
-                letterSpacing: "0.06em",
-              }}>Maputo, Moçambique</div>
+              <div style={{ position: "relative", width: 28, height: 28, flexShrink: 0 }}>
+                <Image
+                  src="/Imagens/3.jpg"
+                  alt="KLAgency"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+              <div>
+                <div style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 600, fontSize: "1rem", color: "#fff",
+                }}>KLAgency</div>
+                <div style={{
+                  fontSize: "0.68rem", color: "var(--kl-muted)",
+                  letterSpacing: "0.06em",
+                }}>Maputo, Moçambique</div>
+              </div>
             </div>
           </div>
         </FadeUpScroll>

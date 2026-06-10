@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_PRIMARY } from "@/lib/constants";
 
@@ -30,27 +31,23 @@ export default function Header() {
       >
         <div className="mx-auto flex max-w-[1120px] items-center justify-between px-6 py-4 lg:px-8">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2.5" aria-label="KLAgency">
-            <span
-              className="grid h-9 w-9 place-items-center rounded-lg text-base font-bold text-white"
-              style={{
-                background: "var(--kl-blue-deep)",
-                fontFamily: "var(--font-display)",
-              }}
-            >
-              K
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-body)",
-                fontWeight: 600,
-                fontSize: "0.95rem",
-                letterSpacing: "0.06em",
-                color: "#fff",
-              }}
-            >
-              KLAgency
-            </span>
+          <a href="#home" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }} aria-label="KLAgency">
+            <div style={{ position: "relative", width: 36, height: 36 }}>
+              <Image
+                src="/Imagens/3.jpg"
+                alt="KLAgency Logo"
+                fill
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            </div>
+            <span style={{
+              fontFamily: "var(--font-body)",
+              fontWeight: 600,
+              fontSize: "0.95rem",
+              letterSpacing: "0.06em",
+              color: "#fff",
+            }}>KLAgency</span>
           </a>
 
           {/* Desktop nav */}

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CONTACTS, NAV_LINKS, SOCIAL_LINKS, WHATSAPP_PRIMARY } from "@/lib/constants";
 import { FadeUpScroll, StaggerScroll, StaggerScrollItem } from "./AnimateOnScroll";
 
@@ -41,33 +42,25 @@ export default function Footer() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "0.6rem",
+                gap: 10,
                 textDecoration: "none",
                 marginBottom: "1rem",
               }}
               aria-label="KLAgency"
             >
-              <span
-                style={{
-                  display: "grid",
-                  width: 36,
-                  height: 36,
-                  placeItems: "center",
-                  borderRadius: 8,
-                  background: "var(--kl-blue-deep)",
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 700,
-                  fontSize: "1.1rem",
-                  color: "#fff",
-                }}
-              >
-                K
-              </span>
+              <div style={{ position: "relative", width: 32, height: 32, flexShrink: 0 }}>
+                <Image
+                  src="/Imagens/3.jpg"
+                  alt="KLAgency Logo"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
               <span
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
-                  fontSize: "1.05rem",
+                  fontSize: "1.1rem",
                   color: "#fff",
                 }}
               >

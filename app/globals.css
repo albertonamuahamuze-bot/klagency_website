@@ -229,6 +229,17 @@
   .hero-wave { display: block !important; }
 }
 
+/* ── Portfolio hover effects ── */
+.portfolio-card:hover .portfolio-overlay {
+  bottom: 0 !important;
+}
+.portfolio-card:hover img {
+  transform: scale(1.05) !important;
+}
+.portfolio-card img {
+  transition: transform 500ms cubic-bezier(0.61, 1, 0.88, 1) !important;
+}
+
 /* ── Animation utilities ── */
 .fade-up { animation: fadeUp 0.65s ease both; }
 .delay-1 { animation-delay: 0.12s; }

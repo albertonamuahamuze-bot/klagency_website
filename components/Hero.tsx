@@ -32,7 +32,7 @@ export default function Hero() {
       {/* Imagem de fundo */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image
-          src="/Imagens/7.jpg"
+          src="/Imagens/1.jpg"
           alt="KLAgency — Liderança estratégica"
           fill
           priority
@@ -75,6 +75,7 @@ export default function Hero() {
           userSelect: "none",
           pointerEvents: "none",
           letterSpacing: "-0.05em",
+          zIndex: 1,
         }}
       >
         K
