@@ -1,17 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { ClientLogo, FadeScroll } from "./AnimateOnScroll";
 
 const CLIENTS = [
-  "IP-MLNG",
-  "Bispo Kobbe",
-  "Nelson Santana",
-  "Serena Luz",
-  "ECU",
-  "Prosolar",
+  { name: "IP-MLNG",           logo: "/Imagens/4.jpg",  invert: true  },
+  { name: "ECU Despachante",   logo: "/Imagens/2.jpg",  invert: true  },
+  { name: "Nelson Santana",    logo: "/Imagens/6.png",  invert: false },
+  { name: "Bispo Kobebissá",   logo: "/Imagens/8.png",  invert: true  },
+  { name: "Serena Luz",        logo: "/Imagens/5.jpg",  invert: true  },
 ];
-
-const items = [...CLIENTS, ...CLIENTS];
 
 export default function ClientsTicker() {
   return (
@@ -52,20 +50,25 @@ export default function ClientsTicker() {
         }}
       >
         <div className="kl-ticker-track">
-          {items.map((client, i) => (
-            <ClientLogo key={`${client}-${i}`}>
-              <span
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 400,
-                  fontSize: "1.05rem",
-                  color: "var(--kl-muted)",
-                  letterSpacing: "0.08em",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {client}
-              </span>
+          {[...CLIENTS, ...CLIENTS].map((client, i) => (
+            <ClientLogo key={`${client.name}-${i}`}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: 48, padding: "0 1rem" }}>
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={120}
+                  height={48}
+                  style={{
+                    objectFit: "contain",
+                    filter: client.invert ? "brightness(0) invert(1)" : "brightness(10)",
+                    opacity: 0.55,
+                    maxHeight: 40,
+                    transition: "opacity 0.3s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.55")}
+                />
+              </div>
             </ClientLogo>
           ))}
         </div>

@@ -1,77 +1,118 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { Award } from "lucide-react";
-import { useRef } from "react";
-import { VISUAL_ASSETS } from "@/lib/constants";
+import Image from "next/image";
+import { FadeUpScroll, StaggerScroll, StaggerScrollItem } from "./AnimateOnScroll";
 
 export default function About() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const rawSecondImageY = useTransform(scrollYProgress, [0, 0.65], [46, 0]);
-  const secondImageY = useSpring(rawSecondImageY, { stiffness: 70, damping: 24, mass: 0.6 });
-
   return (
     <section
-      ref={sectionRef}
       id="sobre"
-      className="bg-[#F6F9FC] px-5 pb-20 pt-8 sm:px-6 sm:pb-28 lg:px-8 lg:pb-36"
+      style={{
+        background: "var(--kl-navy-soft)",
+        padding: "6rem 2rem",
+      }}
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16">
+      <div style={{
+        maxWidth: 1120, margin: "0 auto",
+        display: "grid", gridTemplateColumns: "1fr 1fr",
+        gap: "5rem", alignItems: "center",
+      }}>
 
-        {/* Image composition */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.75 }}
-          className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-[460px]"
-        >
-          <img
-            src={VISUAL_ASSETS.aboutPrimary}
-            alt="Estrategia e colaboracao"
-            className="absolute left-0 top-6 h-[220px] w-[68%] rounded-lg object-cover shadow-[0_20px_60px_rgba(15,37,74,0.14)] sm:h-[300px] sm:top-8 sm:w-[70%] lg:h-[370px]"
-          />
-          <motion.img
-            style={{ y: secondImageY }}
-            src={VISUAL_ASSETS.aboutSecondary}
-            alt="Consultoria executiva"
-            className="absolute bottom-0 right-0 h-[210px] w-[56%] rounded-lg object-cover shadow-[0_24px_70px_rgba(15,37,74,0.16)] sm:h-[280px] sm:w-[58%] lg:h-[360px]"
-          />
-        </motion.div>
-
-        {/* Text content */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.75, delay: 0.08 }}
-        >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-[#00059D] shadow-sm sm:mb-7 sm:px-5 sm:py-3">
-            <Award size={15} />
-            Proposta de valor
+        {/* Imagem da equipa */}
+        <FadeUpScroll>
+          <div style={{
+            position: "relative", height: 480,
+            borderRadius: 16, overflow: "hidden",
+            border: "1px solid var(--kl-border)",
+          }}>
+            <Image
+              src="/Imagens/17.jpg"
+              alt="Equipa KLAgency"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to top, rgba(2,6,23,0.6) 0%, transparent 60%)",
+            }} />
+            <div style={{
+              position: "absolute", bottom: 20, left: 20,
+              background: "rgba(2,6,23,0.85)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid var(--kl-border)",
+              borderRadius: 10, padding: "0.8rem 1.2rem",
+            }}>
+              <div style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600, fontSize: "1.1rem", color: "#fff",
+              }}>KLAgency</div>
+              <div style={{
+                fontSize: "0.72rem", color: "var(--kl-muted)",
+                letterSpacing: "0.06em",
+              }}>Maputo, Moçambique</div>
+            </div>
           </div>
-          <h2 className="mb-5 max-w-xl text-2xl font-black leading-[1.1] text-[#101828] sm:mb-7 sm:text-3xl lg:text-5xl">
-            Clareza para marcas que querem crescer.
-          </h2>
-          <p className="mb-7 max-w-xl text-base leading-8 text-[#45556E] sm:mb-8 sm:text-lg sm:leading-9">
-            Posicionamento, estrategia e comunicacao para transformar presenca
-            em autoridade.
-          </p>
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
-            {["+100", "+20", "4"].map((value, index) => (
-              <div key={value} className="rounded-lg bg-white p-4 text-center shadow-sm sm:p-5">
-                <p className="text-xl font-black text-[#00059D] sm:text-2xl">{value}</p>
-                <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-[#65758B] sm:text-xs sm:tracking-[0.12em]">
-                  {index === 0 ? "Projetos" : index === 1 ? "Marcas" : "Pilares"}
-                </p>
-              </div>
+        </FadeUpScroll>
+
+        {/* Texto */}
+        <div>
+          <FadeUpScroll>
+            <div className="kl-label" style={{ marginBottom: "1rem" }}>Sobre</div>
+          </FadeUpScroll>
+          <FadeUpScroll delay={0.1}>
+            <div className="kl-divider" style={{ marginBottom: "1.5rem" }} />
+          </FadeUpScroll>
+          <FadeUpScroll delay={0.2}>
+            <h2
+              className="kl-heading"
+              style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: "#fff", marginBottom: "1.5rem" }}
+            >
+              Nascemos em África.{" "}
+              <em style={{ color: "#93C5FD", fontStyle: "italic" }}>
+                Pensamos para o mundo.
+              </em>
+            </h2>
+          </FadeUpScroll>
+          <FadeUpScroll delay={0.3}>
+            <p className="kl-body" style={{ marginBottom: "1.2rem" }}>
+              A KLAgency é uma consultora estratégica de posicionamento, branding
+              e crescimento de marcas. Nascemos em Moçambique com a visão de
+              construir marcas africanas de referência global.
+            </p>
+          </FadeUpScroll>
+          <FadeUpScroll delay={0.4}>
+            <p className="kl-body" style={{ marginBottom: "2rem" }}>
+              Trabalhamos com líderes e organizações que querem mais do que
+              presença — querem autoridade, posicionamento e domínio real
+              dos seus mercados.
+            </p>
+          </FadeUpScroll>
+
+          {/* Stats */}
+          <StaggerScroll style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
+            {[
+              { num: "+100", label: "Projectos entregues" },
+              { num: "+20",  label: "Marcas posicionadas" },
+              { num: "5+",   label: "Anos de experiência" },
+              { num: "100%", label: "Compromisso" },
+            ].map(({ num, label }) => (
+              <StaggerScrollItem key={label}>
+                <div className="kl-glass" style={{ padding: "1.2rem" }}>
+                  <div style={{
+                    fontFamily: "var(--font-display)", fontWeight: 700,
+                    fontSize: "1.8rem", color: "#fff", lineHeight: 1,
+                    marginBottom: "0.3rem",
+                  }}>{num}</div>
+                  <div style={{
+                    fontSize: "0.72rem", color: "var(--kl-muted)",
+                    letterSpacing: "0.05em",
+                  }}>{label}</div>
+                </div>
+              </StaggerScrollItem>
             ))}
-          </div>
-        </motion.div>
+          </StaggerScroll>
+        </div>
+
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { WHATSAPP_PRIMARY } from "@/lib/constants";
 import {
   HeroStagger,
@@ -28,6 +29,22 @@ export default function Hero() {
         alignItems: "center",
       }}
     >
+      {/* Imagem de fundo */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <Image
+          src="/Imagens/7.jpg"
+          alt="KLAgency — Liderança estratégica"
+          fill
+          priority
+          quality={90}
+          style={{ objectFit: "cover", objectPosition: "center top" }}
+        />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(135deg, rgba(2,6,23,0.88) 0%, rgba(0,5,155,0.75) 55%, rgba(2,6,23,0.82) 100%)",
+        }} />
+      </div>
+
       {/* Radial texture */}
       <div
         aria-hidden="true"
