@@ -98,84 +98,117 @@
   ::-webkit-scrollbar-thumb:hover { background: #0D1FA8; }
 }
 
-/* ── Typography ── */
+/* ── Escala Tipográfica Dintell Adaptada ── */
 .kl-display {
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.6rem, 5.5vw, 3rem);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
 }
 .kl-heading {
   font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.18;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.5vw, 2.45rem);
+  line-height: 1.11;
+  letter-spacing: -0.025em;
+}
+.kl-heading-sm {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
 }
 .kl-subheading {
   font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.65;
-  letter-spacing: 0.01em;
-  color: #CBD5E1;
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.61;
+  letter-spacing: 0;
+  color: var(--kl-silver);
 }
 .kl-label {
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #94A3B8;
+  color: #60A5FA;
 }
 .kl-body {
   font-family: var(--font-body);
-  font-weight: 300;
-  line-height: 1.75;
-  color: #CBD5E1;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.81;
+  color: var(--kl-silver);
 }
 
-/* ── Buttons ── */
+/* ── Botões Pill — DNA Dintell ── */
 .kl-btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 14px 28px;
-  background: #FFFFFF;
-  color: #020617;
+  padding: 18px 36px;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.88rem;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: #fff;
   text-decoration: none;
-  border-radius: 12px;
   border: none;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.22s ease;
+  background: linear-gradient(to right, #2563EB, #00059B, #2563EB);
+  background-size: 200% auto;
+  transition: background-position 0.5s ease, transform 0.22s ease, box-shadow 0.22s ease;
 }
 .kl-btn-primary:hover {
-  background: #F8FAFC;
-  transform: translateY(-1px);
-  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(37, 99, 235, 0.4);
 }
 .kl-btn-ghost {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 13px 24px;
-  background: transparent;
-  color: #FFFFFF;
+  padding: 17px 34px;
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.88rem;
-  letter-spacing: 0.03em;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #fff;
   text-decoration: none;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.22s ease;
+  transition: all 0.25s ease;
 }
 .kl-btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.kl-btn-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.kl-btn-small:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ── Glass Card ── */
@@ -192,17 +225,17 @@
   transform: translateY(-3px);
 }
 
-/* ── Tag / Badge ── */
+/* ── Tag / Badge Pill ── */
 .kl-tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 14px;
+  padding: 5px 15px;
   background: rgba(37, 99, 235, 0.15);
   border: 1px solid rgba(37, 99, 235, 0.30);
-  border-radius: 999px;
+  border-radius: 50px;
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.69rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -217,11 +250,22 @@
   border-radius: 2px;
 }
 
-/* ── Section container ── */
+/* ── Ritmo Vertical Dintell ── */
 .kl-section {
-  padding: 6rem 2.5rem;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  padding-left: 2rem;
+  padding-right: 2rem;
   max-width: 1120px;
   margin: 0 auto;
+}
+.kl-section-hero {
+  min-height: 100vh;
+  padding: 0;
+}
+.kl-section-compact {
+  padding-top: 45px;
+  padding-bottom: 75px;
 }
 
 /* ── Hero wave — desktop only ── */
@@ -229,15 +273,48 @@
   .hero-wave { display: block !important; }
 }
 
-/* ── Portfolio hover effects ── */
+/* ── Portfolio hover effects — timing Dintell ── */
+.portfolio-card .portfolio-overlay {
+  transition: bottom 0.35s cubic-bezier(0.37, 0, 0.63, 1);
+}
 .portfolio-card:hover .portfolio-overlay {
   bottom: 0 !important;
+}
+.portfolio-card img {
+  transition: transform 0.4s cubic-bezier(0.37, 0, 0.63, 1) !important;
 }
 .portfolio-card:hover img {
   transform: scale(1.05) !important;
 }
-.portfolio-card img {
-  transition: transform 500ms cubic-bezier(0.61, 1, 0.88, 1) !important;
+.portfolio-card:hover {
+  box-shadow: rgba(0, 5, 155, 0.25) 0 0 30px 0;
+}
+
+/* ── Team cards hover ── */
+.team-card:hover .team-caption { bottom: 0; }
+.team-card:hover img { transform: scale(1.05); }
+
+/* ── Form fields — estilo Dintell ── */
+.kl-field {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--kl-border-hover);
+  border-radius: 0;
+  background: transparent;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  color: #fff;
+  outline: none;
+  transition: border-bottom-color 0.2s ease;
+}
+.kl-field:focus {
+  border-bottom-color: #2563EB;
+}
+.kl-field option {
+  background: #050B3D;
+  color: #fff;
 }
 
 /* ── Animation utilities ── */

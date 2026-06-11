@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { siteContent } from "@/lib/site-content";
+import AnimatedIcon from "@/components/icons/AnimatedIcon";
 
 export default function Pillars() {
   return (
@@ -31,12 +32,22 @@ export default function Pillars() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group flex cursor-default flex-col gap-3 py-8 transition-all duration-300 sm:gap-4 sm:py-10 lg:grid lg:grid-cols-[96px_1fr_auto] lg:items-center lg:gap-16 lg:py-12"
+              className="group flex cursor-default flex-col gap-3 py-8 transition-all duration-300 sm:gap-4 sm:py-10 lg:grid lg:grid-cols-[96px_64px_1fr_auto] lg:items-center lg:gap-12 lg:py-12"
             >
               {/* Number */}
               <span className="font-black text-[2.2rem] leading-none text-[#EEF4FB] transition-all duration-500 group-hover:text-[#00059D] sm:text-[3rem] lg:text-[4rem]">
                 0{index + 1}
               </span>
+
+              {/* Animated icon — estilo Dintell */}
+              <div className="hidden lg:flex lg:items-center lg:justify-center">
+                <AnimatedIcon
+                  iconKey={item.icon}
+                  size={44}
+                  color="#00059D"
+                  loop
+                />
+              </div>
 
               {/* Title */}
               <h3

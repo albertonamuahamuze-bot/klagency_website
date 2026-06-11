@@ -9,7 +9,7 @@ export default function About() {
       id="sobre"
       style={{
         background: "var(--kl-navy-soft)",
-        padding: "6rem 2rem",
+        padding: "75px 2rem",
       }}
     >
       <div style={{

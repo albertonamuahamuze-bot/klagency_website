@@ -37,7 +37,7 @@ export default function Manifesto() {
       id="sobre"
       style={{
         background: "var(--kl-navy-soft, #050B3D)",
-        padding: "6rem 2rem",
+        padding: "75px 2rem",
         position: "relative",
         overflow: "hidden",
       }}

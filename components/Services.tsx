@@ -58,7 +58,7 @@ export default function Services() {
       id="servicos"
       style={{
         background: "var(--kl-navy, #020617)",
-        padding: "6rem 2rem",
+        padding: "75px 2rem",
         position: "relative",
         overflow: "hidden",
       }}

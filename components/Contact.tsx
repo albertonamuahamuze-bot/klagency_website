@@ -110,17 +110,14 @@ function ContactForm() {
     setSent(true);
   }
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    border: "none",
-    borderBottom: "1px solid rgba(255,255,255,0.15)",
-    background: "transparent",
-    padding: "0.75rem 0",
-    fontSize: "0.88rem",
-    color: "#fff",
-    outline: "none",
-    fontFamily: "var(--font-body)",
-    transition: "border-color 0.2s",
+  const labelStyle: React.CSSProperties = {
+    display: "block",
+    fontSize: "0.82rem",
+    fontWeight: 700,
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+    color: "var(--kl-silver)",
+    marginBottom: "0.4rem",
   };
 
   if (sent) {
@@ -152,9 +149,9 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
       {/* Progress bar */}
-      <div style={{ marginBottom: "1.5rem" }}>
+      <div style={{ marginBottom: "2rem" }}>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.72rem", color: "var(--kl-muted)", marginBottom: "0.3rem" }}>
           <span>Preencher formulário</span>
           <span>{progress}%</span>
@@ -168,48 +165,71 @@ function ContactForm() {
         </div>
       </div>
 
-      <input name="name" value={fields.name} onChange={handleChange} placeholder="Nome completo" required style={inputStyle} />
-      <input name="email" type="email" value={fields.email} onChange={handleChange} placeholder="Email" required style={inputStyle} />
-      <select
-        name="interest"
-        value={fields.interest}
-        onChange={handleChange}
-        required
-        style={{ ...inputStyle, cursor: "pointer", colorScheme: "dark" }}
-      >
-        <option value="" style={{ background: "#050B3D" }}>Área de interesse</option>
-        {interests.map((i) => (
-          <option key={i} value={i} style={{ background: "#050B3D" }}>{i}</option>
-        ))}
-      </select>
-      <textarea
-        name="message"
-        value={fields.message}
-        onChange={handleChange}
-        placeholder="Mensagem"
-        rows={3}
-        required
-        style={{ ...inputStyle, resize: "none" }}
-      />
-
-      <div style={{ paddingTop: "1rem" }}>
-        <button
-          type="submit"
-          disabled={loading}
-          className="kl-btn-primary"
-          style={{ width: "100%", justifyContent: "center", opacity: loading ? 0.6 : 1 }}
-        >
-          {loading ? (
-            <motion.span
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
-              style={{ display: "inline-block", width: 16, height: 16, borderRadius: "50%", border: "2px solid rgba(0,6,23,0.3)", borderTopColor: "#020617" }}
-            />
-          ) : (
-            "Enviar mensagem"
-          )}
-        </button>
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <label style={{ display: "block" }}>
+          <span style={labelStyle}>Nome</span>
+          <input name="name" className="kl-field" value={fields.name} onChange={handleChange} required />
+        </label>
+        <label style={{ display: "block" }}>
+          <span style={labelStyle}>Email</span>
+          <input name="email" type="email" className="kl-field" value={fields.email} onChange={handleChange} required />
+        </label>
+        <label style={{ display: "block" }}>
+          <span style={labelStyle}>Área de interesse</span>
+          <select
+            name="interest"
+            className="kl-field"
+            value={fields.interest}
+            onChange={handleChange}
+            required
+            style={{ cursor: "pointer", colorScheme: "dark" }}
+          >
+            <option value="" style={{ background: "#050B3D" }}>—</option>
+            {interests.map((i) => (
+              <option key={i} value={i} style={{ background: "#050B3D" }}>{i}</option>
+            ))}
+          </select>
+        </label>
+        <label style={{ display: "block" }}>
+          <span style={labelStyle}>Mensagem</span>
+          <textarea
+            name="message"
+            className="kl-field"
+            value={fields.message}
+            onChange={handleChange}
+            rows={3}
+            required
+            style={{ resize: "none" }}
+          />
+        </label>
       </div>
+
+      <p style={{
+        fontSize: "0.75rem",
+        color: "var(--kl-muted)",
+        lineHeight: 1.6,
+        marginTop: "1.5rem",
+        marginBottom: "1.25rem",
+      }}>
+        Nunca partilharemos os seus dados sem o seu consentimento explícito.
+      </p>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="kl-btn-primary"
+        style={{ width: "100%", justifyContent: "center", opacity: loading ? 0.6 : 1 }}
+      >
+        {loading ? (
+          <motion.span
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
+            style={{ display: "inline-block", width: 16, height: 16, borderRadius: "50%", border: "2px solid rgba(0,6,23,0.3)", borderTopColor: "#020617" }}
+          />
+        ) : (
+          "Enviar mensagem"
+        )}
+      </button>
     </form>
   );
 }
@@ -220,7 +240,7 @@ export default function Contact() {
       id="contacto"
       style={{
         background: "var(--kl-navy, #020617)",
-        padding: "6rem 2rem",
+        padding: "75px 2rem",
       }}
     >
       {/* Label + Headline */}

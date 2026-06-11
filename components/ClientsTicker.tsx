@@ -17,7 +17,7 @@ export default function ClientsTicker() {
       className="kl-ticker-wrapper"
       style={{
         background: "var(--kl-navy-soft, #050B3D)",
-        padding: "2.5rem 0",
+        padding: "45px 0",
         borderTop: "1px solid var(--kl-border)",
         borderBottom: "1px solid var(--kl-border)",
         overflow: "hidden",

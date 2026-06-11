@@ -83,8 +83,7 @@ export default function Header() {
             href={WHATSAPP_PRIMARY}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex kl-btn-primary"
-            style={{ fontSize: "0.8rem", padding: "10px 20px" }}
+            className="hidden md:inline-flex kl-btn-small"
           >
             Iniciar projecto →
           </a>

@@ -64,7 +64,7 @@ export default function Portfolio() {
       id="portfolio"
       style={{
         background: "var(--kl-navy)",
-        padding: "6rem 2rem",
+        padding: "75px 2rem",
       }}
     >
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
@@ -85,30 +85,26 @@ export default function Portfolio() {
           </div>
         </FadeUpScroll>
 
-        {/* Filtros */}
+        {/* Filtros — texto estilo Dintell */}
         <FadeUpScroll delay={0.1}>
-          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "2.5rem" }}>
             {FILTERS.map((f) => (
               <button
                 key={f}
                 onClick={() => setActive(f)}
                 style={{
-                  padding: "6px 16px",
-                  borderRadius: 99,
-                  border: active === f
-                    ? "1px solid rgba(37,99,235,0.6)"
-                    : "1px solid var(--kl-border)",
-                  background: active === f
-                    ? "rgba(37,99,235,0.15)"
-                    : "transparent",
-                  color: active === f ? "#93C5FD" : "var(--kl-muted)",
+                  background: "none",
+                  border: "none",
+                  padding: "0 18px 4px 0",
                   fontFamily: "var(--font-body)",
-                  fontSize: "0.72rem",
+                  fontSize: "1rem",
                   fontWeight: 500,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
+                  color: active === f ? "#93C5FD" : "var(--kl-muted)",
                   cursor: "pointer",
-                  transition: "all 0.2s",
+                  transition: "color 0.2s",
+                  borderBottom: active === f
+                    ? "2px solid #93C5FD"
+                    : "2px solid transparent",
                 }}
               >
                 {f}
@@ -139,7 +135,7 @@ export default function Portfolio() {
               >
                 {/* Foto (se existir) */}
                 {item.photo ? (
-                  <div style={{ position: "relative", height: 200, overflow: "hidden" }}>
+                  <div style={{ position: "relative", height: 360, overflow: "hidden" }}>
                     <Image
                       src={item.photo}
                       alt={item.client}

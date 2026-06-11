@@ -13,7 +13,7 @@ export default function CTA() {
     <section
       style={{
         background: "var(--kl-gradient-subtle, linear-gradient(160deg, #020617 0%, #050B3D 60%, #00059B 100%))",
-        padding: "6rem 2rem",
+        padding: "75px 2rem",
         position: "relative",
         overflow: "hidden",
       }}
